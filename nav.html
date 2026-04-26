@@ -1,0 +1,100 @@
+
+<!-- nav.html -->
+<div class="nav">
+  <div class="nav-inner">
+    <div class="nav-top-row">
+      <div class="nav-brand">Semsey Technologies</div>
+
+      <div style="display:flex; gap:8px; align-items:center;">
+        <button class="nav-appearance-btn" id="open-appearance">
+          <span class="icon">◎</span>
+          <span>Appearance</span>
+        </button>
+
+        <button class="nav-hamburger-btn" id="nav-hamburger" aria-label="Open navigation">
+          ⋮
+        </button>
+      </div>
+    </div>
+
+    <div class="nav-links-chip">
+      <a href="index.html">Home</a>
+      <a href="theories.html">Theories & Models</a>
+      <a href="tools.html">Tools & Software</a>
+      <a href="experiments.html">Experiments</a>
+      <a href="docs.html">Documentation</a>
+      <a href="support.html">Support</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</div>
+
+<div class="drawer-backdrop" id="drawer-backdrop">
+  <aside class="drawer" id="drawer">
+    <div class="drawer-topbar">
+      Navigation
+    </div>
+    <nav class="drawer-links">
+      <a href="index.html">Home</a>
+      <a href="theories.html">Theories & Models</a>
+      <a href="tools.html">Tools & Software</a>
+      <a href="experiments.html">Experiments</a>
+      <a href="docs.html">Documentation</a>
+      <a href="support.html">Support</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </aside>
+</div>
+
+<div class="modal-backdrop" id="appearance-backdrop">
+  <div class="modal">
+    <h2>Appearance Settings</h2>
+    <p>
+      You can customize how this site looks and behaves. If you choose to save preferences,
+      they are stored only on your device. No personal data is collected or transmitted.
+    </p>
+
+    <label for="theme-select">Theme</label>
+    <select id="theme-select">
+      <option value="theme-neon">Neon Dark Cyber (default)</option>
+      <option value="theme-minimal">Midnight Minimal</option>
+      <option value="theme-light">Light Minimal</option>
+      <option value="theme-solarized">Solarized</option>
+      <option value="theme-mono">Monochrome</option>
+      <option value="theme-terminal">Terminal Green</option>
+      <option value="theme-blue">Deep Blue Systems</option>
+    </select>
+
+    <label for="nav-style-select">Navigation Style</label>
+    <select id="nav-style-select">
+      <option value="auto">Auto (Recommended)</option>
+      <option value="chip">Chip Navigation</option>
+      <option value="drawer">Hamburger Drawer</option>
+      <option value="system">System Drawer</option>
+    </select>
+
+    <div id="theme-preview" class="preview-row">
+      <div class="preview-swatch" data-role="bg"></div>
+      <div class="preview-swatch" data-role="card"></div>
+      <div class="preview-swatch" data-role="accent"></div>
+      <div class="preview-swatch" data-role="accent2"></div>
+    </div>
+
+    <div class="modal-buttons">
+      <button id="close-appearance">Close</button>
+      <button id="apply-theme" class="primary">Apply</button>
+    </div>
+  </div>
+</div>
+
+<div id="consent-sheet" class="consent-sheet">
+  <p>
+    This site can save your theme and navigation preferences on your device using local storage.
+    No personal data is collected or transmitted. Cloudflare may collect basic technical data
+    as part of normal hosting and security.
+  </p>
+  <div class="consent-buttons">
+    <button id="consent-decline">Continue Without Saving</button>
+    <button id="consent-accept" class="primary">Save Preferences</button>
+  </div>
+</div>
