@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Site Settings</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Shared theme loader -->
+  <script src="assets/theme/theme.js"></script>
+
+  <style>
+    :root {
+      --accent: #2f8bff;
+      --fg: #e9f1ff;
+
+      --bg1: #10264f;
+      --bg2: #0b1d3d;
+      --bg3: #08162f;
+      --bg4: #051022;
+      --bg5: #030a18;
+
+      --card-bg: rgba(255, 255, 255, 0.04);
+      --card-border: rgba(255, 255, 255, 0.08);
+
+      --font-main: system-ui, -apple-system, "Segoe UI", sans-serif;
+      --font-size: 18px;
+      --font-weight: 400;
+      --font-style: normal;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 40px 20px;
+      background:
+        radial-gradient(circle at center,
+          var(--bg1) 0%,
+          var(--bg2) 30%,
+          var(--bg3) 55%,
+          var(--bg4) 75%,
+          var(--bg5) 100%);
+      color: var(--fg);
+      font-family: var(--font-main);
+      font-size: var(--font-size);
+      font-weight: var(--font-weight);
+      font-style: var(--font-style);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+      backdrop-filter: blur(10px);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--accent);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      padding-bottom: 8px;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+    }
+
+    .preset {
+      padding: 14px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .preset:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--accent);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    /* Circular color pickers */
+    input[type="color"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 48px;
+      height: 48px;
+      padding: 0;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.25);
+      background: none;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    input[type="color"]:hover {
+      border-color: var(--accent);
+      box-shadow: 0 0 12px rgba(47, 139, 255, 0.4);
+    }
+
+    .color-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+
+    input[type="range"],
+    select {
+      width: 100%;
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--fg);
+      font-size: 1rem;
+    }
+
+    /* Toggle switch */
+    .toggle {
+      position: relative;
+      width: 52px;
+      height: 28px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 999px;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .toggle::after {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 22px;
+      height: 22px;
+      background: white;
+      border-radius: 50%;
+      transition: 0.2s ease;
+    }
+
+    .toggle.active {
+      background: var(--accent);
+    }
+
+    .toggle.active::after {
+      transform: translateX(24px);
+    }
+
+    .back-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      padding: 10px 20px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--fg);
+      text-decoration: none;
+      font-size: 0.9rem;
+      backdrop-filter: blur(10px);
+      transition: 0.2s ease;
+    }
+
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: var(--accent);
+    }
+  </style>
+</head>
+
+<body>
+
+  <a href="index.html" class="back-btn">← Back</a>
+
+  <h1>Site Settings</h1>
+
+  <div class="container">
+
+    <!-- Why This Site Is Customizable -->
+    <div class="card">
+      <h2>Why This Site Is Customizable</h2>
+      <p style="opacity: 0.85; line-height: 1.5;">
+        This site is customizable because I don’t believe in forcing a single experience on anyone.
+        You know what works best for you — not me.
+        So instead of dictating how the interface should look or behave, I give you the tools to shape it yourself.
+        The power should lie with the people, not the developer.
+      </p>
+    </div>
+
+    <!-- Theme Presets -->
+    <div class="card">
+      <h2>Theme Presets</h2>
+      <div class="section-grid">
+        <div class="preset">Neon Blue</div>
+        <div class="preset">Midnight</div>
+        <div class="preset">Minimal Light</div>
+        <div class="preset">Cyber Red</div>
+        <div class="preset">Terminal Green</div>
+      </div>
+    </div>
+
+    <!-- Motion & Atmosphere -->
+    <div class="card">
+      <h2>Motion & Atmosphere</h2>
+
+      <label>Background Motion</label>
+      <select>
+        <option>Static</option>
+        <option>Calm Drift</option>
+        <option>Pulse</option>
+        <option>Aurora Flow</option>
+      </select>
+
+      <label style="margin-top: 16px;">Logo Glow Intensity</label>
+      <input type="range" min="0" max="100" value="60" />
+
+      <label style="margin-top: 16px;">Enable Logo Pulse</label>
+      <select>
+        <option>Off</option>
+        <option>On</option>
+      </select>
+    </div>
+
+    <!-- Create Your Own Theme -->
+    <div class="card">
+      <h2>Create Your Own Theme</h2>
+
+      <div class="color-row">
+        <label>Accent Color</label>
+        <input type="color" id="accentColor" value="#2f8bff" />
+      </div>
+
+      <div class="color-row">
+        <label>Background Color 1</label>
+        <input type="color" id="bg1" value="#10264f" />
+      </div>
+
+      <div class="color-row">
+        <label>Background Color 2</label>
+        <input type="color" id="bg2" value="#0b1d3d" />
+      </div>
+
+      <div class="color-row">
+        <label>Background Color 3</label>
+        <input type="color" id="bg3" value="#08162f" />
+      </div>
+    </div>
+
+    <!-- Typography -->
+    <div class="card">
+      <h2>Typography</h2>
+
+      <label>Font Family</label>
+      <select id="fontFamily">
+        <option value="system-ui">System UI</option>
+        <option value="Arial">Arial</option>
+        <option value="Helvetica">Helvetica</option>
+        <option value="Segoe UI">Segoe UI</option>
+        <option value="Roboto">Roboto</option>
+        <option value="Inter">Inter</option>
+        <option value="Open Sans">Open Sans</option>
+        <option value="Lato">Lato</option>
+        <option value="Montserrat">Montserrat</option>
+        <option value="Source Sans Pro">Source Sans Pro</option>
+        <option value="JetBrains Mono">JetBrains Mono</option>
+        <option value="Courier New">Courier New</option>
+        <option value="Georgia">Georgia</option>
+        <option value="Times New Roman">Times New Roman</option>
+      </select>
+
+      <label style="margin-top: 16px;">Font Size</label>
+      <input type="range" id="fontSize" min="12" max="28" value="18" />
+
+      <label style="margin-top: 16px;">Font Color</label>
+      <input type="color" id="fontColor" value="#e9f1ff" />
+
+      <label style="margin-top: 16px;">Font Weight</label>
+      <select id="fontWeight">
+        <option value="400">Regular</option>
+        <option value="500">Medium</option>
+        <option value="600">Semi-Bold</option>
+        <option value="700">Bold</option>
+      </select>
+
+      <label style="margin-top: 16px;">Font Style</label>
+      <select id="fontStyle">
+        <option value="normal">Normal</option>
+        <option value="italic">Italic</option>
+      </select>
+    </div>
+
+    <!-- Privacy & Storage Disclaimer -->
+    <div class="card">
+      <h2>Privacy & Storage</h2>
+
+      <p style="opacity: 0.85; line-height: 1.5;">
+        This site does not use cookies or collect any personal data by default.
+        If you want your settings (themes, fonts, preferences) to be saved on your device,
+        you can enable local cookie storage below.
+        Your settings will be stored <strong>only on your computer</strong> and never uploaded or shared.
+      </p>
+
+      <div class="color-row" style="margin-top: 20px;">
+        <label>Enable Cookie-Based Settings Storage</label>
+        <div class="toggle"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Toggle logic
+    const toggle = document.querySelector(".toggle");
+    window.saveSettings = false;
+
+    toggle.addEventListener("click", () => {
+      toggle.classList.toggle("active");
+      window.saveSettings = toggle.classList.contains("active");
+
+      if (!window.saveSettings) {
+        localStorage.removeItem("semsey-theme");
+      }
+    });
+
+    // Save + update helper
+    function updateVar(name, value) {
+      document.documentElement.style.setProperty(name, value);
+
+      if (window.saveSettings) {
+        const saved = JSON.parse(localStorage.getItem("semsey-theme") || "{}");
+        saved[name] = value;
+        localStorage.setItem("semsey-theme", JSON.stringify(saved));
+      }
+    }
+
+    // Color + typography listeners
+    document.getElementById("accentColor").addEventListener("input", e => {
+      updateVar("--accent", e.target.value);
+    });
+
+    document.getElementById("bg1").addEventListener("input", e => {
+      updateVar("--bg1", e.target.value);
+    });
+
+    document.getElementById("bg2").addEventListener("input", e => {
+      updateVar("--bg2", e.target.value);
+    });
+
+    document.getElementById("bg3").addEventListener("input", e => {
+      updateVar("--bg3", e.target.value);
+    });
+
+    document.getElementById("fontFamily").addEventListener("change", e => {
+      updateVar("--font-main", e.target.value);
+    });
+
+    document.getElementById("fontSize").addEventListener("input", e => {
+      updateVar("--font-size", e.target.value + "px");
+    });
+
+    document.getElementById("fontColor").addEventListener("input", e => {
+      updateVar("--fg", e.target.value);
+    });
+
+    document.getElementById("fontWeight").addEventListener("change", e => {
+      updateVar("--font-weight", e.target.value);
+    });
+
+    document.getElementById("fontStyle").addEventListener("change", e => {
+      updateVar("--font-style", e.target.value);
+    });
+  </script>
+
+</body>
+</html>

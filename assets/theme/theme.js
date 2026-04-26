@@ -1,0 +1,12 @@
+// Load saved theme settings on every page
+(function () {
+  const saved = localStorage.getItem("semsey-theme");
+  if (!saved) return;
+
+  const theme = JSON.parse(saved);
+  const root = document.documentElement;
+
+  for (const key in theme) {
+    root.style.setProperty(key, theme[key]);
+  }
+})();
