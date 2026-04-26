@@ -358,172 +358,182 @@
 		</div>
 
 		<script>
-    const toggle = document.querySelector(".toggle");
+			const toggle = document.querySelector(".toggle");
 
-    // Load toggle state
-    window.saveSettings = localStorage.getItem("semsey-save-enabled") === "true";
+			// Load toggle state
+			window.saveSettings = localStorage.getItem("semsey-save-enabled") === "true";
 
-    if (window.saveSettings) {
-      toggle.classList.add("active");
-    }
+			if (window.saveSettings) {
+			toggle.classList.add("active");
+			}
 
-    // Toggle behavior
-    toggle.addEventListener("click", () => {
-      toggle.classList.toggle("active");
-      window.saveSettings = toggle.classList.contains("active");
+			// Toggle behavior
+			toggle.addEventListener("click", () => {
+			toggle.classList.toggle("active");
+			window.saveSettings = toggle.classList.contains("active");
 
-      // Save toggle state
-      localStorage.setItem("semsey-save-enabled", window.saveSettings);
+			// Save toggle state
+			localStorage.setItem("semsey-save-enabled", window.saveSettings);
 
-      // If turning OFF, clear saved theme
-      if (!window.saveSettings) {
-        localStorage.removeItem("semsey-theme");
-      }
-    });
+			// If turning OFF, clear saved theme
+			if (!window.saveSettings) {
+			localStorage.removeItem("semsey-theme");
+			}
+			});
 
-    // Clear saved settings button
-    document.getElementById("clearSettings").addEventListener("click", () => {
-      localStorage.removeItem("semsey-theme");
-      localStorage.removeItem("semsey-save-enabled");
+			// Clear saved settings button
+			document.getElementById("clearSettings").addEventListener("click", () => {
+			localStorage.removeItem("semsey-theme");
+			localStorage.removeItem("semsey-save-enabled");
 
-      toggle.classList.remove("active");
-      window.saveSettings = false;
+			toggle.classList.remove("active");
+			window.saveSettings = false;
 
-      location.reload();
-    });
+			location.reload();
+			});
 
-    // Clear saved theme
-    function clearSavedTheme() {
-      localStorage.removeItem("semsey-theme");
-    }
+			// Clear saved theme
+			function clearSavedTheme() {
+			localStorage.removeItem("semsey-theme");
+			}
 
-    // Save preset cleanly
-    function savePreset(preset) {
-      localStorage.setItem("semsey-theme", JSON.stringify(preset));
-    }
+			// Save preset cleanly
+			function savePreset(preset) {
+			localStorage.setItem("semsey-theme", JSON.stringify(preset));
+			}
 
-    // THEME PRESETS
-    const presets = {
-      "Neon Blue": {
-        "--accent": "#2f8bff",
-        "--fg": "#e9f1ff",
-        "--bg1": "#10264f",
-        "--bg2": "#0b1d3d",
-        "--bg3": "#08162f",
-        "--bg4": "#051022",
-        "--bg5": "#030a18",
-        "--font-main": "system-ui",
-      },
+			// THEME PRESETS
+			const presets = {
+			"Neon Blue": {
+			"--accent": "#2f8bff",
+			"--fg": "#e9f1ff",
+			"--bg1": "#10264f",
+			"--bg2": "#0b1d3d",
+			"--bg3": "#08162f",
+			"--bg4": "#051022",
+			"--bg5": "#030a18",
+			"--font-main": "system-ui",
+			},
 
-      "Midnight": {
-        "--accent": "#4a6bff",
-        "--fg": "#dfe6ff",
-        "--bg1": "#0a0a12",
-        "--bg2": "#0f0f1c",
-        "--bg3": "#141428",
-        "--bg4": "#1a1a33",
-        "--bg5": "#202040",
-        "--font-main": "Segoe UI",
-      },
+			"Midnight": {
+			"--accent": "#4a6bff",
+			"--fg": "#dfe6ff",
+			"--bg1": "#0a0a12",
+			"--bg2": "#0f0f1c",
+			"--bg3": "#141428",
+			"--bg4": "#1a1a33",
+			"--bg5": "#202040",
+			"--font-main": "Segoe UI",
+			},
 
-      "Minimal Light": {
-        "--accent": "#4a90e2",
-        "--fg": "#1a1a1a",
-        "--bg1": "#ffffff",
-        "--bg2": "#f7f7f7",
-        "--bg3": "#efefef",
-        "--bg4": "#e7e7e7",
-        "--bg5": "#dfdfdf",
-        "--font-main": "Helvetica",
-      },
+			"Minimal Light": {
+			"--accent": "#4a90e2",
+			"--fg": "#1a1a1a",
+			"--bg1": "#ffffff",
+			"--bg2": "#f7f7f7",
+			"--bg3": "#efefef",
+			"--bg4": "#e7e7e7",
+			"--bg5": "#dfdfdf",
+			"--font-main": "Helvetica",
+			},
 
-      "Cyber Red": {
-        "--accent": "#ff0033",
-        "--fg": "#ffe6e6",
-        "--bg1": "#1a0000",
-        "--bg2": "#260000",
-        "--bg3": "#330000",
-        "--bg4": "#400000",
-        "--bg5": "#4d0000",
-        "--font-main": "Roboto",
-      },
+			"Cyber Red": {
+			"--accent": "#ff0033",
+			"--fg": "#ffe6e6",
+			"--bg1": "#1a0000",
+			"--bg2": "#260000",
+			"--bg3": "#330000",
+			"--bg4": "#400000",
+			"--bg5": "#4d0000",
+			"--font-main": "Roboto",
+			},
 
-      "Terminal Green": {
-        "--accent": "#00ff66",
-        "--fg": "#ccffdd",
-        "--bg1": "#000000",
-        "--bg2": "#020f02",
-        "--bg3": "#041a04",
-        "--bg4": "#061406",
-        "--bg5": "#081808",
-        "--font-main": "JetBrains Mono",
-      }
-    };
+			"Terminal Green": {
+			"--accent": "#00ff66",
+			"--fg": "#ccffdd",
+			"--bg1": "#000000",
+			"--bg2": "#020f02",
+			"--bg3": "#041a04",
+			"--bg4": "#061406",
+			"--bg5": "#081808",
+			"--font-main": "JetBrains Mono",
+			}
+			};
 
-    // Apply preset cleanly
-    function applyPreset(name) {
-      const preset = presets[name];
-      if (!preset) return;
+			// Apply preset cleanly
+			function applyPreset(name) {
+			const preset = presets[name];
+			if (!preset) return;
 
-      // 1. Clear old saved values
-      clearSavedTheme();
+			// 1. Clear old saved values
+			clearSavedTheme();
 
-      // 2. Apply all preset variables
-      for (const key in preset) {
-        document.documentElement.style.setProperty(key, preset[key]);
-      }
+			// 2. Apply all preset variables
+			for (const key in preset) {
+			document.documentElement.style.setProperty(key, preset[key]);
+			}
 
-      // 3. Save preset if toggle is ON
-      if (window.saveSettings) {
-        savePreset(preset);
-      }
-    }
+			// 3. Save preset if toggle is ON
+			if (window.saveSettings) {
+			savePreset(preset);
+			}
+			}
 
-    // Hook up preset buttons
-    document.querySelectorAll(".preset").forEach(btn => {
-      btn.addEventListener("click", () => {
-        applyPreset(btn.textContent.trim());
-      });
-    });
+			// Hook up preset buttons
+			document.querySelectorAll(".preset").forEach(btn => {
+			btn.addEventListener("click", () => {
+			applyPreset(btn.textContent.trim());
+			});
+			});
 
-    // Save + update helper
-    function updateVar(name, value) {
-      document.documentElement.style.setProperty(name, value);
+			// Save + update helper
+			function updateVar(name, value) {
+			document.documentElement.style.setProperty(name, value);
 
-      if (window.saveSettings) {
-        const saved = JSON.parse(localStorage.getItem("semsey-theme") || "{}");
-        saved[name] = value;
-        localStorage.setItem("semsey-theme", JSON.stringify(saved));
-      }
-    }
+			if (window.saveSettings) {
+			const saved = JSON.parse(localStorage.getItem("semsey-theme") || "{}");
+			saved[name] = value;
+			localStorage.setItem("semsey-theme", JSON.stringify(saved));
+			}
+			}
 
-    // Color + typography listeners
-    document.getElementById("accentColor").addEventListener("input", e => {
-      updateVar("--accent", e.target.value);
-    });
+			// Color + typography listeners
+			document.getElementById("accentColor").addEventListener("input", e => {
+			updateVar("--accent", e.target.value);
+			});
 
-    document.getElementById("bg1").addEventListener("input", e => {
-      updateVar("--bg1", e.target.value);
-    });
+			document.getElementById("bg1").addEventListener("input", e => {
+			updateVar("--bg1", e.target.value);
+			});
 
-    document.getElementById("bg2").addEventListener("input", e => {
-      updateVar("--bg2", e.target.value);
-    });
+			document.getElementById("bg2").addEventListener("input", e => {
+			updateVar("--bg2", e.target.value);
+			});
 
-    document.getElementById("bg3").addEventListener("input", e => {
-      updateVar("--bg3", e.target.value);
-    });
+			document.getElementById("bg3").addEventListener("input", e => {
+			updateVar("--bg3", e.target.value);
+			});
 
-    document.getElementById("fontFamily").addEventListener("change", e => {
-      updateVar("--font-main", e.target.value);
-    });
+			document.getElementById("fontFamily").addEventListener("change", e => {
+			updateVar("--font-main", e.target.value);
+			});
 
-    document.getElementById("fontSize").addEventListener("input", e => {
-      updateVar("--font-size", e.target.value + "px");
-    });
+			document.getElementById("fontSize").addEventListener("input", e => {
+			updateVar("--font-size", e.target.value + "px");
+			});
 
-    document.getElementById("fontColor").addEventListener("input", e => {
-      updateVar("--fg", e.target.value);
-    });
+			document.getElementById("fontColor").addEventListener("input", e => {
+			updateVar("--fg", e.target.value);
+			});
 
-    document.getElementById("fontWeight").add
+			document.getElementById("fontWeight").addEventListener("change", e => {
+			updateVar("--font-weight", e.target.value);
+			});
+
+			document.getElementById("fontStyle").addEventListener("change", e => {
+			updateVar("--font-style", e.target.value);
+			});
+		</script>
+
+	</body>
+</html>
