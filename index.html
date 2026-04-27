@@ -1,32 +1,21 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>Semsey Technologies</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="assets/theme/theme.css">
+
+  <!-- Modular CSS -->
+  <link rel="stylesheet" href="assets/theme/variables.css">
+  <link rel="stylesheet" href="assets/theme/animations.css">
+  <link rel="stylesheet" href="assets/theme/motion-classes.css">
+  <link rel="stylesheet" href="assets/theme/layout.css">
+
+  <!-- Load saved theme variables -->
+  <script type="module" src="assets/theme/theme.js"></script>
+
   <style>
-    :root {
-      /* Theme-ready variables */
-      --accent: #2f8bff;
-      --fg: #e9f1ff;
-
-      /* Background gradient stops */
-      --bg1: #10264f;
-      --bg2: #0b1d3d;
-      --bg3: #08162f;
-      --bg4: #051022;
-      --bg5: #030a18;
-
-      /* Logo glow colors */
-      --glow1: rgba(47, 139, 255, 0.55);
-      --glow2: rgba(56, 189, 248, 0.35);
-      --glow3: rgba(56, 189, 248, 0.25);
-
-      --font-main: system-ui, -apple-system, "Segoe UI", sans-serif;
-    }
-
-    /* Darker, richer blue gradient */
     body {
       margin: 0;
       min-height: 100vh;
@@ -35,7 +24,8 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-
+      font-family: var(--font-main);
+      color: var(--fg);
       background:
         radial-gradient(circle at center,
           var(--bg1) 0%,
@@ -43,12 +33,53 @@
           var(--bg3) 55%,
           var(--bg4) 75%,
           var(--bg5) 100%);
-      color: var(--fg);
-      font-family: var(--font-main);
+      overflow-x: hidden;
     }
 
-    /* Cogwheel pinned to top-right */
-    .settings-button {
+    /* BACKGROUND MOTION LAYER */
+    #bgLayer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background:
+        radial-gradient(circle at center,
+          var(--bg1) 0%,
+          var(--bg2) 30%,
+          var(--bg3) 55%,
+          var(--bg4) 75%,
+          var(--bg5) 100%);
+      background-size: calc(var(--motion-intensity, 100) * 1%) calc(var(--motion-intensity, 100) * 1%);
+    }
+
+    /* Motion animations */
+    @keyframes calm-drift {
+      0% { background-position: 0% 0%; }
+      50% { background-position: calc(var(--motion-intensity, 100) * 1%) calc(var(--motion-intensity, 100) * 1%); }
+      100% { background-position: 0% 0%; }
+    }
+
+    @keyframes pulse {
+      0% { filter: brightness(1); }
+      50% { filter: brightness(calc(1 + (var(--motion-intensity, 100) / 200))); }
+      100% { filter: brightness(1); }
+    }
+
+    @keyframes aurora-flow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: calc(var(--motion-intensity, 100) * 1%) 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    #bgLayer[motion="calm-drift"] { animation: calm-drift 18s ease-in-out infinite; }
+    #bgLayer[motion="pulse"] { animation: pulse 6s ease-in-out infinite; }
+    #bgLayer[motion="aurora-flow"] { animation: aurora-flow 22s ease-in-out infinite; }
+    #bgLayer[motion="static"] { animation: none; }
+
+    /* SETTINGS COG */
+    .settings-cog {
       position: fixed;
       top: 20px;
       right: 20px;
@@ -57,25 +88,22 @@
       border-radius: 50%;
       border: 1px solid rgba(148, 163, 184, 0.4);
       background: rgba(20, 40, 80, 0.85);
-      color: #cbd5f5;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       backdrop-filter: blur(10px);
       transition: 0.2s ease;
-      font-size: 24px;
       z-index: 999;
-      text-decoration: none;
     }
 
-    .settings-button:hover {
+    .settings-cog:hover {
       background: rgba(30, 60, 120, 1);
       border-color: var(--accent);
       transform: rotate(12deg);
     }
 
-    /* Centered content moved upward */
+    /* HERO SECTION */
     .hero {
       width: 100%;
       max-width: 900px;
@@ -83,33 +111,37 @@
       margin-top: -180px;
     }
 
-    /* Logo with glow only */
     .logo {
       width: 450px;
       height: 450px;
       margin: 0 auto 6px;
-
-      filter:
-        drop-shadow(0 0 60px var(--glow1))
-        drop-shadow(0 0 120px var(--glow2))
-        drop-shadow(0 0 180px var(--glow3));
     }
 
-    .logo img {
+    /* LOGO GLOW + PULSE */
+    #siteLogo {
       width: 100%;
       height: 100%;
       object-fit: contain;
+      filter: drop-shadow(0 0 calc(var(--logo-glow, 0.6) * 20px) var(--accent));
+      transition: 0.25s ease;
     }
 
-    /* Tagline moved up */
+    @keyframes logoPulse {
+      0% { filter: drop-shadow(0 0 calc(var(--logo-glow, 0.6) * 20px) var(--accent)); }
+      50% { filter: drop-shadow(0 0 calc(var(--logo-glow, 0.6) * 40px) var(--accent)); }
+      100% { filter: drop-shadow(0 0 calc(var(--logo-glow, 0.6) * 20px) var(--accent)); }
+    }
+
+    #siteLogo[data-pulse="on"] {
+      animation: logoPulse 2.2s ease-in-out infinite;
+    }
+
     .tagline {
       font-size: 1.35rem;
       max-width: 650px;
       margin: 0 auto 0px;
-      color: var(--fg);
     }
 
-    /* Sub-tagline moved up */
     .subtagline {
       font-size: 0.9rem;
       letter-spacing: 0.08em;
@@ -145,7 +177,6 @@
       transform: translateY(-2px);
     }
 
-    /* True footer at bottom */
     footer {
       position: fixed;
       bottom: 12px;
@@ -155,20 +186,51 @@
       color: #b8c4e0;
       pointer-events: none;
     }
+.logo, #siteLogo {
+  overflow: visible !important;
+}
+.logo,
+.hero,
+main,
+body,
+html {
+  overflow: visible !important;
+}
+#siteLogo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+
+  filter:
+    brightness(calc(1 + (var(--logo-glow) / 50)))
+    drop-shadow(0 0 calc(sqrt(var(--logo-glow)) * 4px) white)
+    drop-shadow(0 0 calc(sqrt(var(--logo-glow)) * 18px) var(--accent));
+
+  transition: filter 0.25s ease;
+}
+
+
+#siteLogo[data-pulse="on"] {
+  animation: logoPulseV2 2.2s ease-in-out infinite;
+}
+
+
   </style>
-<script src="assets/theme/theme.js"></script>
 </head>
 
 <body>
 
-  <!-- Cogwheel now links to settings page -->
-  <a href="settings.html" class="settings-button">⚙️</a>
+  <!-- Background motion layer -->
+  <div id="bgLayer"></div>
 
-  <!-- Centered content -->
+  <!-- Settings Cog -->
+  <a href="settings.html">
+    <img src="assets/images/cog/cog.png" alt="Settings" class="settings-cog">
+  </a>
+
   <main class="hero">
-
     <div class="logo">
-      <img src="assets/images/logo/logo.jpeg" alt="Semsey Technologies Logo" />
+      <img id="siteLogo" src="assets/images/logo/logo.png" alt="Semsey Technologies Logo">
     </div>
 
     <div class="tagline">
@@ -180,16 +242,26 @@
     </div>
 
     <div class="buttons">
-      <a href="#about" class="btn">About</a>
-      <a href="#projects" class="btn">Projects</a>
+      <a href="about.html" class="btn">About</a>
+      <a href="projects.html" class="btn">Projects</a>
     </div>
-
   </main>
 
-  <!-- True footer -->
   <footer>
     © 2026 Semsey Technologies
   </footer>
+
+  <!-- MAIN MODULE -->
+  <script type="module">
+    import { loadSavedCog } from "./assets/theme/cogEngine.js";
+    import { loadSavedLogo } from "./assets/theme/logoEngine.js";
+    import "./assets/theme/motion.js";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      loadSavedCog();
+      loadSavedLogo();
+    });
+  </script>
 
 </body>
 </html>

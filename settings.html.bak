@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Site Settings</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Base theme loader -->
+  <script src="assets/theme/theme.js"></script>
+<link rel="stylesheet" href="assets/theme/variables.css">
+<link rel="stylesheet" href="assets/theme/animations.css">
+<link rel="stylesheet" href="assets/theme/motion-classes.css">
+<link rel="stylesheet" href="assets/theme/layout.css">
+
+  <style>
+    /* (same CSS as before — unchanged for brevity) */
+  </style>
+</head>
+
+<body>
+
+  <a href="index.html" class="back-btn">? Back</a>
+
+  <h1>Site Settings</h1>
+
+  <div class="container">
+
+    <!-- Why This Site Is Customizable -->
+    <div class="card">
+      <h2>Why This Site Is Customizable</h2>
+      <p style="opacity: 0.85; line-height: 1.5;">
+        This site is customizable because I don’t believe in forcing a single experience on anyone.
+        You know what works best for you — not me.
+        So instead of dictating how the interface should look or behave, I give you the tools to shape it yourself.
+        The power should lie with the people, not the developer.
+      </p>
+    </div>
+
+    <!-- Theme Presets -->
+    <div class="card">
+      <h2>Theme Presets</h2>
+      <div class="section-grid">
+        <div class="preset">Neon Blue</div>
+        <div class="preset">Midnight</div>
+        <div class="preset">Minimal Light</div>
+        <div class="preset">Cyber Red</div>
+        <div class="preset">Terminal Green</div>
+      </div>
+    </div>
+
+    <!-- Motion & Atmosphere -->
+    <div class="card">
+      <h2>Motion & Atmosphere</h2>
+
+      <label>Background Motion</label>
+      <select id="motionSelect">
+        <option>Static</option>
+        <option>Calm Drift</option>
+        <option>Pulse</option>
+        <option>Aurora Flow</option>
+      </select>
+
+      <label style="margin-top: 16px;">Logo Glow Intensity</label>
+      <input type="range" id="glowRange" min="0" max="100" value="60" />
+
+      <label style="margin-top: 16px;">Enable Logo Pulse</label>
+      <select id="pulseSelect">
+        <option>Off</option>
+        <option>On</option>
+      </select>
+    </div>
+
+    <!-- Create Your Own Theme -->
+    <div class="card">
+      <h2>Create Your Own Theme</h2>
+
+      <div class="color-row">
+        <label>Accent Color</label>
+        <input type="color" id="accentColor" value="#2f8bff" />
+      </div>
+
+      <div class="color-row">
+        <label>Background Color 1</label>
+        <input type="color" id="bg1" value="#10264f" />
+      </div>
+
+      <div class="color-row">
+        <label>Background Color 2</label>
+        <input type="color" id="bg2" value="#0b1d3d" />
+      </div>
+
+      <div class="color-row">
+        <label>Background Color 3</label>
+        <input type="color" id="bg3" value="#08162f" />
+      </div>
+    </div>
+
+    <!-- Typography -->
+    <div class="card">
+      <h2>Typography</h2>
+
+      <label>Font Family</label>
+      <select id="fontFamily">
+        <option value="system-ui">System UI</option>
+        <option value="Arial">Arial</option>
+        <option value="Helvetica">Helvetica</option>
+        <option value="Segoe UI">Segoe UI</option>
+        <option value="Roboto">Roboto</option>
+        <option value="Inter">Inter</option>
+        <option value="Open Sans">Open Sans</option>
+        <option value="Lato">Lato</option>
+        <option value="Montserrat">Montserrat</option>
+        <option value="Source Sans Pro">Source Sans Pro</option>
+        <option value="JetBrains Mono">JetBrains Mono</option>
+        <option value="Courier New">Courier New</option>
+        <option value="Georgia">Georgia</option>
+        <option value="Times New Roman">Times New Roman</option>
+      </select>
+
+      <label style="margin-top: 16px;">Font Size</label>
+      <input type="range" id="fontSize" min="12" max="28" value="18" />
+
+      <label style="margin-top: 16px;">Font Color</label>
+      <input type="color" id="fontColor" value="#e9f1ff" />
+
+      <label style="margin-top: 16px;">Font Weight</label>
+      <select id="fontWeight">
+        <option value="400">Regular</option>
+        <option value="500">Medium</option>
+        <option value="600">Semi-Bold</option>
+        <option value="700">Bold</option>
+      </select>
+
+      <label style="margin-top: 16px;">Font Style</label>
+      <select id="fontStyle">
+        <option value="normal">Normal</option>
+        <option value="italic">Italic</option>
+      </select>
+    </div>
+
+    <!-- Privacy & Storage -->
+    <div class="card">
+      <h2>Save Settings Across the Site</h2>
+
+      <p style="opacity: 0.85; line-height: 1.5;">
+        You can freely try out themes and customize the look of this page.
+        If you want your theme to apply across the entire site and stay active when you return,
+        enable the switch below.
+        Your settings are stored <strong>only on your device</strong> and never uploaded or shared.
+      </p>
+
+      <div class="color-row" style="margin-top: 20px;">
+        <label>Enable Site-Wide Theme Saving</label>
+        <div class="toggle"></div>
+      </div>
+
+      <p style="opacity: 0.75; margin-top: 12px;">
+        Want to remove all saved settings and return to defaults?
+      </p>
+
+      <button id="clearSettings" class="clear-btn">Clear Saved Settings</button>
+    </div>
+
+  </div>
+
+  <!-- Modular JS -->
+  <script type="module">
+    import { applyPreset, updateVar } from "./assets/theme/apply.js";
+    import "./assets/theme/storage.js";
+    import "./assets/theme/motion.js";
+
+    // Presets
+    document.querySelectorAll(".preset").forEach(btn => {
+      btn.addEventListener("click", () => {
+        applyPreset(btn.textContent.trim());
+      });
+    });
+
+    // Colors
+    accentColor.addEventListener("input", e => updateVar("--accent", e.target.value));
+    bg1.addEventListener("input", e => updateVar("--bg1", e.target.value));
+    bg2.addEventListener("input", e => updateVar("--bg2", e.target.value));
+    bg3.addEventListener("input", e => updateVar("--bg3", e.target.value));
+
+    // Typography
+    fontFamily.addEventListener("change", e => updateVar("--font-main", e.target.value));
+    fontSize.addEventListener("input", e => updateVar("--font-size", e.target.value + "px"));
+    fontColor.addEventListener("input", e => updateVar("--fg", e.target.value));
+    fontWeight.addEventListener("change", e => updateVar("--font-weight", e.target.value));
+    fontStyle.addEventListener("change", e => updateVar("--font-style", e.target.value));
+
+    // Motion
+    motionSelect.addEventListener("change", e => {
+      const mode = e.target.value;
+      updateVar("--bg-motion", mode.toLowerCase().replace(" ", "-"));
+    });
+
+    glowRange.addEventListener("input", e => updateVar("--logo-glow", e.target.value));
+    pulseSelect.addEventListener("change", e => updateVar("--logo-pulse", e.target.value === "On" ? "on" : "off"));
+  </script>
+
+</body>
+</html>

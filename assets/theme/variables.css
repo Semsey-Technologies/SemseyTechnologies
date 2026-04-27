@@ -1,0 +1,27 @@
+:root {
+  /* Core Theme Colors */
+  --accent: #2f8bff;
+  --fg: #e9f1ff;
+
+  /* Background Layers */
+  --bg1: #10264f;
+  --bg2: #0b1d3d;
+  --bg3: #08162f;
+  --bg4: #051022;
+  --bg5: #030a18;
+
+  /* Typography */
+  --font-main: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-size: 18px;
+  --font-weight: 400;
+  --font-style: normal;
+
+  /* Motion & Glow */
+  --bg-motion: static;   /* static | drift | pulse | aurora */
+  --logo-glow: 60;       /* 0–100 */
+  --logo-pulse: off;     /* on | off */
+
+  /* Card UI */
+  --card-bg: rgba(255, 255, 255, 0.04);
+  --card-border: rgba(255, 255, 255, 0.08);
+}

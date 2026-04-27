@@ -1,5 +1,3 @@
-// theme.js — corrected to load all theme variables properly
-
 (function () {
   const saved = localStorage.getItem("semsey-theme");
   if (!saved) return;
@@ -8,8 +6,6 @@
   const root = document.documentElement;
 
   for (const key in theme) {
-    // Convert numbers to strings so CSS variables accept them
-    const value = theme[key].toString();
-    root.style.setProperty(key, value);
+    root.style.setProperty(key, theme[key]);
   }
 })();

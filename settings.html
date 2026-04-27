@@ -1,539 +1,830 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<title>Site Settings</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-
-		<!-- Shared theme loader -->
-		<script src="assets/theme/theme.js"></script>
-
-		<style>
-			:root {
-			--accent: #2f8bff;
-			--fg: #e9f1ff;
-
-			--bg1: #10264f;
-			--bg2: #0b1d3d;
-			--bg3: #08162f;
-			--bg4: #051022;
-			--bg5: #030a18;
-
-			--card-bg: rgba(255, 255, 255, 0.04);
-			--card-border: rgba(255, 255, 255, 0.08);
-
-			--font-main: system-ui, -apple-system, "Segoe UI", sans-serif;
-			--font-size: 18px;
-			--font-weight: 400;
-			--font-style: normal;
-			}
-
-			body {
-			margin: 0;
-			min-height: 100vh;
-			padding: 40px 20px;
-			background:
-			radial-gradient(circle at center,
-			var(--bg1) 0%,
-			var(--bg2) 30%,
-			var(--bg3) 55%,
-			var(--bg4) 75%,
-			var(--bg5) 100%);
-			color: var(--fg);
-			font-family: var(--font-main);
-			font-size: var(--font-size);
-			font-weight: var(--font-weight);
-			font-style: var(--font-style);
-			}
-
-			h1 {
-			text-align: center;
-			margin-bottom: 40px;
-			font-size: 2rem;
-			font-weight: 600;
-			}
-
-			.container {
-			max-width: 900px;
-			margin: 0 auto;
-			display: flex;
-			flex-direction: column;
-			gap: 30px;
-			}
-
-			.card {
-			background: var(--card-bg);
-			border: 1px solid var(--card-border);
-			border-radius: 16px;
-			padding: 24px;
-			backdrop-filter: blur(10px);
-			}
-
-			.card h2 {
-			margin-top: 0;
-			margin-bottom: 20px;
-			font-size: 1.4rem;
-			font-weight: 600;
-			color: var(--accent);
-			border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-			padding-bottom: 8px;
-			}
-
-			.section-grid {
-			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-			gap: 16px;
-			}
-
-			.preset {
-			padding: 14px;
-			border-radius: 12px;
-			background: rgba(255, 255, 255, 0.06);
-			border: 1px solid rgba(255, 255, 255, 0.1);
-			text-align: center;
-			cursor: pointer;
-			transition: 0.2s ease;
-			}
-
-			.preset:hover {
-			background: rgba(255, 255, 255, 0.12);
-			border-color: var(--accent);
-			}
-
-			label {
-			display: block;
-			margin-bottom: 6px;
-			font-size: 0.9rem;
-			opacity: 0.9;
-			}
-
-			input[type="color"] {
-			-webkit-appearance: none;
-			appearance: none;
-			width: 48px;
-			height: 48px;
-			padding: 0;
-			border-radius: 50%;
-			border: 2px solid rgba(255, 255, 255, 0.25);
-			background: none;
-			cursor: pointer;
-			transition: 0.2s ease;
-			}
-
-			input[type="color"]:hover {
-			border-color: var(--accent);
-			box-shadow: 0 0 12px rgba(47, 139, 255, 0.4);
-			}
-
-			.color-row {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			margin-bottom: 18px;
-			}
-
-			input[type="range"],
-			select {
-			width: 100%;
-			padding: 8px;
-			border-radius: 8px;
-			border: 1px solid rgba(255, 255, 255, 0.2);
-			background: rgba(255, 255, 255, 0.05);
-			color: var(--fg);
-			font-size: 1rem;
-			}
-
-			.toggle {
-			position: relative;
-			width: 52px;
-			height: 28px;
-			background: rgba(255, 255, 255, 0.15);
-			border-radius: 999px;
-			cursor: pointer;
-			transition: 0.2s ease;
-			}
-
-			.toggle::after {
-			content: "";
-			position: absolute;
-			top: 3px;
-			left: 3px;
-			width: 22px;
-			height: 22px;
-			background: white;
-			border-radius: 50%;
-			transition: 0.2s ease;
-			}
-
-			.toggle.active {
-			background: var(--accent);
-			}
-
-			.toggle.active::after {
-			transform: translateX(24px);
-			}
-
-			.clear-btn {
-			margin-top: 16px;
-			padding: 10px 16px;
-			border-radius: 8px;
-			background: rgba(255, 255, 255, 0.1);
-			border: 1px solid rgba(255, 255, 255, 0.2);
-			color: var(--fg);
-			cursor: pointer;
-			transition: 0.2s ease;
-			}
-
-			.clear-btn:hover {
-			background: rgba(255, 255, 255, 0.2);
-			border-color: var(--accent);
-			}
-
-			.back-btn {
-			position: fixed;
-			top: 20px;
-			left: 20px;
-			padding: 10px 20px;
-			border-radius: 999px;
-			background: rgba(255, 255, 255, 0.08);
-			border: 1px solid rgba(255, 255, 255, 0.15);
-			color: var(--fg);
-			text-decoration: none;
-			font-size: 0.9rem;
-			backdrop-filter: blur(10px);
-			transition: 0.2s ease;
-			}
-
-			.back-btn:hover {
-			background: rgba(255, 255, 255, 0.15);
-			border-color: var(--accent);
-			}
-		</style>
-	</head>
-
-	<body>
-
-		<a href="index.html" class="back-btn">← Back</a>
-
-		<h1>Site Settings</h1>
-
-		<div class="container">
-
-			<!-- Why This Site Is Customizable -->
-			<div class="card">
-				<h2>Why This Site Is Customizable</h2>
-				<p style="opacity: 0.85; line-height: 1.5;">
-					This site is customizable because I don’t believe in forcing a single experience on anyone.
-					You know what works best for you — not me.
-					So instead of dictating how the interface should look or behave, I give you the tools to shape it yourself.
-					The power should lie with the people, not the developer.
-				</p>
-			</div>
-
-			<!-- Theme Presets -->
-			<div class="card">
-				<h2>Theme Presets</h2>
-				<div class="section-grid">
-					<div class="preset">Neon Blue</div>
-					<div class="preset">Midnight</div>
-					<div class="preset">Minimal Light</div>
-					<div class="preset">Cyber Red</div>
-					<div class="preset">Terminal Green</div>
-				</div>
-			</div>
-
-			<!-- Motion & Atmosphere -->
-			<div class="card">
-				<h2>Motion & Atmosphere</h2>
-
-				<label>Background Motion</label>
-				<select>
-					<option>Static</option>
-					<option>Calm Drift</option>
-					<option>Pulse</option>
-					<option>Aurora Flow</option>
-				</select>
-
-				<label style="margin-top: 16px;">Logo Glow Intensity</label>
-				<input type="range" min="0" max="100" value="60" />
-
-				<label style="margin-top: 16px;">Enable Logo Pulse</label>
-				<select>
-					<option>Off</option>
-					<option>On</option>
-				</select>
-			</div>
-
-			<!-- Create Your Own Theme -->
-			<div class="card">
-				<h2>Create Your Own Theme</h2>
-
-				<div class="color-row">
-					<label>Accent Color</label>
-					<input type="color" id="accentColor" value="#2f8bff" />
-				</div>
-
-				<div class="color-row">
-					<label>Background Color 1</label>
-					<input type="color" id="bg1" value="#10264f" />
-				</div>
-
-				<div class="color-row">
-					<label>Background Color 2</label>
-					<input type="color" id="bg2" value="#0b1d3d" />
-				</div>
-
-				<div class="color-row">
-					<label>Background Color 3</label>
-					<input type="color" id="bg3" value="#08162f" />
-				</div>
-			</div>
-
-			<!-- Typography -->
-			<div class="card">
-				<h2>Typography</h2>
-
-				<label>Font Family</label>
-				<select id="fontFamily">
-					<option value="system-ui">System UI</option>
-					<option value="Arial">Arial</option>
-					<option value="Helvetica">Helvetica</option>
-					<option value="Segoe UI">Segoe UI</option>
-					<option value="Roboto">Roboto</option>
-					<option value="Inter">Inter</option>
-					<option value="Open Sans">Open Sans</option>
-					<option value="Lato">Lato</option>
-					<option value="Montserrat">Montserrat</option>
-					<option value="Source Sans Pro">Source Sans Pro</option>
-					<option value="JetBrains Mono">JetBrains Mono</option>
-					<option value="Courier New">Courier New</option>
-					<option value="Georgia">Georgia</option>
-					<option value="Times New Roman">Times New Roman</option>
-				</select>
-
-				<label style="margin-top: 16px;">Font Size</label>
-				<input type="range" id="fontSize" min="12" max="28" value="18" />
-
-				<label style="margin-top: 16px;">Font Color</label>
-				<input type="color" id="fontColor" value="#e9f1ff" />
-
-				<label style="margin-top: 16px;">Font Weight</label>
-				<select id="fontWeight">
-					<option value="400">Regular</option>
-					<option value="500">Medium</option>
-					<option value="600">Semi-Bold</option>
-					<option value="700">Bold</option>
-				</select>
-
-				<label style="margin-top: 16px;">Font Style</label>
-				<select id="fontStyle">
-					<option value="normal">Normal</option>
-					<option value="italic">Italic</option>
-				</select>
-			</div>
-
-			<!-- Privacy & Storage -->
-			<div class="card">
-				<h2>Save Settings Across the Site</h2>
-
-				<p style="opacity: 0.85; line-height: 1.5;">
-					You can freely try out themes and customize the look of this page.
-					If you want your theme to apply across the entire site and stay active when you return,
-					enable the switch below.
-					Your settings are stored <strong>only on your device</strong> and never uploaded or shared.
-				</p>
-
-				<div class="color-row" style="margin-top: 20px;">
-					<label>Enable Site‑Wide Theme Saving</label>
-					<div class="toggle"></div>
-				</div>
-
-				<p style="opacity: 0.75; margin-top: 12px;">
-					Want to remove all saved settings and return to defaults?
-				</p>
-
-				<button id="clearSettings" class="clear-btn">Clear Saved Settings</button>
-			</div>
-
-		</div>
-
-		<script>
-			const toggle = document.querySelector(".toggle");
-
-			// Load toggle state
-			window.saveSettings = localStorage.getItem("semsey-save-enabled") === "true";
-
-			if (window.saveSettings) {
-			toggle.classList.add("active");
-			}
-
-			// Toggle behavior
-			toggle.addEventListener("click", () => {
-			toggle.classList.toggle("active");
-			window.saveSettings = toggle.classList.contains("active");
-
-			// Save toggle state
-			localStorage.setItem("semsey-save-enabled", window.saveSettings);
-
-			// If turning OFF, clear saved theme
-			if (!window.saveSettings) {
-			localStorage.removeItem("semsey-theme");
-			}
-			});
-
-			// Clear saved settings button
-			document.getElementById("clearSettings").addEventListener("click", () => {
-			localStorage.removeItem("semsey-theme");
-			localStorage.removeItem("semsey-save-enabled");
-
-			toggle.classList.remove("active");
-			window.saveSettings = false;
-
-			location.reload();
-			});
-
-			// Clear saved theme
-			function clearSavedTheme() {
-			localStorage.removeItem("semsey-theme");
-			}
-
-			// Save preset cleanly
-			function savePreset(preset) {
-			localStorage.setItem("semsey-theme", JSON.stringify(preset));
-			}
-
-			// THEME PRESETS
-			const presets = {
-			"Neon Blue": {
-			"--accent": "#2f8bff",
-			"--fg": "#e9f1ff",
-			"--bg1": "#10264f",
-			"--bg2": "#0b1d3d",
-			"--bg3": "#08162f",
-			"--bg4": "#051022",
-			"--bg5": "#030a18",
-			"--font-main": "system-ui",
-			},
-
-			"Midnight": {
-			"--accent": "#4a6bff",
-			"--fg": "#dfe6ff",
-			"--bg1": "#0a0a12",
-			"--bg2": "#0f0f1c",
-			"--bg3": "#141428",
-			"--bg4": "#1a1a33",
-			"--bg5": "#202040",
-			"--font-main": "Segoe UI",
-			},
-
-			"Minimal Light": {
-			"--accent": "#4a90e2",
-			"--fg": "#1a1a1a",
-			"--bg1": "#ffffff",
-			"--bg2": "#f7f7f7",
-			"--bg3": "#efefef",
-			"--bg4": "#e7e7e7",
-			"--bg5": "#dfdfdf",
-			"--font-main": "Helvetica",
-			},
-
-			"Cyber Red": {
-			"--accent": "#ff0033",
-			"--fg": "#ffe6e6",
-			"--bg1": "#1a0000",
-			"--bg2": "#260000",
-			"--bg3": "#330000",
-			"--bg4": "#400000",
-			"--bg5": "#4d0000",
-			"--font-main": "Roboto",
-			},
-
-			"Terminal Green": {
-			"--accent": "#00ff66",
-			"--fg": "#ccffdd",
-			"--bg1": "#000000",
-			"--bg2": "#020f02",
-			"--bg3": "#041a04",
-			"--bg4": "#061406",
-			"--bg5": "#081808",
-			"--font-main": "JetBrains Mono",
-			}
-			};
-
-			// Apply preset cleanly
-			function applyPreset(name) {
-			const preset = presets[name];
-			if (!preset) return;
-
-			// 1. Clear old saved values
-			clearSavedTheme();
-
-			// 2. Apply all preset variables
-			for (const key in preset) {
-			document.documentElement.style.setProperty(key, preset[key]);
-			}
-
-			// 3. Save preset if toggle is ON
-			if (window.saveSettings) {
-			savePreset(preset);
-			}
-			}
-
-			// Hook up preset buttons
-			document.querySelectorAll(".preset").forEach(btn => {
-			btn.addEventListener("click", () => {
-			applyPreset(btn.textContent.trim());
-			});
-			});
-
-			// Save + update helper
-			function updateVar(name, value) {
-			document.documentElement.style.setProperty(name, value);
-
-			if (window.saveSettings) {
-			const saved = JSON.parse(localStorage.getItem("semsey-theme") || "{}");
-			saved[name] = value;
-			localStorage.setItem("semsey-theme", JSON.stringify(saved));
-			}
-			}
-
-			// Color + typography listeners
-			document.getElementById("accentColor").addEventListener("input", e => {
-			updateVar("--accent", e.target.value);
-			});
-
-			document.getElementById("bg1").addEventListener("input", e => {
-			updateVar("--bg1", e.target.value);
-			});
-
-			document.getElementById("bg2").addEventListener("input", e => {
-			updateVar("--bg2", e.target.value);
-			});
-
-			document.getElementById("bg3").addEventListener("input", e => {
-			updateVar("--bg3", e.target.value);
-			});
-
-			document.getElementById("fontFamily").addEventListener("change", e => {
-			updateVar("--font-main", e.target.value);
-			});
-
-			document.getElementById("fontSize").addEventListener("input", e => {
-			updateVar("--font-size", e.target.value + "px");
-			});
-
-			document.getElementById("fontColor").addEventListener("input", e => {
-			updateVar("--fg", e.target.value);
-			});
-
-			document.getElementById("fontWeight").addEventListener("change", e => {
-			updateVar("--font-weight", e.target.value);
-			});
-
-			document.getElementById("fontStyle").addEventListener("change", e => {
-			updateVar("--font-style", e.target.value);
-			});
-		</script>
-
-	</body>
+<head>
+  <meta charset="UTF-8" />
+  <title>Site Settings</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Shared theme loader -->
+  <script src="assets/theme/theme.js"></script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --accent: #2f8bff;
+      --fg: #e9f1ff;
+
+      --bg1: #10264f;
+      --bg2: #0b1d3d;
+      --bg3: #08162f;
+      --bg4: #051022;
+      --bg5: #030a18;
+
+      --card-bg: rgba(255, 255, 255, 0.04);
+      --card-border: rgba(255, 255, 255, 0.08);
+
+      --font-main: system-ui, -apple-system, "Segoe UI", sans-serif;
+      --font-size: 18px;
+      --font-weight: 400;
+      --font-style: normal;
+
+      --glass-strength: 0.4;
+      --blur-amount: 10px;
+      --glass-enabled: off;
+
+      --motion-mode: static;
+      --motion-intensity: 100;
+
+      --logo-glow: 0.6;
+      --logo-pulse: off;
+
+
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 40px 20px;
+      color: var(--fg);
+      font-family: var(--font-main);
+      font-size: var(--font-size);
+      font-weight: var(--font-weight);
+      font-style: var(--font-style);
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* BACKGROUND LAYER */
+    #bgLayer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background:
+    radial-gradient(circle at center,
+      var(--bg1) 0%,
+      var(--bg2) 30%,
+      var(--bg3) 55%,
+      var(--bg4) 75%,
+      var(--bg5) 100%);
+  background-size: calc(var(--motion-intensity) * 1%) calc(var(--motion-intensity) * 1%);
+}
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, calc(var(--glass-strength)));
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      padding: 24px;
+      backdrop-filter: blur(var(--blur-amount));
+      transition: 0.25s ease;
+    }
+
+    html[data-glass="off"] .card {
+      background: var(--card-bg);
+      backdrop-filter: none;
+    }
+
+    .card h2 {
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--accent);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      padding-bottom: 8px;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+    }
+
+    .preset {
+      padding: 14px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .preset:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--accent);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    input[type="color"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 48px;
+      height: 48px;
+      padding: 0;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.25);
+      background: none;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    input[type="color"]:hover {
+      border-color: var(--accent);
+      box-shadow: 0 0 12px rgba(47, 139, 255, 0.4);
+    }
+
+    .color-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+
+    input[type="range"],
+    select {
+      width: 100%;
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(5, 10, 20, 0.95);
+      color: var(--fg);
+      font-size: 1rem;
+    }
+
+    .toggle {
+      position: relative;
+      width: 52px;
+      height: 28px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 999px;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .toggle::after {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 22px;
+      height: 22px;
+      background: white;
+      border-radius: 50%;
+      transition: 0.2s ease;
+    }
+
+    .toggle.active {
+      background: var(--accent);
+    }
+
+    .toggle.active::after {
+      transform: translateX(24px);
+    }
+
+    .clear-btn {
+      margin-top: 16px;
+      padding: 10px 16px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--fg);
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .clear-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: var(--accent);
+    }
+
+    .back-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      padding: 10px 20px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--fg);
+      text-decoration: none;
+      font-size: 0.9rem;
+      backdrop-filter: blur(10px);
+      transition: 0.2s ease;
+    }
+
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: var(--accent);
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      position: fixed;
+      top: 150px;
+      left: 20px;
+      width: 160px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      z-index: 999;
+    }
+
+    .sidebar.right { left: auto; right: 20px; }
+    .sidebar.top { top: 20px; left: 50%; transform: translateX(-50%); flex-direction: row; width: auto; }
+    .sidebar.bottom { top: auto; bottom: 20px; left: 50%; transform: translateX(-50%); flex-direction: row; width: auto; }
+
+    .sidebar a {
+      color: var(--fg);
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      transition: 0.2s ease;
+    }
+
+    .sidebar a:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: var(--accent);
+    }
+
+    /* BACKGROUND MOTION ANIMATIONS */
+   
+    @keyframes calm-drift {
+      0% { background-position: 0% 0%; }
+      50% { background-position: 100% 100%; }
+      100% { background-position: 0% 0%; }
+    }
+
+    @keyframes pulse {
+      0% { filter: brightness(1); }
+      50% { filter: brightness(1.25); }
+      100% { filter: brightness(1); }
+    }
+
+    @keyframes aurora-flow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    #bgLayer[motion="calm-drift"] {
+  animation: calm-drift calc(18s) ease-in-out infinite;
+}
+
+@keyframes calm-drift {
+  0% { background-position: 0% 0%; }
+  50% { background-position: calc(var(--motion-intensity) * 1%) calc(var(--motion-intensity) * 1%); }
+  100% { background-position: 0% 0%; }
+}
+
+#bgLayer[motion="pulse"] {
+  animation: pulse 6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% { filter: brightness(1); }
+  50% { filter: brightness(calc(1 + (var(--motion-intensity) / 200))); }
+  100% { filter: brightness(1); }
+}
+
+#bgLayer[motion="aurora-flow"] {
+  animation: aurora-flow 22s ease-in-out infinite;
+}
+
+@keyframes aurora-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: calc(var(--motion-intensity) * 1%) 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+  </style>
+</head>
+
+<body>
+
+  <div id="bgLayer"></div>
+
+  <a href="index.html" class="back-btn">← Back</a>
+
+  <div class="sidebar">
+    <a href="#presets">Presets</a>
+    <a href="#motion">Motion</a>
+    <a href="#custom-theme">Custom Theme</a>
+    <a href="#typography">Typography</a>
+    <a href="#nav-placement">Navigation Placement</a>
+    <a href="#saving">Saving</a>
+  </div>
+
+  <h1>Site Settings</h1>
+
+  <div class="container">
+
+    <div class="card">
+      <h2>Why This Site Is Customizable</h2>
+      <p style="opacity: 0.85; line-height: 1.5;">
+        This site is customizable because I don’t believe in forcing a single experience on anyone.
+        You know what works best for you — not me.
+        So instead of dictating how the interface should look or behave, I give you the tools to shape it yourself.
+        The power should lie with the people, not the developer.
+      </p>
+    </div>
+
+    <div class="card" id="presets">
+      <h2>Theme Presets</h2>
+      <div class="section-grid">
+        <div class="preset">Neon Blue</div>
+        <div class="preset">Midnight</div>
+        <div class="preset">Minimal Light</div>
+        <div class="preset">Cyber Red</div>
+        <div class="preset">Terminal Green</div>
+      </div>
+    </div>
+    <!-- Motion & Atmosphere -->
+    <div class="card" id="motion">
+      <h2>Motion & Atmosphere</h2>
+
+      <label>Background Motion</label>
+     <label style="margin-top: 16px;">Motion Intensity</label>
+     <input type="range" id="motionIntensity" min="1" max="300" value="100" />
+      <select id="motionSelect">
+        <option>Static</option>
+        <option>Calm Drift</option>
+        <option>Pulse</option>
+        <option>Aurora Flow</option>
+      </select>
+
+      <label style="margin-top: 16px;">Logo Glow Intensity</label>
+      <input type="range" min="0" max="100" value="60" />
+
+      <label style="margin-top: 16px;">Enable Logo Pulse</label>
+      <select>
+        <option>Off</option>
+        <option>On</option>
+      </select>
+
+      <label style="margin-top: 16px;">Glass Mode</label>
+      <select id="glassMode">
+        <option value="off">Off</option>
+        <option value="on">On</option>
+      </select>
+
+      <label style="margin-top: 16px;">Glass Strength</label>
+      <input type="range" id="glassStrength" min="0" max="100" value="40" />
+
+      <label style="margin-top: 16px;">Blur Amount</label>
+      <input type="range" id="blurAmount" min="0" max="20" value="10" />
+    </div>
+
+    <!-- Create Your Own Theme -->
+    <div class="card" id="custom-theme">
+      <h2>Create Your Own Theme</h2>
+
+      <div class="color-row">
+        <label>Accent Color</label>
+        <input type="color" id="accentColor" value="#2f8bff" />
+      </div>
+
+      <div class="color-row">
+        <label>Background Color 1</label>
+        <input type="color" id="bg1" value="#10264f" />
+      </div>
+
+      <div class="color-row">
+        <label>Background Color 2</label>
+        <input type="color" id="bg2" value="#0b1d3d" />
+      </div>
+
+      <div class="color-row">
+        <label>Background Color 3</label>
+        <input type="color" id="bg3" value="#08162f" />
+      </div>
+    </div>
+
+    <!-- Typography -->
+    <div class="card" id="typography">
+      <h2>Typography</h2>
+
+      <label>Font Family</label>
+      <select id="fontFamily">
+        <option value="system-ui">System UI</option>
+        <option value="Arial">Arial</option>
+        <option value="Helvetica">Helvetica</option>
+        <option value="Segoe UI">Segoe UI</option>
+        <option value="Roboto">Roboto</option>
+        <option value="Inter">Inter</option>
+        <option value="Open Sans">Open Sans</option>
+        <option value="Lato">Lato</option>
+        <option value="Montserrat">Montserrat</option>
+        <option value="Source Sans Pro">Source Sans Pro</option>
+        <option value="JetBrains Mono">JetBrains Mono</option>
+        <option value="Courier New">Courier New</option>
+        <option value="Georgia">Georgia</option>
+        <option value="Times New Roman">Times New Roman</option>
+      </select>
+
+      <label style="margin-top: 16px;">Font Size</label>
+      <input type="range" id="fontSize" min="12" max="28" value="18" />
+
+      <label style="margin-top: 16px;">Font Color</label>
+      <input type="color" id="fontColor" value="#e9f1ff" />
+
+      <label style="margin-top: 16px;">Font Weight</label>
+      <select id="fontWeight">
+        <option value="400">Regular</option>
+        <option value="500">Medium</option>
+        <option value="600">Semi-Bold</option>
+        <option value="700">Bold</option>
+      </select>
+
+      <label style="margin-top: 16px;">Font Style</label>
+      <select id="fontStyle">
+        <option value="normal">Normal</option>
+        <option value="italic">Italic</option>
+      </select>
+    </div>
+
+    <!-- Navigation Placement -->
+    <div class="card" id="nav-placement">
+      <h2>Navigation Placement</h2>
+
+      <label><input type="radio" name="navPlace" value="left" checked> Left Sidebar</label>
+      <label><input type="radio" name="navPlace" value="right"> Right Sidebar</label>
+      <label><input type="radio" name="navPlace" value="top"> Top Navigation</label>
+      <label><input type="radio" name="navPlace" value="bottom"> Bottom Navigation</label>
+    </div>
+
+    <!-- Privacy & Storage -->
+    <div class="card" id="saving">
+      <h2>Save Settings Across the Site</h2>
+
+      <p style="opacity: 0.85; line-height: 1.5;">
+        You can freely try out themes and customize the look of this page.
+        If you want your theme to apply across the entire site and stay active when you return,
+        enable the switch below.
+        Your settings are stored <strong>only on your device</strong> and never uploaded or shared.
+      </p>
+
+      <div class="color-row" style="margin-top: 20px;">
+        <label>Enable Site‑Wide Theme Saving</label>
+        <div class="toggle"></div>
+      </div>
+
+      <p style="opacity: 0.75; margin-top: 12px;">
+        Want to remove all saved settings and return to defaults?
+      </p>
+
+      <button id="clearSettings" class="clear-btn">Clear Saved Settings</button>
+    </div>
+
+  </div>
+  <!-- INLINE JS -->
+  <script>
+    const toggle = document.querySelector(".toggle");
+
+    // Load toggle state
+    window.saveSettings = localStorage.getItem("semsey-save-enabled") === "true";
+    if (window.saveSettings) toggle.classList.add("active");
+
+    // Toggle behavior
+    toggle.addEventListener("click", () => {
+      toggle.classList.toggle("active");
+      window.saveSettings = toggle.classList.contains("active");
+
+      localStorage.setItem("semsey-save-enabled", window.saveSettings);
+
+      if (!window.saveSettings) {
+        localStorage.removeItem("semsey-theme");
+        localStorage.removeItem("semsey-nav");
+      }
+    });
+
+    // Clear saved settings button
+    document.getElementById("clearSettings").addEventListener("click", () => {
+      localStorage.removeItem("semsey-theme");
+      localStorage.removeItem("semsey-save-enabled");
+      localStorage.removeItem("semsey-nav");
+
+      toggle.classList.remove("active");
+      window.saveSettings = false;
+
+      location.reload();
+    });
+
+    // Clear saved theme
+    function clearSavedTheme() {
+      localStorage.removeItem("semsey-theme");
+    }
+
+    // Save preset cleanly
+    function savePreset(preset) {
+      localStorage.setItem("semsey-theme", JSON.stringify(preset));
+    }
+
+    // THEME PRESETS
+    const presets = {
+      "Neon Blue": {
+        "--accent": "#2f8bff",
+        "--fg": "#e9f1ff",
+        "--bg1": "#10264f",
+        "--bg2": "#0b1d3d",
+        "--bg3": "#08162f",
+        "--bg4": "#051022",
+        "--bg5": "#030a18",
+        "--font-main": "system-ui"
+      },
+      "Midnight": {
+        "--accent": "#4a6bff",
+        "--fg": "#dfe6ff",
+        "--bg1": "#0a0a12",
+        "--bg2": "#0f0f1c",
+        "--bg3": "#141428",
+        "--bg4": "#1a1a33",
+        "--bg5": "#202040",
+        "--font-main": "Segoe UI"
+      },
+      "Minimal Light": {
+        "--accent": "#4a90e2",
+        "--fg": "#1a1a1a",
+        "--bg1": "#ffffff",
+        "--bg2": "#f7f7f7",
+        "--bg3": "#efefef",
+        "--bg4": "#e7e7e7",
+        "--bg5": "#dfdfdf",
+        "--font-main": "Helvetica"
+      },
+      "Cyber Red": {
+        "--accent": "#ff0033",
+        "--fg": "#ffe6e6",
+        "--bg1": "#1a0000",
+        "--bg2": "#260000",
+        "--bg3": "#330000",
+        "--bg4": "#400000",
+        "--bg5": "#4d0000",
+        "--font-main": "Roboto"
+      },
+      "Terminal Green": {
+        "--accent": "#00ff66",
+        "--fg": "#ccffdd",
+        "--bg1": "#000000",
+        "--bg2": "#020f02",
+        "--bg3": "#041a04",
+        "--bg4": "#061406",
+        "--bg5": "#081808",
+        "--font-main": "JetBrains Mono"
+      }
+    };
+
+    // Apply preset cleanly
+    function applyPreset(name) {
+      const preset = presets[name];
+      if (!preset) return;
+
+      clearSavedTheme();
+
+      for (const key in preset) {
+        document.documentElement.style.setProperty(key, preset[key]);
+      }
+
+      if (window.saveSettings) {
+        savePreset(preset);
+      }
+    }
+
+    // Hook up preset buttons
+    document.querySelectorAll(".preset").forEach(btn => {
+      btn.addEventListener("click", () => {
+        applyPreset(btn.textContent.trim());
+      });
+    });
+
+    // Save + update helper
+    function updateVar(name, value) {
+      document.documentElement.style.setProperty(name, value);
+
+      if (window.saveSettings) {
+        const saved = JSON.parse(localStorage.getItem("semsey-theme") || "{}");
+        saved[name] = value;
+        localStorage.setItem("semsey-theme", JSON.stringify(saved));
+      }
+    }
+
+    // Color + typography listeners
+    document.getElementById("accentColor").addEventListener("input", e => {
+      updateVar("--accent", e.target.value);
+    });
+
+    document.getElementById("bg1").addEventListener("input", e => {
+      updateVar("--bg1", e.target.value);
+    });
+
+    document.getElementById("bg2").addEventListener("input", e => {
+      updateVar("--bg2", e.target.value);
+    });
+
+    document.getElementById("bg3").addEventListener("input", e => {
+      updateVar("--bg3", e.target.value);
+    });
+
+    document.getElementById("fontFamily").addEventListener("change", e => {
+      updateVar("--font-main", e.target.value);
+    });
+
+    document.getElementById("fontSize").addEventListener("input", e => {
+      updateVar("--font-size", e.target.value + "px");
+    });
+
+    document.getElementById("fontColor").addEventListener("input", e => {
+      updateVar("--fg", e.target.value);
+    });
+
+    document.getElementById("fontWeight").addEventListener("change", e => {
+      updateVar("--font-weight", e.target.value);
+    });
+
+    document.getElementById("fontStyle").addEventListener("change", e => {
+      updateVar("--font-style", e.target.value);
+    });
+
+    // NAVIGATION PLACEMENT
+    const sidebar = document.querySelector(".sidebar");
+    const navRadios = document.querySelectorAll("input[name='navPlace']");
+
+    function applyNavPlacement(mode) {
+      sidebar.classList.remove("right", "top", "bottom");
+      if (mode === "right") sidebar.classList.add("right");
+      if (mode === "top") sidebar.classList.add("top");
+      if (mode === "bottom") sidebar.classList.add("bottom");
+    }
+
+    const savedNav = localStorage.getItem("semsey-nav");
+    if (savedNav) {
+      applyNavPlacement(savedNav);
+      const match = document.querySelector(`input[name="navPlace"][value="${savedNav}"]`);
+      if (match) match.checked = true;
+    }
+
+    navRadios.forEach(radio => {
+      radio.addEventListener("change", e => {
+        const val = e.target.value;
+        applyNavPlacement(val);
+
+        if (window.saveSettings) {
+          localStorage.setItem("semsey-nav", val);
+        }
+      });
+    });
+
+    // GLASS MODE
+const glassMode = document.getElementById("glassMode");
+const glassStrength = document.getElementById("glassStrength");
+const blurAmount = document.getElementById("blurAmount");
+
+const savedTheme = JSON.parse(localStorage.getItem("semsey-theme") || "{}");
+
+// Load saved glass strength
+if (savedTheme["--glass-strength"]) {
+  glassStrength.value = parseInt(savedTheme["--glass-strength"] * 100);
+  document.documentElement.style.setProperty("--glass-strength", savedTheme["--glass-strength"]);
+}
+
+// Load saved blur amount
+if (savedTheme["--blur-amount"]) {
+  blurAmount.value = parseInt(savedTheme["--blur-amount"]);
+  document.documentElement.style.setProperty("--blur-amount", savedTheme["--blur-amount"] + "px");
+}
+
+// Load saved glass mode OR default to OFF
+if (savedTheme["--glass-enabled"]) {
+  glassMode.value = savedTheme["--glass-enabled"];
+  document.documentElement.dataset.glass = savedTheme["--glass-enabled"];
+} else {
+  glassMode.value = "off";
+  document.documentElement.dataset.glass = "off";
+}
+
+// Save glass mode changes
+glassMode.addEventListener("change", e => {
+  const val = e.target.value;
+  document.documentElement.dataset.glass = val;
+
+  if (window.saveSettings) {
+    const saved = JSON.parse(localStorage.getItem("semsey-theme") || "{}");
+    saved["--glass-enabled"] = val;
+    localStorage.setItem("semsey-theme", JSON.stringify(saved));
+  }
+});
+
+// Save glass strength
+glassStrength.addEventListener("input", e => {
+  const val = e.target.value / 100;
+  updateVar("--glass-strength", val);
+});
+
+// Save blur amount
+blurAmount.addEventListener("input", e => {
+  const val = e.target.value;
+  updateVar("--blur-amount", val + "px");
+});
+
+    // BACKGROUND MOTION
+    const motionSelect = document.getElementById("motionSelect");
+    const bgLayer = document.getElementById("bgLayer");
+
+    if (savedTheme["--motion-mode"]) {
+      const mode = savedTheme["--motion-mode"];
+      bgLayer.setAttribute("motion", mode);
+      motionSelect.value = mode
+        .replace("-", " ")
+        .replace(/\b\w/g, c => c.toUpperCase());
+    } else {
+      bgLayer.setAttribute("motion", "static");
+    }
+
+    motionSelect.addEventListener("change", e => {
+      const mode = e.target.value.toLowerCase().replace(" ", "-");
+      bgLayer.setAttribute("motion", mode);
+
+      if (window.saveSettings) {
+        const saved = JSON.parse(localStorage.getItem("semsey-theme") || "{}");
+        saved["--motion-mode"] = mode;
+        localStorage.setItem("semsey-theme", JSON.stringify(saved));
+      }
+    });
+const motionIntensity = document.getElementById("motionIntensity");
+
+// Load saved intensity
+if (savedTheme["--motion-intensity"]) {
+  motionIntensity.value = savedTheme["--motion-intensity"];
+  document.documentElement.style.setProperty("--motion-intensity", savedTheme["--motion-intensity"]);
+}
+
+// Change handler
+motionIntensity.addEventListener("input", e => {
+  const val = e.target.value;
+  updateVar("--motion-intensity", val);
+});
+
+// LOGO GLOW + PULSE
+const logoGlowSlider = document.querySelector("#motion input[type='range']");
+const logoPulseSelect = document.querySelector("#motion select:nth-of-type(2)");
+
+// Load saved values
+if (savedTheme["--logo-glow"]) {
+  document.documentElement.style.setProperty("--logo-glow", savedTheme["--logo-glow"]);
+  logoGlowSlider.value = savedTheme["--logo-glow"] * 100;
+}
+
+if (savedTheme["--logo-pulse"]) {
+  logoPulseSelect.value = savedTheme["--logo-pulse"] === "on" ? "On" : "Off";
+}
+
+// Glow intensity
+logoGlowSlider.addEventListener("input", e => {
+  const val = e.target.value / 100;
+  updateVar("--logo-glow", val);
+});
+
+// Pulse toggle
+logoPulseSelect.addEventListener("change", e => {
+  const val = e.target.value.toLowerCase();
+  updateVar("--logo-pulse", val);
+});
+
+  </script>
+
+</body>
 </html>

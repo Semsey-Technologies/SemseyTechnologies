@@ -1,0 +1,13 @@
+.settings-cog img {
+  width: 48px;
+  height: 48px;
+  filter: drop-shadow(0 0 var(--cog-glow-size) var(--accent));
+  transition: filter 0.25s ease;
+}
+
+.cog-options label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0;
+}
