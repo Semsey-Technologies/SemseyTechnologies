@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>RTS Device Suite Pro - Semsey Technologies</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Global theme + animations -->
+  <link rel="stylesheet" href="assets/theme/theme.css" />
+  <link rel="stylesheet" href="assets/theme/animations.css" />
+
+  <script type="module" src="assets/theme/theme.js"></script>
+
+  <style>
+    .document-content h1 { text-align: left; margin-bottom: 10px; }
+    .document-content h2 { color: var(--accent); margin-top: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+    .document-content h3 { margin-top: 25px; color: var(--fg); opacity: 0.9; }
+    .document-content ul { margin-left: 20px; line-height: 1.8; }
+    .document-content li { margin-bottom: 8px; }
+    .document-content .highlight-box {
+      background: rgba(255, 255, 255, 0.05);
+      border-left: 4px solid var(--accent);
+      padding: 20px;
+      margin: 20px 0;
+      font-style: italic;
+    }
+    .status-banner {
+      display: inline-block;
+      padding: 4px 12px;
+      background: #ffaa00;
+      color: #000;
+      font-weight: bold;
+      border-radius: 4px;
+      margin-bottom: 20px;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+    }
+    .feature-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-left: 10px;
+      vertical-align: middle;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+    .tag-active { background: rgba(0, 255, 153, 0.2); color: #00ff99; border: 1px solid #00ff99; }
+    .tag-progress { background: rgba(255, 170, 0, 0.2); color: #ffaa00; border: 1px solid #ffaa00; }
+  </style>
+</head>
+
+<body>
+  <div id="bgLayer"></div>
+
+  <!-- Settings Cog -->
+  <a href="settings.html" class="settings-cog"></a>
+
+  <div class="sidebar">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html" class="active">Projects</a>
+    <a href="contact.html">Contact</a>
+    <a href="settings.html">Settings</a>
+  </div>
+
+  <div class="container" style="margin-top: 80px;">
+    <a href="alpha.html" style="text-decoration: none; color: var(--accent); font-weight: 600;">← Back to Alpha Testing</a>
+
+    <div class="card document-content" style="margin-top: 20px;">
+      <div class="status-banner">Active Development</div>
+      <h1>RTS Device Suite Pro</h1>
+      <p class="lead">A modular, privacy-first toolkit for advanced Android device management and data recovery.</p>
+
+      <div class="highlight-box">
+        "An all-in-one utility designed for deep storage analysis, automated backups, and system optimization."
+      </div>
+
+      <h2>App Purpose</h2>
+      <p>RTS Device Suite Pro serves as a comprehensive "all-in-one" toolkit for Android users. It is designed to manage complex storage environments, perform deep data recovery, automate backups, and optimize overall system performance through a centralized, high-tech interface.</p>
+
+      <h2>Core Modules & Development Status</h2>
+
+      <h3>System Architecture <span class="feature-tag tag-active">Functional</span></h3>
+      <ul>
+        <li><strong>High-Tech Dashboard:</strong> Centralized interface providing real-time system status and quick access to all utilities.</li>
+        <li><strong>Theme Engine:</strong> Robust customization system allowing for global UI scaling and dynamic color adjustments (Accent, Start/End colors).</li>
+        <li><strong>Permissions & Navigation:</strong> Centralized architecture handling complex Android permissions (SMS, Contacts, All Files Access) and navigation graphs.</li>
+      </ul>
+
+      <h3>File & Storage Management <span class="feature-tag tag-active">Functional</span></h3>
+      <ul>
+        <li><strong>Storage Analyzer:</strong> Categorizes device files (Images, Videos, Documents) with visual usage breakdowns.</li>
+        <li><strong>Smart File Organizer:</strong> Backend infrastructure supporting local organization and NAS/SMB synchronization.</li>
+        <li><strong>Cleaner & Maintenance:</strong> Dedicated utility for identifying and removing system "junk" or unnecessary files.</li>
+        <li><strong>Archive Engine:</strong> Managed archive system with built-in NAS/SMB sync capabilities.</li>
+      </ul>
+
+      <h3>Backup & Data Recovery <span class="feature-tag tag-progress">In Progress / Debugging</span></h3>
+      <ul>
+        <li><strong>Universal Backup Viewer:</strong> A local "mini-site" (HTML/JS) designed to browse SMS, Contacts, and Media backups directly within the app.</li>
+        <li><strong>Data Recovery Logic:</strong> Deep-scanning algorithms currently being refined for increased reliability.</li>
+        <li><strong>Network Sync:</strong> Expanding NAS/SMB support for multi-point backup redundancy.</li>
+      </ul>
+
+      <h3>Planned Optimization <span class="feature-tag tag-progress">Conceptual</span></h3>
+      <ul>
+        <li><strong>Network Optimizer:</strong> Advanced diagnostics for mobile and Wi-Fi performance.</li>
+        <li><strong>Pre-Reset Guide:</strong> Comprehensive checklist and automation to ensure data safety before device factory resets.</li>
+        <li><strong>Automation Engine:</strong> Scriptable triggers for maintenance tasks and backup schedules.</li>
+      </ul>
+
+      <h2>Current Focus</h2>
+      <p>The project is currently in active development. Primary focus is on the **Backup Viewer Site**, which is undergoing UI refinements (Top Navigation for Text/Contacts/Media) and troubleshooting for consistent rendering across different devices.</p>
+
+      <div class="highlight-box" style="margin-top: 40px;">
+        <p><strong>Developed by: Don Semsey</strong></p>
+        <p style="font-size: 0.9rem; opacity: 0.8;">Part of the RTS Device Suite of professional system tools.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Theme Loader -->
+  <script type="module">
+    import {
+      applyLogoSource,
+      applyCogSource,
+      applySavedTheme,
+      applySavedNav
+    } from "./assets/theme/theme.js";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      applySavedTheme();
+      applyLogoSource();
+      applyCogSource();
+      applySavedNav();
+    });
+  </script>
+</body>
+</html>
