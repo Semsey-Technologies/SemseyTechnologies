@@ -1,3 +1,5 @@
+@import "variables.css";
+
 :root {
   --logo-src: url("../images/logo/logo.png");
   --cog-src: url("../images/cog/cog.png");
@@ -311,7 +313,7 @@ html[data-nav-placement="top"] .back-btn {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 30px;
+  width: 40px;
   pointer-events: none;
   z-index: 11;
   opacity: 0;
@@ -320,12 +322,12 @@ html[data-nav-placement="top"] .back-btn {
 
 .sidebar::before {
   left: 0;
-  background: linear-gradient(to right, var(--bg2), transparent);
+  background: linear-gradient(to right, color-mix(in srgb, var(--bg2), transparent calc(5% + var(--glass-strength, 0) * 45%)), transparent);
 }
 
 .sidebar::after {
   right: 0;
-  background: linear-gradient(to left, var(--bg2), transparent);
+  background: linear-gradient(to left, color-mix(in srgb, var(--bg2), transparent calc(5% + var(--glass-strength, 0) * 45%)), transparent);
 }
 
 .sidebar.scrolled-left::before { opacity: 1; }
@@ -412,7 +414,7 @@ html[data-glass="off"] .sidebar.bottom {
 
 @media (max-width: 768px) {
   body {
-    padding: 80px 15px 40px; /* Space for top buttons */
+    padding: 80px 15px 100px; /* Space for top buttons and bottom nav */
   }
 
   h1 {
@@ -428,8 +430,9 @@ html[data-glass="off"] .sidebar.bottom {
     padding: 18px;
   }
 
-  /* Force Sidebar to Bottom on mobile for better thumb reach */
-  .sidebar, .sidebar.right, .sidebar.top, .sidebar.bottom {
+  /* Force Sidebar to Bottom on mobile for better thumb reach - ONLY if not Hamburger/Orb */
+  html[data-nav-type="bottom"] .sidebar,
+  html:not([data-nav-type]) .sidebar {
     position: fixed;
     top: auto;
     bottom: 0;
@@ -445,23 +448,27 @@ html[data-glass="off"] .sidebar.bottom {
     border-left: none;
     border-right: none;
     border-bottom: none;
-    padding: 12px 40px; /* Padding for indicators */
+    padding: 12px 20px;
     transform: none;
-    gap: 15px;
+    gap: 12px;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
+    background: color-mix(in srgb, var(--bg2), transparent calc(5% + var(--glass-strength, 0) * 45%));
+    z-index: 1000;
   }
 
-  .sidebar::-webkit-scrollbar {
+  html[data-nav-type="bottom"] .sidebar::-webkit-scrollbar,
+  html:not([data-nav-type]) .sidebar::-webkit-scrollbar {
     display: none; /* Hide scrollbar Chrome/Safari */
   }
 
-  .sidebar a {
-    padding: 10px 20px;
+  html[data-nav-type="bottom"] .sidebar a,
+  html:not([data-nav-type]) .sidebar a {
+    padding: 10px 18px;
     font-size: 0.85rem;
     flex: 0 0 auto;
     scroll-snap-align: center;
-    min-width: 100px;
+    min-width: 90px;
     text-align: center;
   }
 
@@ -535,20 +542,22 @@ html[data-glass="off"] .sidebar.bottom {
 /* Hamburger Overlay */
 html[data-nav-type="hamburger"] .sidebar {
   top: 0;
-  left: -100%; /* Hidden */
+  left: 0;
   bottom: 0;
   width: 280px;
   height: 100vh;
   border-radius: 0;
+  transform: translateX(-100%);
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 1200;
+  background: color-mix(in srgb, var(--bg2), black 20%);
 }
 
 html[data-nav-type="hamburger"].nav-open .sidebar {
-  transform: translateX(100%);
-  left: 0;
+  transform: translateX(0);
 }
 
 /* Floating Orb */
@@ -563,19 +572,24 @@ html[data-nav-type="orb"] .sidebar {
   overflow: hidden;
   padding: 0;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 1200;
+  opacity: 0;
+  pointer-events: none;
 }
 
 html[data-nav-type="orb"].nav-open .sidebar {
-  width: 220px;
+  width: 240px;
   height: auto;
-  border-radius: 16px;
-  padding: 16px;
+  border-radius: 20px;
+  padding: 20px;
   bottom: 100px;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /* Toggle Trigger (Common for Hamburger/Orb) */
 .nav-trigger {
-  display: none; /* Only visible in mobile types */
+  display: none;
   position: fixed;
   bottom: 25px;
   right: 25px;
@@ -584,14 +598,22 @@ html[data-nav-type="orb"].nav-open .sidebar {
   border-radius: 50%;
   background: var(--accent);
   color: var(--bg1);
-  z-index: 1100;
+  z-index: 1300;
   cursor: pointer;
   box-shadow: 0 0 20px var(--accent);
+  border: none;
+  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-  border: none;
-  transition: 0.3s;
+}
+
+.nav-trigger span {
+  font-size: 2rem;
+  font-family: system-ui, sans-serif;
+  line-height: 1;
+  display: block;
+  margin-top: -4px; /* Optical centering */
 }
 
 html[data-nav-type="hamburger"] .nav-trigger,
@@ -601,13 +623,23 @@ html[data-nav-type="orb"] .nav-trigger {
 
 html[data-nav-type="hamburger"] .nav-trigger {
   top: 20px;
-  right: 20px;
+  right: 80px; /* Offset to avoid Cog at 20px */
   bottom: auto;
+}
+
+@media (max-width: 480px) {
+  html[data-nav-type="hamburger"] .nav-trigger {
+    right: 70px; /* Slightly tighter on small phones */
+    width: 50px;
+    height: 50px;
+  }
 }
 
 html.nav-open .nav-trigger {
   transform: rotate(45deg);
   background: var(--fg);
+  color: var(--bg1);
+  box-shadow: 0 0 15px var(--fg);
 }
 
 .settings-cog {

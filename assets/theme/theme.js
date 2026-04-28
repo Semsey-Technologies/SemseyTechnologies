@@ -23,43 +23,41 @@ export function saveThemeVars(obj) {
 
 export function applySavedTheme() {
   const saved = loadSavedTheme();
-
-  // If saved theme has values, apply them
-  if (Object.keys(saved).length > 0) {
-    for (const key in saved) {
-      document.documentElement.style.setProperty(key, saved[key]);
-    }
-
-    // Apply functional attributes
-    if (saved["--motion-mode"]) {
-      const bg = document.getElementById("bgLayer");
-      if (bg) bg.setAttribute("motion", saved["--motion-mode"]);
-    }
-    if (saved["--logo-pulse"]) {
-      const logo = document.getElementById("siteLogo");
-      if (logo) logo.setAttribute("data-pulse", saved["--logo-pulse"]);
-    }
-
-    // Apply sources immediately
-    applyLogoSource();
-    applyCogSource();
-
-    return;
-  }
-
-  // Otherwise apply default preset (Neon Blue)
   const defaultPreset = presets["Neon Blue"];
+
+  // 1. Always apply default preset first to ensure all required variables exist
   if (defaultPreset) {
     for (const key in defaultPreset) {
       document.documentElement.style.setProperty(key, defaultPreset[key]);
     }
-    // Also reset any functional attributes to defaults
-    document.documentElement.dataset.glass = "off";
-    const bg = document.getElementById("bgLayer");
-    if (bg) bg.setAttribute("motion", "static");
-    const logo = document.getElementById("siteLogo");
-    if (logo) logo.setAttribute("data-pulse", "off");
   }
+
+  // 2. Overlay saved theme values (if any)
+  for (const key in saved) {
+    if (saved[key]) {
+      document.documentElement.style.setProperty(key, saved[key]);
+    }
+  }
+
+  // 3. Apply functional attributes
+  const bg = document.getElementById("bgLayer");
+  if (bg) {
+    const motion = saved["--motion-mode"] || "static";
+    bg.setAttribute("motion", motion);
+  }
+
+  const logo = document.getElementById("siteLogo");
+  if (logo) {
+    const pulse = saved["--logo-pulse"] || "off";
+    logo.setAttribute("data-pulse", pulse);
+  }
+
+  const glass = saved["--glass-enabled"] || "off";
+  document.documentElement.dataset.glass = glass;
+
+  // 4. Update sources
+  applyLogoSource();
+  applyCogSource();
 }
 
 /* --------------------------------------------------
@@ -70,34 +68,53 @@ export function applyPreset(name) {
   const preset = presets[name];
   if (!preset) return;
 
-  // Clear saved theme before applying a new preset
-  localStorage.removeItem("semsey-theme");
+  // 1. Capture current persistent identity variables before clearing
+  const currentSaved = loadSavedTheme();
+  const style = document.documentElement.style;
 
-  // Reset document style before applying new variables to clear old state
+  const persistent = {
+    "--logo-src": currentSaved["--logo-src"] || style.getPropertyValue("--logo-src"),
+    "--cog-src": currentSaved["--cog-src"] || style.getPropertyValue("--cog-src"),
+    "--glass-enabled": currentSaved["--glass-enabled"] || document.documentElement.dataset.glass || "off",
+    "--logo-pulse": currentSaved["--logo-pulse"] || document.getElementById("siteLogo")?.getAttribute("data-pulse") || "off",
+    "--motion-mode": currentSaved["--motion-mode"] || document.getElementById("bgLayer")?.getAttribute("motion") || "static"
+  };
+
+  // 2. Clear document style to remove custom color overrides
   document.documentElement.removeAttribute("style");
-  document.documentElement.dataset.glass = "off";
 
-  // Re-apply critical identity vars that aren't in presets
-  const logo = loadSavedTheme()["--logo-src"];
-  const cog = loadSavedTheme()["--cog-src"];
-  if (logo) updateVar("--logo-src", logo);
-  if (cog) updateVar("--cog-src", cog);
-
-  applyLogoSource();
-  applyCogSource();
-
-  // Apply preset variables
+  // 3. Apply preset variables
   for (const key in preset) {
     document.documentElement.style.setProperty(key, preset[key]);
   }
 
-  // Update functional attributes if they are in the preset
-  if (preset["--motion-mode"]) setMotionMode(preset["--motion-mode"]);
-  if (preset["--logo-pulse"]) setLogoPulse(preset["--logo-pulse"]);
+  // 4. Re-apply persistent variables
+  for (const key in persistent) {
+    if (persistent[key] && persistent[key] !== "") {
+      if (key === "--glass-enabled") {
+        document.documentElement.dataset.glass = persistent[key];
+      } else if (key === "--logo-pulse") {
+        const logoEl = document.getElementById("siteLogo");
+        if (logoEl) logoEl.setAttribute("data-pulse", persistent[key]);
+      } else if (key === "--motion-mode") {
+        const bgEl = document.getElementById("bgLayer");
+        if (bgEl) bgEl.setAttribute("motion", persistent[key]);
+      } else {
+        document.documentElement.style.setProperty(key, persistent[key]);
+      }
+    }
+  }
 
-  // Save if enabled
+  applyLogoSource();
+  applyCogSource();
+
+  // 5. Save the merged state if saving is enabled
   if (isSavingEnabled()) {
-    saveThemeVars(preset);
+    const toSave = { ...preset };
+    for (const key in persistent) {
+      if (persistent[key]) toSave[key] = persistent[key];
+    }
+    saveThemeVars(toSave);
   }
 }
 
