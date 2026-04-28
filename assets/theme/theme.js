@@ -39,7 +39,13 @@ export function applySavedTheme() {
     }
   }
 
-  // 3. Apply functional attributes
+  // 3. Ensure critical functional defaults exist if not in saved
+  const docStyle = document.documentElement.style;
+  if (!docStyle.getPropertyValue("--motion-intensity")) docStyle.setProperty("--motion-intensity", "100");
+  if (!docStyle.getPropertyValue("--logo-glow")) docStyle.setProperty("--logo-glow", "0.6");
+  if (!docStyle.getPropertyValue("--glass-strength")) docStyle.setProperty("--glass-strength", "0");
+
+  // 4. Apply functional attributes
   const bg = document.getElementById("bgLayer");
   if (bg) {
     const motion = saved["--motion-mode"] || "static";
@@ -55,7 +61,7 @@ export function applySavedTheme() {
   const glass = saved["--glass-enabled"] || "off";
   document.documentElement.dataset.glass = glass;
 
-  // 4. Update sources
+  // 5. Update sources
   applyLogoSource();
   applyCogSource();
 }
@@ -77,7 +83,10 @@ export function applyPreset(name) {
     "--cog-src": currentSaved["--cog-src"] || style.getPropertyValue("--cog-src"),
     "--glass-enabled": currentSaved["--glass-enabled"] || document.documentElement.dataset.glass || "off",
     "--logo-pulse": currentSaved["--logo-pulse"] || document.getElementById("siteLogo")?.getAttribute("data-pulse") || "off",
-    "--motion-mode": currentSaved["--motion-mode"] || document.getElementById("bgLayer")?.getAttribute("motion") || "static"
+    "--motion-mode": currentSaved["--motion-mode"] || document.getElementById("bgLayer")?.getAttribute("motion") || "static",
+    "--motion-intensity": currentSaved["--motion-intensity"] || style.getPropertyValue("--motion-intensity") || "100",
+    "--logo-glow": currentSaved["--logo-glow"] || style.getPropertyValue("--logo-glow") || "0.6",
+    "--glass-strength": currentSaved["--glass-strength"] || style.getPropertyValue("--glass-strength") || "0"
   };
 
   // 2. Clear document style to remove custom color overrides
@@ -199,16 +208,21 @@ export function setNavPlacement(mode) {
   if (mode === "top") sidebar.classList.add("top");
   if (mode === "bottom") sidebar.classList.add("bottom");
 
-  // Detect if we are on the homepage (works for local / and GitHub /repo/)
+  // Fix Hero Positioning based on nav placement
   const path = window.location.pathname;
   const isHome = path.endsWith("/") || path.endsWith("index.html") || path.split("/").pop() === "";
 
   if (isHome) {
     const hero = document.querySelector(".hero");
     if (hero) {
-      if (mode === "top") hero.style.marginTop = "0";
-      else if (mode === "bottom") hero.style.marginTop = "-120px";
-      else hero.style.marginTop = "-180px";
+      // Use standard CSS margin if not top/bottom, adjust only for collision
+      if (mode === "top") {
+        hero.style.marginTop = "40px";
+      } else if (mode === "bottom") {
+        hero.style.marginTop = "-100px";
+      } else {
+        hero.style.marginTop = ""; // Revert to hero.css default (-180px)
+      }
     }
   }
 
@@ -264,7 +278,6 @@ function initNavScrollIndicators() {
 export function initNavTrigger() {
   // Check if trigger already exists
   if (document.querySelector(".nav-trigger")) {
-     // Re-bind links anyway to ensure they work if sidebar content changed
      bindSidebarLinks();
      return;
   }
@@ -284,7 +297,6 @@ export function initNavTrigger() {
 function bindSidebarLinks() {
   const links = document.querySelectorAll(".sidebar a");
   links.forEach(link => {
-    // Prevent multiple listeners
     link.removeEventListener("click", closeMenu);
     link.addEventListener("click", closeMenu);
   });
@@ -315,13 +327,10 @@ export function applyLogoSource() {
   src = src.replace(/^url\(["']?/, "").replace(/["']?\)$/, "");
 
   if (src) {
-    // If it's already an absolute URL or starts with assets/, don't touch it
     if (src.startsWith("http") || src.startsWith("assets/")) {
       logo.src = src;
     }
-    // If it's the CSS-relative path, convert it to HTML-relative
     else if (src.startsWith("../")) {
-      // ../images/logo/logo.png -> assets/images/logo/logo.png
       logo.src = "assets/" + src.replace(/^\.\.\//, "");
     } else {
       logo.src = src;
