@@ -212,9 +212,7 @@ export function setNavPlacement(mode) {
     }
   }
 
-  if (isSavingEnabled()) {
-    localStorage.setItem("semsey-nav", mode);
-  }
+  localStorage.setItem("semsey-nav", mode);
 }
 
 export function setNavType(type) {
@@ -225,9 +223,7 @@ export function setNavType(type) {
     initNavTrigger();
   }
 
-  if (isSavingEnabled()) {
-    localStorage.setItem("semsey-nav-type", type);
-  }
+  localStorage.setItem("semsey-nav-type", type);
 }
 
 export function applySavedNav() {
