@@ -1,0 +1,40 @@
+{
+  "name": "Semsey Technologies",
+  "short_name": "Semsey Tech",
+  "description": "Professional systems, theories, and tools by Don Semsey.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#0a0a0c",
+  "theme_color": "#00d4ff",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "images/logo/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "images/logo/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "images/logo/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["productivity", "utilities", "developer tools"],
+  "screenshots": [
+    {
+      "src": "images/logo/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Semsey Technologies Dashboard"
+    }
+  ]
+}

@@ -67,6 +67,18 @@ export function applySavedTheme() {
 }
 
 /* --------------------------------------------------
+   PWA SERVICE WORKER REGISTRATION
+-------------------------------------------------- */
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then(reg => console.log('Service Worker registered'))
+      .catch(err => console.log('Service Worker registration failed', err));
+  });
+}
+
+/* --------------------------------------------------
    APPLY PRESET
 -------------------------------------------------- */
 
@@ -335,7 +347,30 @@ export function applyLogoSource() {
     } else {
       logo.src = src;
     }
+
+    // Update Favicon and Apple Touch Icon to match
+    applyFavicon(logo.src);
   }
+}
+
+function applyFavicon(src) {
+  // Update standard favicon
+  let link = document.querySelector("link[rel~='icon']");
+  if (!link) {
+    link = document.createElement('link');
+    link.rel = 'icon';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  }
+  link.href = src;
+
+  // Update Apple touch icon
+  let appleLink = document.querySelector("link[rel='apple-touch-icon']");
+  if (!appleLink) {
+    appleLink = document.createElement('link');
+    appleLink.rel = 'apple-touch-icon';
+    document.getElementsByTagName('head')[0].appendChild(appleLink);
+  }
+  appleLink.href = src;
 }
 
 /* --------------------------------------------------
