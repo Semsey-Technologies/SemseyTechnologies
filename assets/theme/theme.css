@@ -805,16 +805,22 @@ html.nav-open .nav-trigger {
   height: 24px;
 }
 
-/* Adjust if Nav is at bottom */
-html[data-nav-placement="bottom"] .back-to-top,
-@media (max-width: 768px) {
-  .back-to-top {
-    bottom: 85px;
-  }
+/* Adjust if Nav is at bottom or on Mobile */
+html[data-nav-placement="bottom"] .back-to-top {
+  bottom: 150px;
+  z-index: 1500;
 }
 
-html[data-nav-type="orb"] .back-to-top {
-    right: 95px; /* Offset from Orb */
+@media (max-width: 768px) {
+  .back-to-top {
+    bottom: 150px;
+    z-index: 1500; /* Ensure it stays above bottom nav and cog */
+  }
+
+  html[data-nav-type="orb"] .back-to-top {
+    right: 95px; /* Offset from Orb when at same level or just above */
+    bottom: 150px;
+  }
 }
 
 html[data-nav-placement="top"] .settings-cog {
