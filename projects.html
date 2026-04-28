@@ -8,6 +8,7 @@
   <!-- Global theme + animations -->
   <link rel="stylesheet" href="assets/theme/theme.css" />
   <link rel="stylesheet" href="assets/theme/animations.css" />
+  <link rel="stylesheet" href="assets/theme/projects.css" />
 
   <script type="module" src="assets/theme/theme.js"></script>
 </head>
@@ -25,25 +26,67 @@
     <a href="settings.html">Settings</a>
   </div>
 
-  <h1>Projects</h1>
+  <h1>Projects & Research</h1>
 
   <div class="container">
-    <div class="card">
-      <h2>Project Alpha</h2>
-      <p class="lead">A modular framework for decentralized identity management.</p>
-      <a href="#" class="clear-btn" style="display: inline-block; text-decoration: none;">View Source</a>
-    </div>
+    <div class="project-grid">
 
-    <div class="card">
-      <h2>Project Beta</h2>
-      <p class="lead">An open-source graphics engine designed for transparency and speed.</p>
-      <a href="#" class="clear-btn" style="display: inline-block; text-decoration: none;">View Source</a>
-    </div>
+      <!-- Experimental -->
+      <a href="#" class="card project-card experimental">
+        <div class="status-badge">Experimental</div>
+        <h2>Experimental</h2>
+        <p class="desc">High-risk, high-reward explorations into unproven technologies and radical hardware prototypes.</p>
+        <div class="footer">Enter Category →</div>
+      </a>
 
-    <div class="card">
-      <h2>Project Gamma</h2>
-      <p class="lead">Theoretical models for non-coercive economic systems.</p>
-      <a href="#" class="clear-btn" style="display: inline-block; text-decoration: none;">View Source</a>
+      <!-- Theoretical -->
+      <a href="theoretical.html" class="card project-card theoretical">
+        <div class="status-badge">Theoretical</div>
+        <h2>Theoretical</h2>
+        <p class="desc">Abstract models, philosophical frameworks, and mathematical proofs for future systems.</p>
+        <div class="footer">Enter Category →</div>
+      </a>
+
+      <!-- Conceptual -->
+      <a href="conceptual.html" class="card project-card conceptual">
+        <div class="status-badge">Conceptual</div>
+        <h2>Conceptual</h2>
+        <p class="desc">Defined ideas and architectural blueprints awaiting first-phase implementation.</p>
+        <div class="footer">Enter Category →</div>
+      </a>
+
+      <!-- Alpha Testing -->
+      <a href="alpha.html" class="card project-card alpha">
+        <div class="status-badge">Alpha Testing</div>
+        <h2>Alpha Testing</h2>
+        <p class="desc">Functional prototypes undergoing internal stress-testing and core feature validation.</p>
+        <div class="footer">Enter Category →</div>
+      </a>
+
+      <!-- Beta Testing -->
+      <a href="#" class="card project-card beta">
+        <div class="status-badge">Beta Testing</div>
+        <h2>Beta Testing</h2>
+        <p class="desc">Feature-complete systems open for external feedback and community bug hunting.</p>
+        <div class="footer">Enter Category →</div>
+      </a>
+
+      <!-- In Progress -->
+      <a href="#" class="card project-card inprogress">
+        <div class="status-badge">In Progress</div>
+        <h2>In Progress</h2>
+        <p class="desc">Active development cycles for core tools and production-ready platforms.</p>
+        <div class="footer">Enter Category →</div>
+      </a>
+
+      <!-- Operational -->
+      <a href="operational.html" class="card project-card operational">
+        <div class="status-badge">Operational</div>
+        <h2>Operational</h2>
+        <p class="desc">Practical protocols, security standards, and deployment workflows for active systems.</p>
+        <div class="footer">Enter Category →</div>
+      </a>
+
     </div>
   </div>
 

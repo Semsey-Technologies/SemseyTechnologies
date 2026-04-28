@@ -304,6 +304,33 @@ html[data-nav-placement="top"] .back-btn {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
+/* Scroll Indicators for Mobile / Top / Bottom */
+.sidebar::before,
+.sidebar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 30px;
+  pointer-events: none;
+  z-index: 11;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.sidebar::before {
+  left: 0;
+  background: linear-gradient(to right, var(--bg2), transparent);
+}
+
+.sidebar::after {
+  right: 0;
+  background: linear-gradient(to left, var(--bg2), transparent);
+}
+
+.sidebar.scrolled-left::before { opacity: 1; }
+.sidebar.scrolled-right::after { opacity: 1; }
+
 html[data-glass="off"] .sidebar {
   background: var(--bg2);
 }
@@ -410,20 +437,32 @@ html[data-glass="off"] .sidebar.bottom {
     right: 0;
     width: 100%;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start; /* Start for scrolling */
     overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none; /* Hide scrollbar Firefox */
     border-radius: 20px 20px 0 0;
     border-left: none;
     border-right: none;
     border-bottom: none;
-    padding: 12px;
+    padding: 12px 40px; /* Padding for indicators */
     transform: none;
-    gap: 10px;
+    gap: 15px;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+  }
+
+  .sidebar::-webkit-scrollbar {
+    display: none; /* Hide scrollbar Chrome/Safari */
   }
 
   .sidebar a {
-    padding: 10px 14px;
+    padding: 10px 20px;
     font-size: 0.85rem;
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+    min-width: 100px;
+    text-align: center;
   }
 
   .back-btn {
@@ -490,8 +529,86 @@ html[data-glass="off"] .sidebar.bottom {
 }
 
 /* --------------------------------------------------
-   SETTINGS COG (Cyber‑Neon + Continuous Spin)
+   HAMBURGER & ORB TYPES (Applied via [data-nav-type])
 -------------------------------------------------- */
+
+/* Hamburger Overlay */
+html[data-nav-type="hamburger"] .sidebar {
+  top: 0;
+  left: -100%; /* Hidden */
+  bottom: 0;
+  width: 280px;
+  height: 100vh;
+  border-radius: 0;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+html[data-nav-type="hamburger"].nav-open .sidebar {
+  transform: translateX(100%);
+  left: 0;
+}
+
+/* Floating Orb */
+html[data-nav-type="orb"] .sidebar {
+  bottom: 30px;
+  right: 30px;
+  left: auto;
+  top: auto;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  padding: 0;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+html[data-nav-type="orb"].nav-open .sidebar {
+  width: 220px;
+  height: auto;
+  border-radius: 16px;
+  padding: 16px;
+  bottom: 100px;
+}
+
+/* Toggle Trigger (Common for Hamburger/Orb) */
+.nav-trigger {
+  display: none; /* Only visible in mobile types */
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--bg1);
+  z-index: 1100;
+  cursor: pointer;
+  box-shadow: 0 0 20px var(--accent);
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  border: none;
+  transition: 0.3s;
+}
+
+html[data-nav-type="hamburger"] .nav-trigger,
+html[data-nav-type="orb"] .nav-trigger {
+  display: flex;
+}
+
+html[data-nav-type="hamburger"] .nav-trigger {
+  top: 20px;
+  right: 20px;
+  bottom: auto;
+}
+
+html.nav-open .nav-trigger {
+  transform: rotate(45deg);
+  background: var(--fg);
+}
 
 .settings-cog {
   position: fixed;

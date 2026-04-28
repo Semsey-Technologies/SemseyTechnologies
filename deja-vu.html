@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Déjà Vu as Predictive Simulation - Semsey Technologies</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Global theme + animations -->
+  <link rel="stylesheet" href="assets/theme/theme.css" />
+  <link rel="stylesheet" href="assets/theme/animations.css" />
+  <link rel="stylesheet" href="assets/theme/projects.css" />
+
+  <!-- THEME ENGINE -->
+  <script type="module">
+    import {
+      applyLogoSource,
+      applyCogSource,
+      applySavedTheme,
+      applySavedNav
+    } from "./assets/theme/theme.js";
+
+    // Immediate application
+    applySavedTheme();
+
+    document.addEventListener("DOMContentLoaded", () => {
+      applyLogoSource();
+      applyCogSource();
+      applySavedNav();
+    });
+  </script>
+
+  <style>
+    .theoretical-header {
+      --status-color: #bb66ff;
+      border-bottom: 2px solid var(--status-color);
+      display: inline-block;
+      margin-bottom: 20px;
+      padding-bottom: 5px;
+    }
+
+    .article-card {
+       margin-bottom: 40px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 20px 0;
+      background: color-mix(in srgb, var(--bg3), transparent 40%);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid color-mix(in srgb, var(--accent), transparent 80%);
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid color-mix(in srgb, var(--accent), transparent 90%);
+    }
+
+    th {
+      background: color-mix(in srgb, var(--accent), transparent 85%);
+      color: var(--accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .abstract {
+      font-style: italic;
+      opacity: 0.9;
+    }
+
+    .back-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 100;
+      padding: 10px 20px;
+      background: var(--bg2);
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--accent);
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+    .back-btn:hover {
+      background: var(--accent);
+      color: var(--bg1);
+    }
+
+    /* Mobile adjustment for back button */
+    @media (max-width: 768px) {
+      .back-btn {
+        position: relative;
+        top: 0;
+        left: 0;
+        display: inline-block;
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body class="theoretical">
+  <div id="bgLayer"></div>
+
+  <!-- Settings Cog -->
+  <a href="settings.html" class="settings-cog"></a>
+
+  <div class="sidebar">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html" class="active">Projects</a>
+    <a href="settings.html">Settings</a>
+  </div>
+
+  <div class="container" style="margin-top: 80px;">
+    <a href="projects.html" class="back-btn">← Back to Projects</a>
+
+    <div class="theoretical-header">
+       <span style="text-transform: uppercase; font-weight: bold; letter-spacing: 0.1em; font-size: 0.9rem; color: #bb66ff;">Theoretical Research</span>
+    </div>
+
+    <h1 style="text-align: left; margin-bottom: 40px; font-size: 2.5rem;">Déjà Vu as Pre‑Experience Predictive Simulation</h1>
+
+    <div class="card article-card">
+      <h2 style="color: #bb66ff;">Abstract</h2>
+      <p class="lead abstract" style="text-indent: 0; opacity: 1; border-left: 2px solid #bb66ff; padding-left: 20px;">
+        Déjà vu is typically described as an anomalous feeling of familiarity without recollection, yet existing theories struggle to explain its precision, suddenness, and phenomenological clarity. This paper proposes a mechanistic account grounded in predictive processing: déjà vu arises when the brain’s pre‑experience simulations—generated during resting-state activity, dream-state generative modeling, or intrusive-thought micro-simulations—match incoming sensory patterns with high confidence but without an associated episodic memory trace.
+      </p>
+    </div>
+
+    <div class="card article-card">
+      <h2>Introduction</h2>
+      <p>Déjà vu—an intense sense of familiarity without recollection—has long resisted mechanistic explanation. Traditional accounts describe it as a memory error, temporal misalignment, or dual-processing glitch. Yet these interpretations fail to capture its precision, sudden onset, and striking phenomenological clarity.</p>
+      <p>This paper advances a predictive-processing account: déjà vu emerges when the brain’s pre-experience simulations, generated during resting-state cognition, dream-state generative activity, or intrusive-thought micro-simulation, align with present sensory input in the absence of an episodic memory trace.</p>
+    </div>
+
+    <div class="card article-card">
+      <h2>Theoretical Background</h2>
+      <p>Predictive processing views perception as inference: the brain continuously generates predictions about incoming sensory data and updates them through error minimization. Within this framework, familiarity is a confidence signal indicating that current input matches an existing internal model.</p>
+      <p>Constructivist approaches emphasize that experience is actively built rather than passively received. Resting-state cognition, dreams, and intrusive thoughts exemplify this constructive activity: the brain generates spontaneous simulations, rehearsals, and scenario-building processes that shape future perception.</p>
+    </div>
+
+    <div class="card article-card">
+      <h2>Unified Architecture</h2>
+      <p>These phenomena can be understood as different expressions of a single predictive system:</p>
+      <table>
+          <thead>
+            <tr>
+                <th>Phenomenon</th>
+                <th>Bandwidth</th>
+                <th>Function</th>
+                <th>Contribution</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td>Dreams</td>
+                <td>High</td>
+                <td>Broad generative exploration</td>
+                <td>Large-scale simulations</td>
+            </tr>
+            <tr>
+                <td>Intrusive Thoughts</td>
+                <td>Low</td>
+                <td>Rapid micro-simulations</td>
+                <td>Fine-grained fragments</td>
+            </tr>
+            <tr>
+                <td>Resting-State</td>
+                <td>Medium</td>
+                <td>Idle predictive rehearsal</td>
+                <td>Environment templates</td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+
+    <div class="card article-card">
+      <h2>Mechanism of the Déjà Vu Experience</h2>
+      <h3>1. Predictive Simulation</h3>
+      <p>During rest, dreaming, or intrusive-thought activity, the brain generates scenario-like simulations encoding spatial layouts, social configurations, sensory patterns, and temporal sequences.</p>
+      <h3>2. Real-World Alignment</h3>
+      <p>Later, when sensory input resembles a prior simulation, the predictive system registers a high-confidence match.</p>
+      <h3>3. Isolated Familiarity Signal</h3>
+      <p>Because the simulation was never encoded as episodic memory, the system produces a familiarity signal without contextual recall.</p>
+    </div>
+
+    <div class="card article-card">
+      <h2>Conclusion</h2>
+      <p>Déjà vu is not a malfunction but a window into predictive cognition. It arises when pre-experience simulations—generated during rest, dreaming, or intrusive-thought micro-simulation—match present sensory input without an episodic memory trace. This expanded model unifies familiarity, prediction, dreams, intrusive thoughts, and phenomenology under a single mechanism, reframing déjà vu as evidence of a continuously running anticipatory system that constructs experience before it occurs.</p>
+    </div>
+
+    <div style="height: 100px;"></div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Theoretical Research - Semsey Technologies</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Global theme + animations -->
+  <link rel="stylesheet" href="assets/theme/theme.css" />
+  <link rel="stylesheet" href="assets/theme/animations.css" />
+  <link rel="stylesheet" href="assets/theme/projects.css" />
+
+  <script type="module" src="assets/theme/theme.js"></script>
+
+  <style>
+    :root {
+      --status-color: #bb66ff;
+    }
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 20px;
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body class="theoretical">
+  <div id="bgLayer"></div>
+
+  <!-- Settings Cog -->
+  <a href="settings.html" class="settings-cog"></a>
+
+  <div class="sidebar">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html" class="active">Projects</a>
+    <a href="settings.html">Settings</a>
+  </div>
+
+  <h1>Theoretical Research</h1>
+
+  <div class="container">
+    <a href="projects.html" class="back-btn">← Back to Categories</a>
+
+    <div class="project-grid">
+
+      <!-- Déjà Vu -->
+      <a href="deja-vu.html" class="card project-card theoretical">
+        <div class="status-badge">Research Paper</div>
+        <h2>Déjà Vu as Pre‑Experience Predictive Simulation</h2>
+        <p class="desc">A mechanistic account of déjà vu grounded in predictive processing, dreams, and intrusive-thought micro-simulations.</p>
+        <div class="footer">Read Article →</div>
+      </a>
+
+      <!-- Dissertation -->
+      <a href="dissertation.html" class="card project-card theoretical">
+        <div class="status-badge">Dissertation</div>
+        <h2>A Unified Mechanistic Model of Human Development</h2>
+        <p class="desc">A comprehensive framework explaining how identity, emotion, intelligence, and behavior emerge from a single underlying architecture.</p>
+        <div class="footer">Read Dissertation →</div>
+      </a>
+
+      <!-- Algorithmic Encouragement -->
+      <a href="algorithmic-encouragement.html" class="card project-card theoretical">
+        <div class="status-badge">Report</div>
+        <h2>Algorithmic Encouragement</h2>
+        <p class="desc">An analysis of how platform dynamics reward risky and illegal behavior through engagement-driven amplification.</p>
+        <div class="footer">Read Report →</div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- Theme Loader -->
+  <script type="module">
+    import {
+      applyLogoSource,
+      applyCogSource,
+      applySavedTheme,
+      applySavedNav
+    } from "./assets/theme/theme.js";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      applySavedTheme();
+      applyLogoSource();
+      applyCogSource();
+      applySavedNav();
+    });
+  </script>
+</body>
+</html>

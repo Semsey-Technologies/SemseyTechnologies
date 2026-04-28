@@ -84,11 +84,17 @@ function syncSettingsUI() {
 
   // Navigation
   const savedNav = localStorage.getItem("semsey-nav") || "left";
-  document.querySelectorAll(".nav-option").forEach(opt => {
-    const radio = opt.querySelector("input");
+  document.querySelectorAll("input[name='navPlace']").forEach(radio => {
     const isActive = radio.value === savedNav;
     radio.checked = isActive;
-    opt.classList.toggle("active", isActive);
+    radio.parentElement.classList.toggle("active", isActive);
+  });
+
+  const savedType = localStorage.getItem("semsey-nav-type") || "bottom";
+  document.querySelectorAll("input[name='navType']").forEach(radio => {
+    const isActive = radio.value === savedType;
+    radio.checked = isActive;
+    radio.parentElement.classList.toggle("active", isActive);
   });
 
   // Identity (Logo/Cog)
@@ -185,8 +191,19 @@ document.getElementById("fontStyle").addEventListener("change", e => {
 // -----------------------------
 document.querySelectorAll("input[name='navPlace']").forEach(radio => {
   radio.addEventListener("change", e => {
-    setNavPlacement(e.target.value);
-    syncSettingsUI();
+    import("./theme.js").then(m => {
+      m.setNavPlacement(e.target.value);
+      syncSettingsUI();
+    });
+  });
+});
+
+document.querySelectorAll("input[name='navType']").forEach(radio => {
+  radio.addEventListener("change", e => {
+    import("./theme.js").then(m => {
+      m.setNavType(e.target.value);
+      syncSettingsUI();
+    });
   });
 });
 

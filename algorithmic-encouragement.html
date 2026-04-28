@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Algorithmic Encouragement - Semsey Technologies</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Global theme + animations -->
+  <link rel="stylesheet" href="assets/theme/theme.css" />
+  <link rel="stylesheet" href="assets/theme/animations.css" />
+  <link rel="stylesheet" href="assets/theme/projects.css" />
+
+  <!-- THEME ENGINE -->
+  <script type="module">
+    import {
+      applyLogoSource,
+      applyCogSource,
+      applySavedTheme,
+      applySavedNav
+    } from "./assets/theme/theme.js";
+
+    applySavedTheme();
+
+    document.addEventListener("DOMContentLoaded", () => {
+      applyLogoSource();
+      applyCogSource();
+      applySavedNav();
+    });
+  </script>
+
+  <style>
+    .theoretical-header {
+      --status-color: #bb66ff;
+      border-bottom: 2px solid var(--status-color);
+      display: inline-block;
+      margin-bottom: 20px;
+      padding-bottom: 5px;
+    }
+
+    .article-card {
+       margin-bottom: 40px;
+    }
+
+    .finding-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin: 20px 0;
+    }
+
+    .finding-item {
+        background: color-mix(in srgb, var(--bg3), transparent 50%);
+        padding: 15px;
+        border-radius: 8px;
+        border-left: 3px solid #bb66ff;
+        font-size: 0.9rem;
+    }
+
+    .recommendation-card {
+        background: color-mix(in srgb, var(--bg2), #bb66ff 3%);
+        border: 1px solid color-mix(in srgb, #bb66ff, transparent 80%);
+        padding: 20px;
+        border-radius: 12px;
+        margin-bottom: 15px;
+    }
+
+    .recommendation-card h3 {
+        margin-top: 0;
+        color: #bb66ff;
+        font-size: 1.1rem;
+    }
+
+    .back-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 100;
+      padding: 10px 20px;
+      background: var(--bg2);
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--accent);
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+    .back-btn:hover {
+      background: var(--accent);
+      color: var(--bg1);
+    }
+
+    @media (max-width: 768px) {
+      .back-btn {
+        position: relative;
+        top: 0; left: 0;
+        display: inline-block;
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body class="theoretical">
+  <div id="bgLayer"></div>
+
+  <!-- Settings Cog -->
+  <a href="settings.html" class="settings-cog"></a>
+
+  <div class="sidebar">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html" class="active">Projects</a>
+    <a href="settings.html">Settings</a>
+  </div>
+
+  <div class="container" style="margin-top: 80px;">
+    <a href="theoretical.html" class="back-btn">← Back to Theoretical</a>
+
+    <div class="theoretical-header">
+       <span style="text-transform: uppercase; font-weight: bold; letter-spacing: 0.1em; font-size: 0.9rem; color: #bb66ff;">Theoretical Research</span>
+    </div>
+
+    <h1 style="text-align: left; margin-bottom: 10px; font-size: 2.5rem;">Algorithmic Encouragement</h1>
+    <h2 style="opacity: 0.8; margin-bottom: 40px;">How Platforms Reward Risky & Illegal Behavior</h2>
+
+    <div class="card article-card">
+        <h2 style="color: #bb66ff;">Executive Summary</h2>
+        <p class="lead" style="border-left: 3px solid #bb66ff; padding-left: 20px;">
+            Modern social media platforms amplify content based on engagement rather than quality or safety. This creates an environment in which sensational, dangerous, and sometimes illegal behaviors are rewarded with visibility, monetization, and cultural influence.
+        </p>
+
+        <div class="finding-grid">
+            <div class="finding-item">Algorithms reward emotional and extreme content.</div>
+            <div class="finding-item">Social contagion drives adolescent imitation.</div>
+            <div class="finding-item">Dangerous challenges cause documented physical harm.</div>
+            <div class="finding-item">Transparent algorithmic accountability is lacking.</div>
+        </div>
+    </div>
+
+    <div class="card article-card">
+        <h2>Understanding the Reward Cycle</h2>
+        <p>Unlike censorship (removal), algorithmic encouragement is a reinforcement cycle that normalizes risk through feedback loops:</p>
+        <div style="display: flex; flex-direction: column; gap: 10px; margin: 20px 0; padding-left: 20px; border-left: 1px dashed var(--accent);">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="color: #bb66ff; font-weight: bold;">1.</span>
+                <span>Creator posts dangerous behavior</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="color: #bb66ff; font-weight: bold;">2.</span>
+                <span>Viewers are shocked &rarr; high engagement</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="color: #bb66ff; font-weight: bold;">3.</span>
+                <span>Algorithm marks intensity and boosts reach</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="color: #bb66ff; font-weight: bold;">4.</span>
+                <span>Creator receives increased views and revenue</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="color: #bb66ff; font-weight: bold;">5.</span>
+                <span>Other creators imitate the trend to compete</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card article-card">
+        <h2>Social Contagion Mechanics</h2>
+        <p>Social contagion describes how behaviors spread within networks, with adolescents being at significantly higher risk due to a developing prefrontal cortex:</p>
+        <ul>
+            <li><strong>Higher Impulsivity:</strong> Weaker evaluation of long-term risk.</li>
+            <li><strong>Social Validation:</strong> Increased need for peer approval and dopamine-driven attention.</li>
+            <li><strong>Imitation Loops:</strong> Algorithmic marking of a trend leads to category-wide amplification.</li>
+        </ul>
+    </div>
+
+    <div class="card article-card">
+        <h2>Recommendations</h2>
+        <p style="margin-bottom: 25px;">These non-censorial interventions target promotion, design, and transparency rather than content removal.</p>
+
+        <div class="recommendation-card">
+            <h3>Platform Design Improvements</h3>
+            <p style="font-size: 0.95rem;">Reduce recommendation weight for high-risk categories, add educational context overlays, and disable monetization for content showing high physical risk.</p>
+        </div>
+
+        <div class="recommendation-card">
+            <h3>Policy & Transparency</h3>
+            <p style="font-size: 0.95rem;">Require transparency reports on harmful content amplification and mandate quicker responses to emergent threats through public documentation of moderation actions.</p>
+        </div>
+
+        <div class="recommendation-card">
+            <h3>Community Education</h3>
+            <p style="font-size: 0.95rem;">Develop digital literacy education for adolescents and collaborate with schools to identify emerging risks before they reach peak contagion.</p>
+        </div>
+    </div>
+
+    <div class="card article-card">
+        <h2>Conclusion</h2>
+        <p>Social media platforms are not neutral. By amplifying and monetizing dangerous content, they encourage risky behavior. Addressing this issue does not require censorship—only responsible platform design, transparent reporting, and accountability.</p>
+    </div>
+
+    <div style="height: 100px;"></div>
+  </div>
+</body>
+</html>

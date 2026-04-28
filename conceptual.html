@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Conceptual Frameworks - Semsey Technologies</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Global theme + animations -->
+  <link rel="stylesheet" href="assets/theme/theme.css" />
+  <link rel="stylesheet" href="assets/theme/animations.css" />
+  <link rel="stylesheet" href="assets/theme/projects.css" />
+
+  <script type="module" src="assets/theme/theme.js"></script>
+
+  <style>
+    :root {
+      --status-color: #00cccc;
+    }
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 20px;
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body class="conceptual">
+  <div id="bgLayer"></div>
+
+  <!-- Settings Cog -->
+  <a href="settings.html" class="settings-cog"></a>
+
+  <div class="sidebar">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html" class="active">Projects</a>
+    <a href="settings.html">Settings</a>
+  </div>
+
+  <h1>Conceptual Frameworks</h1>
+
+  <div class="container">
+    <a href="projects.html" class="back-btn">← Back to Categories</a>
+
+    <div class="project-grid">
+
+      <!-- ARQ Framework -->
+      <a href="arq-framework.html" class="card project-card conceptual">
+        <div class="status-badge">Framework</div>
+        <h2>Adaptive Readiness Quotient (ARQ)</h2>
+        <p class="desc">A functional framework for assessing world readiness based on systemic awareness and causal foresight.</p>
+        <div class="footer">View Framework →</div>
+      </a>
+
+      <!-- PSQ Framework -->
+      <a href="psq-framework.html" class="card project-card conceptual">
+        <div class="status-badge">Framework</div>
+        <h2>Problem Solving Quotient (PSQ)</h2>
+        <p class="desc">A novel framework designed to measure adaptive and applied problem-solving ability in real-world contexts.</p>
+        <div class="footer">View Framework →</div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- Theme Loader -->
+  <script type="module">
+    import {
+      applyLogoSource,
+      applyCogSource,
+      applySavedTheme,
+      applySavedNav
+    } from "./assets/theme/theme.js";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      applySavedTheme();
+      applyLogoSource();
+      applyCogSource();
+      applySavedNav();
+    });
+  </script>
+</body>
+</html>

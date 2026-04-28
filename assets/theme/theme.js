@@ -200,9 +200,68 @@ export function setNavPlacement(mode) {
   }
 }
 
+export function setNavType(type) {
+  document.documentElement.dataset.navType = type;
+  if (isSavingEnabled()) {
+    localStorage.setItem("semsey-nav-type", type);
+  }
+}
+
 export function applySavedNav() {
-  const saved = localStorage.getItem("semsey-nav") || "left";
-  setNavPlacement(saved);
+  const savedPlacement = localStorage.getItem("semsey-nav") || "left";
+  const savedType = localStorage.getItem("semsey-nav-type") || "bottom";
+  setNavPlacement(savedPlacement);
+  setNavType(savedType);
+  initNavScrollIndicators();
+  initNavTrigger();
+}
+
+/* --------------------------------------------------
+   MOBILE NAV SCROLL INDICATORS
+-------------------------------------------------- */
+
+function initNavScrollIndicators() {
+  const sidebar = document.querySelector(".sidebar");
+  if (!sidebar) return;
+
+  const updateIndicators = () => {
+    const scrollLeft = sidebar.scrollLeft;
+    const maxScroll = sidebar.scrollWidth - sidebar.clientWidth;
+
+    sidebar.classList.toggle("scrolled-left", scrollLeft > 10);
+    sidebar.classList.toggle("scrolled-right", scrollLeft < maxScroll - 10);
+  };
+
+  sidebar.addEventListener("scroll", updateIndicators);
+  window.addEventListener("resize", updateIndicators);
+  // Initial check
+  setTimeout(updateIndicators, 100);
+}
+
+/* --------------------------------------------------
+   NAV TRIGGER (Hamburger/Orb)
+-------------------------------------------------- */
+
+function initNavTrigger() {
+  // Check if trigger already exists
+  if (document.querySelector(".nav-trigger")) return;
+
+  const trigger = document.createElement("button");
+  trigger.className = "nav-trigger";
+  trigger.innerHTML = "<span>+</span>";
+  document.body.appendChild(trigger);
+
+  trigger.addEventListener("click", () => {
+    document.documentElement.classList.toggle("nav-open");
+  });
+
+  // Close menu when clicking links
+  const links = document.querySelectorAll(".sidebar a");
+  links.forEach(link => {
+    link.addEventListener("click", () => {
+      document.documentElement.classList.remove("nav-open");
+    });
+  });
 }
 
 /* --------------------------------------------------
