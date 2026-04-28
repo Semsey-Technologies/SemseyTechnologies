@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Privacy & Transparency - Semsey Technologies</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0a0a0c" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" href="images/logo/logo.png" />
+  <link rel="apple-touch-icon" href="images/logo/logo.png" />
+
+  <!-- Global theme + animations -->
+  <link rel="stylesheet" href="assets/theme/theme.css" />
+  <link rel="stylesheet" href="assets/theme/animations.css" />
+  <script type="module" src="assets/theme/theme.js"></script>
+
+  <style>
+    .transparency-content h2 { color: var(--accent); margin-top: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+    .transparency-content p { line-height: 1.8; margin-bottom: 20px; opacity: 0.9; }
+    .tech-pill {
+      display: inline-block;
+      padding: 4px 12px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--accent);
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 0.9rem;
+      margin-right: 8px;
+      color: var(--accent);
+    }
+    .note-box {
+      background: color-mix(in srgb, var(--bg2), var(--accent) 5%);
+      border-left: 4px solid var(--accent);
+      padding: 20px;
+      margin: 30px 0;
+      font-style: italic;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="bgLayer"></div>
+  <a href="settings.html" class="settings-cog"></a>
+
+  <div class="sidebar">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+    <a href="settings.html">Settings</a>
+  </div>
+
+  <div class="container" style="margin-top: 80px;">
+    <a href="settings.html" style="text-decoration: none; color: var(--accent); font-weight: 600;">← Back to Settings</a>
+
+    <div class="card transparency-content" style="margin-top: 20px;">
+      <h1>Privacy & Transparency</h1>
+      <p class="lead">At Semsey Technologies, privacy isn't a feature—it's the architecture. This page explains exactly what happens when you interact with this site.</p>
+
+      <div class="note-box">
+        "I believe that users should own their experience. To ensure this, I have designed this site to function entirely on <strong>your</strong> hardware. No accounts, no tracking, and no hidden databases."
+      </div>
+
+      <h2>1. What is stored on your device?</h2>
+      <p>This site uses two primary technologies to store data locally on your browser:</p>
+
+      <p><span class="tech-pill">LocalStorage</span> Used to remember your theme presets, custom colors, logo selections, and UI preferences. This is a simple "key-value" memory bank inside your browser. This data <strong>never</strong> leaves your computer and is never sent to me.</p>
+
+      <p><span class="tech-pill">Service Workers</span> Used to enable PWA (Progressive Web App) features. This "caches" (saves) the site's code, images, and fonts so that the site loads instantly and can even work offline. It essentially treats the website like a local app.</p>
+
+      <h2>2. Why no server-side database?</h2>
+      <p>Traditional websites save your settings in a cloud database. This requires you to create an account, which means I would have to collect your email and manage your password. By using LocalStorage instead, I give you full control. If you want to "delete" your data, you don't have to ask me—you just click "Clear Settings" in the dashboard, and it's gone forever.</p>
+
+      <h2>3. Third-Party Services</h2>
+      <p>I strive for 100% independence, but I currently use one external service for functionality:</p>
+      <ul>
+        <li><strong>Formspree:</strong> When you use the Contact form, your message is processed by Formspree to reach my inbox. They do not track you across the rest of the site.</li>
+      </ul>
+
+      <h2>4. A Note on Development</h2>
+      <p>I have been actively developing and researching for less than a year. While I am rapidly expanding my understanding of backend architecture and secure hosting, my current philosophy is to <strong>keep it simple and local.</strong></p>
+      <p>I choose client-side storage not just because it's privacy-focused, but because it represents an "Open Source" mindset: providing tools that the user can pick up, modify, and own without needing a permission-based relationship with a server.</p>
+
+      <div class="highlight-box" style="margin-top: 40px; border: 1px solid var(--accent); padding: 20px; border-radius: 8px;">
+        <p style="margin: 0; font-weight: bold;">Audit the Code</p>
+        <p style="margin: 5px 0 0; font-size: 0.9rem; opacity: 0.8;">Transparency requires proof. You can review the entire source code for this site, including the storage logic, on my GitHub.</p>
+        <a href="https://github.com/Semsey-Technologies/SemseyTechnologies" target="_blank" style="color: var(--accent); font-size: 0.8rem; text-transform: uppercase; font-weight: bold; text-decoration: none; display: inline-block; margin-top: 10px;">View Source →</a>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { applySavedTheme, applyLogoSource, applyCogSource, applySavedNav } from "./assets/theme/theme.js";
+    document.addEventListener("DOMContentLoaded", () => {
+      applySavedTheme();
+      applyLogoSource();
+      applyCogSource();
+      applySavedNav();
+    });
+  </script>
+</body>
+</html>
