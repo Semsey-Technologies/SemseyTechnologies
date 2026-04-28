@@ -781,7 +781,7 @@ html.nav-open .nav-trigger {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 900;
+  z-index: 2500; /* Extremely high to stay above everything */
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -805,22 +805,18 @@ html.nav-open .nav-trigger {
   height: 24px;
 }
 
-/* Adjust if Nav is at bottom or on Mobile */
+/* Global offset when nav is at bottom */
 html[data-nav-placement="bottom"] .back-to-top {
-  bottom: 150px;
-  z-index: 1500;
+  bottom: 180px;
 }
 
 @media (max-width: 768px) {
   .back-to-top {
-    bottom: 150px;
-    z-index: 1500; /* Ensure it stays above bottom nav and cog */
+    bottom: 90px !important; /* Move it down on mobile to be above the nav but not floating in middle */
+    right: 20px;
   }
 
-  html[data-nav-type="orb"] .back-to-top {
-    right: 95px; /* Offset from Orb when at same level or just above */
-    bottom: 150px;
-  }
+  /* If it's still behind, we need to ensure the container isn't clipping it */
 }
 
 html[data-nav-placement="top"] .settings-cog {
