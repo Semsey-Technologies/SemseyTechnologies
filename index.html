@@ -67,8 +67,45 @@
     <div class="buttons">
       <a href="about.html" class="btn">About</a>
       <a href="projects.html" class="btn">Projects</a>
+      <button id="installBtn" class="btn" style="display: none;">Add to Device</button>
     </div>
   </main>
+
+  <script>
+    let deferredPrompt;
+    const installBtn = document.getElementById('installBtn');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      // Prevent the mini-infobar from appearing on mobile
+      e.preventDefault();
+      // Stash the event so it can be triggered later.
+      deferredPrompt = e;
+      // Update UI notify the user they can install the PWA
+      installBtn.style.display = 'block';
+    });
+
+    installBtn.addEventListener('click', async () => {
+      if (deferredPrompt) {
+        // Show the install prompt
+        deferredPrompt.prompt();
+        // Wait for the user to respond to the prompt
+        const { outcome } = await deferredPrompt.userChoice;
+        console.log(`User response to the install prompt: ${outcome}`);
+        // We've used the prompt, and can't use it again, throw it away
+        deferredPrompt = null;
+        // Hide the button
+        installBtn.style.display = 'none';
+      }
+    });
+
+    window.addEventListener('appinstalled', (event) => {
+      console.log('👍', 'appinstalled', event);
+      // Clear the deferredPrompt so it can be garbage collected
+      deferredPrompt = null;
+      // Hide the install button
+      installBtn.style.display = 'none';
+    });
+  </script>
 
   <footer>
     © 2026 Semsey Technologies
