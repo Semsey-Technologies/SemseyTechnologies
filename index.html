@@ -10,8 +10,24 @@
   <link rel="stylesheet" href="assets/theme/hero.css">
   <link rel="stylesheet" href="assets/theme/animations.css">
 
-  <!-- THEME ENGINE (must load BEFORE page renders) -->
-  <script type="module" src="assets/theme/theme.js"></script>
+  <!-- THEME ENGINE -->
+  <script type="module">
+    import {
+      applyLogoSource,
+      applyCogSource,
+      applySavedTheme,
+      applySavedNav
+    } from "./assets/theme/theme.js";
+
+    // Immediate application to prevent flash of unstyled content
+    applySavedTheme();
+
+    document.addEventListener("DOMContentLoaded", () => {
+      applyLogoSource();
+      applyCogSource();
+      applySavedNav();
+    });
+  </script>
 </head>
 
 <body class="hero-body">
@@ -53,22 +69,6 @@
     © 2026 Semsey Technologies
   </footer>
 
-  <!-- Logo + Cog Loader -->
-  <script type="module">
-    import {
-      applyLogoSource,
-      applyCogSource,
-      applySavedTheme,
-      applySavedNav
-    } from "./assets/theme/theme.js";
-
-    document.addEventListener("DOMContentLoaded", () => {
-      applySavedTheme();   // loads saved CSS variables or Neon Blue default
-      applyLogoSource();   // loads logo from --logo-src
-      applyCogSource();    // loads cog from --cog-src
-      applySavedNav();
-    });
-  </script>
-
+  <!-- Logo + Cog Loader removed (moved to head) -->
 </body>
 </html>

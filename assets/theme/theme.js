@@ -182,8 +182,11 @@ export function setNavPlacement(mode) {
   if (mode === "top") sidebar.classList.add("top");
   if (mode === "bottom") sidebar.classList.add("bottom");
 
-  // If on index.html, we might want to adjust the hero margin when nav is top/bottom
-  if (window.location.pathname.endsWith("index.html") || window.location.pathname === "/") {
+  // Detect if we are on the homepage (works for local / and GitHub /repo/)
+  const path = window.location.pathname;
+  const isHome = path.endsWith("/") || path.endsWith("index.html") || path.split("/").pop() === "";
+
+  if (isHome) {
     const hero = document.querySelector(".hero");
     if (hero) {
       if (mode === "top") hero.style.marginTop = "0";
@@ -223,11 +226,17 @@ export function applyLogoSource() {
   src = src.replace(/^url\(["']?/, "").replace(/["']?\)$/, "");
 
   if (src) {
-    // Translate CSS-relative paths to HTML-relative paths for the <img> tag
-    if (src.startsWith("../images/")) {
-      src = "assets/" + src.substring(3);
+    // If it's already an absolute URL or starts with assets/, don't touch it
+    if (src.startsWith("http") || src.startsWith("assets/")) {
+      logo.src = src;
     }
-    logo.src = src;
+    // If it's the CSS-relative path, convert it to HTML-relative
+    else if (src.startsWith("../")) {
+      // ../images/logo/logo.png -> assets/images/logo/logo.png
+      logo.src = "assets/" + src.replace(/^\.\.\//, "");
+    } else {
+      logo.src = src;
+    }
   }
 }
 
