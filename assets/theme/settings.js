@@ -103,13 +103,21 @@ function syncSettingsUI() {
 
   // Identity (Logo/Cog)
   const logoSrc = getProp("--logo-src").replace(/^url\(["']?/, "").replace(/["']?\)$/, "");
+  // Handle relative paths
+  const cleanLogoSrc = logoSrc.replace(/^\.\.\/\.\.\//, "assets/theme/").replace(/^\.\.\//, "assets/");
+
   document.querySelectorAll("#logoSelector .img-option").forEach(opt => {
-    opt.classList.toggle("active", opt.getAttribute("data-path") === logoSrc);
+    const optPath = opt.getAttribute("data-path");
+    opt.classList.toggle("active", optPath === cleanLogoSrc || optPath === logoSrc);
   });
 
   const cogSrc = getProp("--cog-src").replace(/^url\(["']?/, "").replace(/["']?\)$/, "");
+  // Handle relative paths from theme.css
+  const cleanCogSrc = cogSrc.replace(/^\.\.\/\.\.\//, "assets/theme/").replace(/^\.\.\//, "assets/");
+
   document.querySelectorAll("#cogSelector .img-option").forEach(opt => {
-    opt.classList.toggle("active", opt.getAttribute("data-path") === cogSrc);
+    const optPath = opt.getAttribute("data-path");
+    opt.classList.toggle("active", optPath === cleanCogSrc || optPath === cogSrc);
   });
 }
 

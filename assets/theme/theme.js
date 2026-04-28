@@ -67,14 +67,55 @@ export function applySavedTheme() {
 }
 
 /* --------------------------------------------------
+   BACK TO TOP FUNCTIONALITY
+-------------------------------------------------- */
+
+export function initBackToTop() {
+  if (document.querySelector(".back-to-top")) return;
+
+  // If called in <head>, wait for body to exist
+  if (!document.body) {
+    window.addEventListener('DOMContentLoaded', initBackToTop);
+    return;
+  }
+
+  const btn = document.createElement("div");
+  btn.className = "back-to-top";
+  btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>`;
+  document.body.appendChild(btn);
+
+  btn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      btn.classList.add("visible");
+    } else {
+      btn.classList.remove("visible");
+    }
+  });
+}
+
+// Automatically initialize Back to Top on all pages
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initBackToTop);
+} else {
+  initBackToTop();
+}
+
+/* --------------------------------------------------
    PWA SERVICE WORKER REGISTRATION
 -------------------------------------------------- */
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js')
-      .then(reg => console.log('Service Worker registered'))
-      .catch(err => console.log('Service Worker registration failed', err));
+    // Only register if on a real host or specifically requested
+    if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
+       navigator.serviceWorker.register('./sw.js')
+         .then(reg => console.log('Service Worker registered'))
+         .catch(err => console.log('Service Worker registration failed', err));
+    }
   });
 }
 
@@ -388,9 +429,13 @@ export function applyCogSource() {
   if (!cog) return;
 
   const style = getComputedStyle(document.documentElement);
-  const src = style.getPropertyValue("--cog-src").trim();
+  let src = style.getPropertyValue("--cog-src").trim();
 
-  if (src) {
+  if (src && src !== "initial") {
+    // If it doesn't already have url() around it, add it
+    if (!src.startsWith("url(")) {
+      src = `url("${src}")`;
+    }
     cog.style.backgroundImage = src;
   }
 }

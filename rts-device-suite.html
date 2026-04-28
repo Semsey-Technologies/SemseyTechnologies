@@ -8,6 +8,7 @@
   <!-- Global theme + animations -->
   <link rel="stylesheet" href="assets/theme/theme.css" />
   <link rel="stylesheet" href="assets/theme/animations.css" />
+  <link rel="stylesheet" href="assets/theme/media.css" />
 
   <script type="module" src="assets/theme/theme.js"></script>
 
@@ -117,8 +118,77 @@
         <li><strong>Automation Engine:</strong> Scriptable triggers for maintenance tasks and backup schedules.</li>
       </ul>
 
+      <h2>Media Showcase</h2>
+      <div class="media-grid">
+        <!-- App Demo Video -->
+        <div class="media-card">
+          <div class="label">App Demo</div>
+          <video controls poster="images/logo/logo.png">
+            <source src="assets/media/rts-demo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <div class="media-info">
+            <h4>Interface Walkthrough</h4>
+            <p>A deep dive into the dashboard, theme engine, and permission management system.</p>
+          </div>
+        </div>
+
+        <!-- NotebookLM Explainer Video -->
+        <div class="media-card">
+          <div class="label">Explainer</div>
+          <video controls>
+            <source src="assets/media/rts-explainer.mp4" type="video/mp4">
+          </video>
+          <div class="media-info">
+            <h4>System Architecture</h4>
+            <p>An AI-generated visual breakdown of the RTS modular backend and recovery logic.</p>
+          </div>
+        </div>
+
+        <!-- NotebookLM Podcast Audio -->
+        <div class="media-card audio-card">
+          <div class="label">Deep Dive Podcast</div>
+          <div class="audio-info">
+            <div class="audio-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+            </div>
+            <div class="audio-details">
+              <h4>RTS Core Concepts</h4>
+              <p>NotebookLM Discussion</p>
+            </div>
+          </div>
+          <audio controls class="audio-player">
+            <source src="assets/media/rts-podcast.mp3" type="audio/mpeg">
+          </audio>
+        </div>
+
+        <!-- UI Screenshot -->
+        <div class="media-card">
+          <div class="label">UI Screenshot</div>
+          <img src="images/logo/logo.png" alt="RTS Dashboard Screenshot">
+          <div class="media-info">
+            <h4>Storage Analyzer</h4>
+            <p>Visualizing file distribution and system health metrics.</p>
+          </div>
+        </div>
+      </div>
+
       <h2>Current Focus</h2>
       <p>The project is currently in active development. Primary focus is on the **Backup Viewer Site**, which is undergoing UI refinements (Top Navigation for Text/Contacts/Media) and troubleshooting for consistent rendering across different devices.</p>
+
+      <h2>The Backup Viewer Philosophy</h2>
+      <p>While RTS Device Suite Pro aims to restore most files to their original system locations, SMS and MMS messages present a unique technical challenge. To ensure 100% data safety and universal compatibility, I have chosen a <strong>"Viewer-First"</strong> approach for messaging history.</p>
+
+      <div class="highlight-box">
+        "My goal is to provide you with high-tech options, not to force you into a closed ecosystem. Use the tools that work for you, and ignore the rest."
+      </div>
+
+      <h3>Safety Over Force</h3>
+      <p>Restoring messages directly to the Android system database requires invasive permissions and is fraught with device-specific edge cases. A "force-restore" approach can potentially destabilize messaging databases on certain hardware. By rendering your backups into a local, high-tech webview, RTS provides a seamless way to browse your history safely, without requiring dangerous system-level write access.</p>
+
+      <h3>An Open Ecosystem</h3>
+      <p>I believe in modular utility. No app I create is meant to be a restrictive "all-or-nothing" solution. If you require a full system-level restore for your messages, I encourage you to use specialized tools that have mastered that specific niche.</p>
+      <p>For example, <strong>SMS Backup & Restore by SyncTech Pty Ltd</strong> (available on the Google Play Store) is a fantastic utility that I have personally used with success. I am not affiliated with them in any way; I simply believe in recommending the best tool for the job. RTS is here to provide the options others don't—not to claim it's the only tool you'll ever need.</p>
 
       <h2>Open Source & Transparency</h2>
       <p>In alignment with my philosophy of open-source and non-restrictive development, the complete source code for RTS Device Suite Pro is available for review, contribution, and audit on GitHub.</p>

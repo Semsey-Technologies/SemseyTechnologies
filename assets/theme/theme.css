@@ -763,6 +763,60 @@ html.nav-open .nav-trigger {
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, top 0.3s ease, bottom 0.3s ease;
 }
 
+/* --------------------------------------------------
+   BACK TO TOP BUTTON
+-------------------------------------------------- */
+
+.back-to-top {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 44px;
+  height: 44px;
+  background: var(--bg2);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 900;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  background: var(--accent);
+  color: var(--bg1);
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px var(--accent);
+}
+
+.back-to-top svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Adjust if Nav is at bottom */
+html[data-nav-placement="bottom"] .back-to-top,
+@media (max-width: 768px) {
+  .back-to-top {
+    bottom: 85px;
+  }
+}
+
+html[data-nav-type="orb"] .back-to-top {
+    right: 95px; /* Offset from Orb */
+}
+
 html[data-nav-placement="top"] .settings-cog {
   top: 85px;
 }

@@ -10,6 +10,8 @@ const ASSETS = [
   '/assets/theme/theme.js',
   '/assets/theme/animations.css',
   '/assets/theme/presets.js',
+  '/assets/theme/settings.js',
+  '/assets/theme/settings.css',
   '/images/logo/logo.png'
 ];
 
