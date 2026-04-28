@@ -1,4 +1,4 @@
-const CACHE_NAME = 'semsey-tech-v1';
+const CACHE_NAME = 'semsey-tech-v2';
 const ASSETS = [
   '/',
   '/index.html',
@@ -15,6 +15,7 @@ const ASSETS = [
 
 // Install Service Worker
 self.addEventListener('install', (event) => {
+  self.skipWaiting(); // Force new SW to take over immediately
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll(ASSETS);
@@ -24,6 +25,7 @@ self.addEventListener('install', (event) => {
 
 // Activate Service Worker
 self.addEventListener('activate', (event) => {
+  self.clients.claim(); // Take control of all open tabs immediately
   event.waitUntil(
     caches.keys().then((keys) => {
       return Promise.all(
@@ -35,6 +37,23 @@ self.addEventListener('activate', (event) => {
 
 // Fetch Assets
 self.addEventListener('fetch', (event) => {
+  // NETWORK-FIRST for HTML/Navigation
+  // This ensures users always get the latest page content if online
+  if (event.request.mode === 'navigate' || (event.request.method === 'GET' && event.request.headers.get('accept').includes('text/html'))) {
+    event.respondWith(
+      fetch(event.request)
+        .then(response => {
+          // Optional: Update the cache with the fresh version
+          const copy = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
+          return response;
+        })
+        .catch(() => caches.match(event.request)) // Fallback to cache if offline
+    );
+    return;
+  }
+
+  // CACHE-FIRST for Static Assets (CSS, JS, Images)
   event.respondWith(
     caches.match(event.request).then((response) => {
       return response || fetch(event.request);
