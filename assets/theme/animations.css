@@ -1,50 +1,110 @@
-/* ============================================================
-   BACKGROUND ANIMATIONS
-   ============================================================ */
+/* --------------------------------------------------
+   BACKGROUND MOTION ANIMATIONS
+   Clean, conflict‑free, variable‑driven
+-------------------------------------------------- */
 
-@keyframes bg-drift {
-  0% { background-position: 50% 50%; }
-  50% { background-position: 48% 52%; }
-  100% { background-position: 50% 50%; }
-}
-
-@keyframes bg-pulse {
-  0% { filter: brightness(1); }
-  50% { filter: brightness(1.15); }
-  100% { filter: brightness(1); }
-}
-
-@keyframes bg-aurora {
-  0% { background-position: 50% 50%; }
-  25% { background-position: 60% 40%; }
-  50% { background-position: 40% 60%; }
-  75% { background-position: 55% 45%; }
-  100% { background-position: 50% 50%; }
-}
-
-/* ============================================================
-   LOGO PULSE — MEDIUM NEON VERSION (FINAL)
-   ============================================================ */
-
-@keyframes logoPulseV2 {
+/* CALM DRIFT — smooth, subtle movement */
+@keyframes calm-drift {
   0% {
-    filter:
-      brightness(calc(1 + (var(--logo-glow) / 50)))
-      drop-shadow(0 0 calc(sqrt(var(--logo-glow)) * 4px) white)
-      drop-shadow(0 0 calc(sqrt(var(--logo-glow)) * 18px) var(--accent));
+    background-position: 0% 0%;
   }
-
   50% {
-    filter:
-      brightness(calc(1.35 + (var(--logo-glow) / 40)))
-      drop-shadow(0 0 calc(sqrt(var(--logo-glow)) * 6px) white)
-      drop-shadow(0 0 calc(sqrt(var(--logo-glow)) * 26px) var(--accent));
+    background-position:
+      calc(var(--motion-intensity, 100) * 1%)
+      calc(var(--motion-intensity, 100) * 1%);
   }
-
   100% {
-    filter:
-      brightness(calc(1 + (var(--logo-glow) / 50)))
-      drop-shadow(0 0 calc(sqrt(var(--logo-glow)) * 4px) white)
-      drop-shadow(0 0 calc(sqrt(var(--logo-glow)) * 18px) var(--accent));
+    background-position: 0% 0%;
   }
+}
+
+/* PULSE — brightness breathing effect */
+@keyframes pulse {
+  0% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(calc(1 + (var(--motion-intensity, 100) / 200)));
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+
+/* AURORA FLOW — horizontal sweeping motion */
+@keyframes aurora-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position:
+      calc(var(--motion-intensity, 100) * 1%)
+      50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* --------------------------------------------------
+   MOTION MODE SELECTORS
+   These are applied by theme.js via:
+   bgLayer.setAttribute("motion", mode)
+-------------------------------------------------- */
+
+#bgLayer[motion="static"] {
+  animation: none;
+}
+
+#bgLayer[motion="calm-drift"] {
+  animation: calm-drift 18s ease-in-out infinite;
+}
+
+#bgLayer[motion="pulse"] {
+  animation: pulse 6s ease-in-out infinite;
+}
+
+#bgLayer[motion="aurora-flow"] {
+  animation: aurora-flow 22s ease-in-out infinite;
+}
+
+/* --------------------------------------------------
+   LOGO GLOW / PULSE (if you add a logo element)
+   These respond to:
+   --logo-glow
+   --logo-pulse
+-------------------------------------------------- */
+
+.logo {
+  filter: drop-shadow(0 0 calc(var(--logo-glow, 0.6) * 20px) var(--accent));
+  transition: filter 0.3s ease;
+}
+
+.logo[pulse="on"] {
+  animation: logo-pulse 3s ease-in-out infinite;
+}
+
+@keyframes logo-pulse {
+  0% {
+    filter: drop-shadow(0 0 calc(var(--logo-glow, 0.6) * 20px) var(--accent));
+  }
+  50% {
+    filter: drop-shadow(0 0 calc(var(--logo-glow, 0.6) * 35px) var(--accent));
+  }
+  100% {
+    filter: drop-shadow(0 0 calc(var(--logo-glow, 0.6) * 20px) var(--accent));
+  }
+}
+/* --------------------------------------------------
+   COG SPIN ANIMATIONS
+-------------------------------------------------- */
+
+@keyframes cog-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes cog-spin-fast {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }

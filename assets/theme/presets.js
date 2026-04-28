@@ -1,3 +1,4 @@
+// assets/theme/presets.js
 export const presets = {
   "Neon Blue": {
     "--accent": "#2f8bff",
@@ -7,7 +8,7 @@ export const presets = {
     "--bg3": "#08162f",
     "--bg4": "#051022",
     "--bg5": "#030a18",
-    "--font-main": "system-ui",
+    "--font-main": "system-ui"
   },
 
   "Midnight": {
@@ -18,18 +19,21 @@ export const presets = {
     "--bg3": "#141428",
     "--bg4": "#1a1a33",
     "--bg5": "#202040",
-    "--font-main": "Segoe UI",
+    "--font-main": "Segoe UI"
   },
 
+  // Improved Minimal Light (soft, readable, not blinding)
   "Minimal Light": {
-    "--accent": "#4a90e2",
-    "--fg": "#1a1a1a",
-    "--bg1": "#ffffff",
-    "--bg2": "#f7f7f7",
-    "--bg3": "#efefef",
-    "--bg4": "#e7e7e7",
-    "--bg5": "#dfdfdf",
-    "--font-main": "Helvetica",
+    "--accent": "#2F80ED",
+    "--fg": "#243142",
+
+    "--bg1": "#E9EEF4",   // page background
+    "--bg2": "#F7F9FC",   // main surface
+    "--bg3": "#FFFFFF",   // cards / controls
+    "--bg4": "#D9E1EA",   // borders / inset areas
+    "--bg5": "#BCC7D4",   // deeper shadow / contrast
+
+    "--font-main": "Helvetica"
   },
 
   "Cyber Red": {
@@ -40,7 +44,7 @@ export const presets = {
     "--bg3": "#330000",
     "--bg4": "#400000",
     "--bg5": "#4d0000",
-    "--font-main": "Roboto",
+    "--font-main": "Roboto"
   },
 
   "Terminal Green": {
@@ -51,6 +55,6 @@ export const presets = {
     "--bg3": "#041a04",
     "--bg4": "#061406",
     "--bg5": "#081808",
-    "--font-main": "JetBrains Mono",
+    "--font-main": "JetBrains Mono"
   }
 };

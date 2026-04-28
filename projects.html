@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Projects - Semsey Technologies</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Global theme + animations -->
+  <link rel="stylesheet" href="assets/theme/theme.css" />
+  <link rel="stylesheet" href="assets/theme/animations.css" />
+
+  <script type="module" src="assets/theme/theme.js"></script>
+</head>
+
+<body>
+  <div id="bgLayer"></div>
+
+  <!-- Settings Cog -->
+  <a href="settings.html" class="settings-cog"></a>
+
+  <div class="sidebar">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html" class="active">Projects</a>
+    <a href="settings.html">Settings</a>
+  </div>
+
+  <h1>Projects</h1>
+
+  <div class="container">
+    <div class="card">
+      <h2>Project Alpha</h2>
+      <p class="lead">A modular framework for decentralized identity management.</p>
+      <a href="#" class="clear-btn" style="display: inline-block; text-decoration: none;">View Source</a>
+    </div>
+
+    <div class="card">
+      <h2>Project Beta</h2>
+      <p class="lead">An open-source graphics engine designed for transparency and speed.</p>
+      <a href="#" class="clear-btn" style="display: inline-block; text-decoration: none;">View Source</a>
+    </div>
+
+    <div class="card">
+      <h2>Project Gamma</h2>
+      <p class="lead">Theoretical models for non-coercive economic systems.</p>
+      <a href="#" class="clear-btn" style="display: inline-block; text-decoration: none;">View Source</a>
+    </div>
+  </div>
+
+  <!-- Theme Loader -->
+  <script type="module">
+    import {
+      applyLogoSource,
+      applyCogSource,
+      applySavedTheme,
+      applySavedNav
+    } from "./assets/theme/theme.js";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      applySavedTheme();
+      applyLogoSource();
+      applyCogSource();
+      applySavedNav();
+    });
+  </script>
+</body>
+</html>

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,230 +6,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- Modular CSS -->
-  <link rel="stylesheet" href="assets/theme/variables.css">
+  <link rel="stylesheet" href="assets/theme/theme.css">
+  <link rel="stylesheet" href="assets/theme/hero.css">
   <link rel="stylesheet" href="assets/theme/animations.css">
-  <link rel="stylesheet" href="assets/theme/motion-classes.css">
-  <link rel="stylesheet" href="assets/theme/layout.css">
 
-  <!-- Load saved theme variables -->
+  <!-- THEME ENGINE (must load BEFORE page renders) -->
   <script type="module" src="assets/theme/theme.js"></script>
-
-  <style>
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      font-family: var(--font-main);
-      color: var(--fg);
-      background:
-        radial-gradient(circle at center,
-          var(--bg1) 0%,
-          var(--bg2) 30%,
-          var(--bg3) 55%,
-          var(--bg4) 75%,
-          var(--bg5) 100%);
-      overflow-x: hidden;
-    }
-
-    /* BACKGROUND MOTION LAYER */
-    #bgLayer {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background:
-        radial-gradient(circle at center,
-          var(--bg1) 0%,
-          var(--bg2) 30%,
-          var(--bg3) 55%,
-          var(--bg4) 75%,
-          var(--bg5) 100%);
-      background-size: calc(var(--motion-intensity, 100) * 1%) calc(var(--motion-intensity, 100) * 1%);
-    }
-
-    /* Motion animations */
-    @keyframes calm-drift {
-      0% { background-position: 0% 0%; }
-      50% { background-position: calc(var(--motion-intensity, 100) * 1%) calc(var(--motion-intensity, 100) * 1%); }
-      100% { background-position: 0% 0%; }
-    }
-
-    @keyframes pulse {
-      0% { filter: brightness(1); }
-      50% { filter: brightness(calc(1 + (var(--motion-intensity, 100) / 200))); }
-      100% { filter: brightness(1); }
-    }
-
-    @keyframes aurora-flow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: calc(var(--motion-intensity, 100) * 1%) 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    #bgLayer[motion="calm-drift"] { animation: calm-drift 18s ease-in-out infinite; }
-    #bgLayer[motion="pulse"] { animation: pulse 6s ease-in-out infinite; }
-    #bgLayer[motion="aurora-flow"] { animation: aurora-flow 22s ease-in-out infinite; }
-    #bgLayer[motion="static"] { animation: none; }
-
-    /* SETTINGS COG */
-    .settings-cog {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      background: rgba(20, 40, 80, 0.85);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      backdrop-filter: blur(10px);
-      transition: 0.2s ease;
-      z-index: 999;
-    }
-
-    .settings-cog:hover {
-      background: rgba(30, 60, 120, 1);
-      border-color: var(--accent);
-      transform: rotate(12deg);
-    }
-
-    /* HERO SECTION */
-    .hero {
-      width: 100%;
-      max-width: 900px;
-      padding: 20px;
-      margin-top: -180px;
-    }
-
-    .logo {
-      width: 450px;
-      height: 450px;
-      margin: 0 auto 6px;
-    }
-
-    /* LOGO GLOW + PULSE */
-    #siteLogo {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      filter: drop-shadow(0 0 calc(var(--logo-glow, 0.6) * 20px) var(--accent));
-      transition: 0.25s ease;
-    }
-
-    @keyframes logoPulse {
-      0% { filter: drop-shadow(0 0 calc(var(--logo-glow, 0.6) * 20px) var(--accent)); }
-      50% { filter: drop-shadow(0 0 calc(var(--logo-glow, 0.6) * 40px) var(--accent)); }
-      100% { filter: drop-shadow(0 0 calc(var(--logo-glow, 0.6) * 20px) var(--accent)); }
-    }
-
-    #siteLogo[data-pulse="on"] {
-      animation: logoPulse 2.2s ease-in-out infinite;
-    }
-
-    .tagline {
-      font-size: 1.35rem;
-      max-width: 650px;
-      margin: 0 auto 0px;
-    }
-
-    .subtagline {
-      font-size: 0.9rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #c3d0ff;
-      margin-bottom: 16px;
-    }
-
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      margin-bottom: 20px;
-    }
-
-    .btn {
-      padding: 14px 32px;
-      border-radius: 999px;
-      border: 1px solid var(--accent);
-      background: rgba(10, 30, 70, 0.6);
-      color: var(--fg);
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-size: 1rem;
-      transition: 0.2s ease;
-    }
-
-    .btn:hover {
-      background: rgba(20, 50, 110, 0.9);
-      border-color: #60a5ff;
-      box-shadow: 0 0 24px rgba(47, 139, 255, 0.25);
-      transform: translateY(-2px);
-    }
-
-    footer {
-      position: fixed;
-      bottom: 12px;
-      width: 100%;
-      text-align: center;
-      font-size: 0.8rem;
-      color: #b8c4e0;
-      pointer-events: none;
-    }
-.logo, #siteLogo {
-  overflow: visible !important;
-}
-.logo,
-.hero,
-main,
-body,
-html {
-  overflow: visible !important;
-}
-#siteLogo {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-
-  filter:
-    brightness(calc(1 + (var(--logo-glow) / 50)))
-    drop-shadow(0 0 calc(sqrt(var(--logo-glow)) * 4px) white)
-    drop-shadow(0 0 calc(sqrt(var(--logo-glow)) * 18px) var(--accent));
-
-  transition: filter 0.25s ease;
-}
-
-
-#siteLogo[data-pulse="on"] {
-  animation: logoPulseV2 2.2s ease-in-out infinite;
-}
-
-
-  </style>
 </head>
 
-<body>
+<body class="hero-body">
 
-  <!-- Background motion layer -->
+  <!-- Background Motion Layer -->
   <div id="bgLayer"></div>
 
-  <!-- Settings Cog -->
-  <a href="settings.html">
-    <img src="assets/images/cog/cog.png" alt="Settings" class="settings-cog">
-  </a>
+  <!-- Settings Cog (variable-driven image, continuous spin) -->
+  <a href="settings.html" class="settings-cog"></a>
+
+  <div class="sidebar">
+    <a href="index.html" class="active">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="settings.html">Settings</a>
+  </div>
 
   <main class="hero">
     <div class="logo">
-      <img id="siteLogo" src="assets/images/logo/logo.png" alt="Semsey Technologies Logo">
+      <!-- Logo source is set by theme.js using --logo-src -->
+      <img id="siteLogo" src="" alt="Semsey Technologies Logo">
     </div>
 
     <div class="tagline">
@@ -251,15 +53,20 @@ html {
     © 2026 Semsey Technologies
   </footer>
 
-  <!-- MAIN MODULE -->
+  <!-- Logo + Cog Loader -->
   <script type="module">
-    import { loadSavedCog } from "./assets/theme/cogEngine.js";
-    import { loadSavedLogo } from "./assets/theme/logoEngine.js";
-    import "./assets/theme/motion.js";
+    import {
+      applyLogoSource,
+      applyCogSource,
+      applySavedTheme,
+      applySavedNav
+    } from "./assets/theme/theme.js";
 
     document.addEventListener("DOMContentLoaded", () => {
-      loadSavedCog();
-      loadSavedLogo();
+      applySavedTheme();   // loads saved CSS variables or Neon Blue default
+      applyLogoSource();   // loads logo from --logo-src
+      applyCogSource();    // loads cog from --cog-src
+      applySavedNav();
     });
   </script>
 

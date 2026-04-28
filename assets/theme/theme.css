@@ -1,15 +1,544 @@
 :root {
-  --accent: #2f8bff;
-  --fg: #e9f1ff;
+  --logo-src: url("../images/logo/logo.png");
+  --cog-src: url("../images/cog/cog.png");
 
-  --bg1: #10264f;
-  --bg2: #0b1d3d;
-  --bg3: #08162f;
-  --bg4: #051022;
-  --bg5: #030a18;
+  /* Defaults for hardcoded colors found in audit */
+  --glass-color: 255, 255, 255;
+  --panel-bg: rgba(0, 0, 0, 0.35);
+  --footer-fg: #b8c4e0;
+}
 
-  --font-main: system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-size: 18px;
-  --font-weight: 400;
-  --font-style: normal;
+/* --------------------------------------------------
+   GLOBAL RESET + BASE
+-------------------------------------------------- */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 40px 20px;
+  color: var(--fg);
+  font-family: var(--font-main, system-ui);
+  font-size: var(--font-size, 18px);
+  font-weight: var(--font-weight, 400);
+  font-style: var(--font-style, normal);
+  background: var(--bg1);
+  overflow-x: hidden;
+  position: relative;
+  transition: padding 0.3s ease;
+}
+
+html[data-nav-placement="top"] body {
+  padding-top: 100px;
+}
+
+html[data-nav-placement="bottom"] body {
+  padding-bottom: 100px;
+}
+
+/* --------------------------------------------------
+   BACKGROUND LAYER (Motion handled in animations.css)
+-------------------------------------------------- */
+
+#bgLayer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+
+  background:
+    radial-gradient(circle at center,
+      var(--bg1) 0%,
+      var(--bg2) 30%,
+      var(--bg3) 55%,
+      var(--bg4) 75%,
+      var(--bg5) 100%);
+
+  background-size: calc(var(--motion-intensity, 100) * 1%)
+                   calc(var(--motion-intensity, 100) * 1%);
+}
+
+/* --------------------------------------------------
+   TYPOGRAPHY
+-------------------------------------------------- */
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--fg);
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.lead {
+  opacity: 0.85;
+  line-height: 1.6;
+}
+
+.muted {
+  opacity: 0.7;
+}
+
+/* --------------------------------------------------
+   LAYOUT
+-------------------------------------------------- */
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* --------------------------------------------------
+   CARDS (Cyber Neon)
+-------------------------------------------------- */
+
+.card {
+  background: color-mix(in srgb, var(--bg3), transparent 20%);
+  border: 1px solid color-mix(in srgb, var(--fg), transparent 85%);
+  border-radius: 16px;
+  padding: 24px;
+  transition: 0.25s ease;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+}
+
+/* --------------------------------------------------
+   PRESET BUTTONS
+-------------------------------------------------- */
+
+.preset {
+  padding: 14px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--bg3), transparent 40%);
+  border: 1px solid color-mix(in srgb, var(--fg), transparent 85%);
+  text-align: center;
+  cursor: pointer;
+  transition: 0.2s ease;
+  color: var(--fg);
+  font-size: 1rem;
+}
+
+.preset:hover {
+  background: color-mix(in srgb, var(--accent), transparent 80%);
+  border-color: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+}
+
+/* --------------------------------------------------
+   INPUTS (Cyber Minimal)
+-------------------------------------------------- */
+
+input[type="color"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  background: none;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+input[type="color"]:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+}
+
+input[type="range"],
+select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid color-mix(in srgb, var(--accent), transparent 70%);
+  background: var(--bg2);
+  color: var(--fg);
+  font-size: 1rem;
+  transition: 0.2s ease;
+}
+
+select option {
+  background: var(--bg2);
+  color: var(--fg);
+}
+
+select:hover,
+input[type="range"]:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+}
+
+/* --------------------------------------------------
+   COLOR ROWS
+-------------------------------------------------- */
+
+.color-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+/* --------------------------------------------------
+   TOGGLE SWITCH
+-------------------------------------------------- */
+
+.toggle {
+  position: relative;
+  width: 52px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.toggle::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  background: white;
+  border-radius: 50%;
+  transition: 0.2s ease;
+}
+
+.toggle.active {
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+}
+
+.toggle.active::after {
+  transform: translateX(24px);
+}
+
+/* --------------------------------------------------
+   BUTTONS
+-------------------------------------------------- */
+
+.clear-btn {
+  margin-top: 16px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--fg);
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.clear-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+}
+
+/* --------------------------------------------------
+   BACK BUTTON
+-------------------------------------------------- */
+
+.back-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--bg2), transparent 10%);
+  border: 1px solid color-mix(in srgb, var(--accent), transparent 70%);
+  color: var(--fg);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+html[data-nav-placement="top"] .back-btn {
+  top: 85px;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+}
+
+/* --------------------------------------------------
+   SIDEBAR (Cyber Navigation)
+-------------------------------------------------- */
+
+.sidebar {
+  position: fixed;
+  top: 150px;
+  left: 20px;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  /* Starts at 95% opacity, becomes more transparent (glassy) as strength increases */
+  background: color-mix(in srgb, var(--bg2), transparent calc(5% + var(--glass-strength, 0) * 45%));
+  border: 1px solid color-mix(in srgb, var(--accent), transparent 60%);
+  border-radius: 12px;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+html[data-glass="off"] .sidebar {
+  background: var(--bg2);
+}
+
+/* Hide sidebars on homepage hero by default, unless it's top/bottom */
+.hero-body .sidebar { display: none; }
+.hero-body .sidebar.top, .hero-body .sidebar.bottom { display: flex; }
+
+.sidebar.right { left: auto; right: 20px; }
+
+.sidebar.top {
+  top: 0;
+  left: 0;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+  border-radius: 0;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  padding: 15px 20px;
+  gap: 20px;
+  background: color-mix(in srgb, var(--bg2), transparent calc(5% + var(--glass-strength, 0) * 45%));
+  overflow-x: auto;
+}
+
+html[data-glass="off"] .sidebar.top {
+  background: var(--bg2);
+}
+
+.sidebar.bottom {
+  top: auto;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+  border-radius: 0;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  padding: 15px 20px;
+  gap: 20px;
+  background: color-mix(in srgb, var(--bg2), transparent calc(5% + var(--glass-strength, 0) * 45%));
+  overflow-x: auto;
+}
+
+html[data-glass="off"] .sidebar.bottom {
+  background: var(--bg2);
+}
+
+.sidebar a {
+  color: var(--fg);
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--bg3), transparent 60%);
+  border: 1px solid color-mix(in srgb, var(--fg), transparent 85%);
+  font-size: 0.9rem;
+  transition: 0.2s ease;
+  white-space: nowrap;
+}
+
+.sidebar a:hover {
+  background: rgba(var(--glass-color), 0.15);
+  border-color: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+}
+
+.sidebar a.active {
+  background: var(--accent);
+  color: var(--bg1);
+  border-color: var(--accent);
+}
+
+/* --------------------------------------------------
+   MOBILE ADAPTIVE (Media Queries)
+-------------------------------------------------- */
+
+@media (max-width: 768px) {
+  body {
+    padding: 80px 15px 40px; /* Space for top buttons */
+  }
+
+  h1 {
+    font-size: 1.6rem;
+    margin-bottom: 24px;
+  }
+
+  .container {
+    gap: 20px;
+  }
+
+  .card {
+    padding: 18px;
+  }
+
+  /* Force Sidebar to Bottom on mobile for better thumb reach */
+  .sidebar, .sidebar.right, .sidebar.top, .sidebar.bottom {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    overflow-x: auto;
+    border-radius: 20px 20px 0 0;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    padding: 12px;
+    transform: none;
+    gap: 10px;
+  }
+
+  .sidebar a {
+    padding: 10px 14px;
+    font-size: 0.85rem;
+  }
+
+  .back-btn {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+
+  .settings-cog {
+    width: 44px;
+    height: 44px;
+  }
+
+  .color-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .color-row input[type="color"] {
+    align-self: flex-end;
+  }
+}
+/* --------------------------------------------------
+   NAVIGATION PLACEMENT UI
+-------------------------------------------------- */
+
+.nav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.nav-option {
+  position: relative;
+  padding: 14px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--bg3), transparent 40%);
+  border: 1px solid color-mix(in srgb, var(--fg), transparent 85%);
+  text-align: center;
+  cursor: pointer;
+  transition: 0.2s ease;
+  color: var(--fg);
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-option input {
+  display: none;
+}
+
+.nav-option:hover {
+  background: color-mix(in srgb, var(--accent), transparent 80%);
+  border-color: var(--accent);
+}
+
+.nav-option.active {
+  background: var(--accent);
+  color: var(--bg1);
+  border-color: var(--accent);
+  box-shadow: 0 0 15px var(--accent);
+}
+
+/* --------------------------------------------------
+   SETTINGS COG (Cyber‑Neon + Continuous Spin)
+-------------------------------------------------- */
+
+.settings-cog {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--accent), transparent 60%);
+  background: var(--bg2);
+  cursor: pointer;
+  z-index: 1000;
+
+  /* NEW: variable-driven cog image */
+  background-image: var(--cog-src);
+  background-size: 95%;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* continuous spin */
+  animation: cog-spin 6s linear infinite;
+
+  /* neon glow */
+  box-shadow:
+    0 0 8px rgba(0, 0, 0, 0.4),
+    0 0 14px var(--accent);
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, top 0.3s ease, bottom 0.3s ease;
+}
+
+html[data-nav-placement="top"] .settings-cog {
+  top: 85px;
+}
+
+html[data-nav-placement="bottom"] .settings-cog {
+  top: auto;
+  bottom: 85px;
+}
+
+.settings-cog:hover {
+  animation-duration: 2.2s;
+  border-color: var(--accent);
+  box-shadow:
+    0 0 12px var(--accent),
+    0 0 24px var(--accent);
+  transform: scale(1.05);
 }

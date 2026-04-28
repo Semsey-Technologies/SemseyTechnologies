@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>About - Semsey Technologies</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Global theme + animations -->
+  <link rel="stylesheet" href="assets/theme/theme.css" />
+  <link rel="stylesheet" href="assets/theme/animations.css" />
+
+  <script type="module" src="assets/theme/theme.js"></script>
+</head>
+
+<body>
+  <div id="bgLayer"></div>
+
+  <!-- Settings Cog -->
+  <a href="settings.html" class="settings-cog"></a>
+
+  <div class="sidebar">
+    <a href="index.html">Home</a>
+    <a href="about.html" class="active">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="settings.html">Settings</a>
+  </div>
+
+  <h1>About Me</h1>
+
+  <div class="container">
+    <div class="card">
+      <h2>The Mission</h2>
+      <p class="lead">
+        I build systems, theories, and tools because I believe in the power of open information and individual agency.
+        Technology should be a tool that serves the user, not a cage that restricts them.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Philosophy</h2>
+      <p>
+        Everything I create is released under non-restrictive licenses. I believe in the "Pay What You Want" model
+        because value is subjective and access to tools should not be gated by wealth.
+      </p>
+    </div>
+  </div>
+
+  <!-- Theme Loader -->
+  <script type="module">
+    import {
+      applyLogoSource,
+      applyCogSource,
+      applySavedTheme,
+      applySavedNav
+    } from "./assets/theme/theme.js";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      applySavedTheme();
+      applyLogoSource();
+      applyCogSource();
+      applySavedNav();
+    });
+  </script>
+</body>
+</html>
