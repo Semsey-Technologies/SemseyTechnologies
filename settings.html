@@ -20,6 +20,15 @@
   <a href="index.html" class="back-btn">← Back</a>
 
   <div class="sidebar">
+    <!-- Global Navigation -->
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="settings.html" class="active">Settings</a>
+
+    <div class="sidebar-divider"></div>
+
+    <!-- Section Anchors -->
     <a href="#presets">Presets</a>
     <a href="#identity">Identity</a>
     <a href="#motion">Motion</a>
@@ -241,20 +250,5 @@
     </div>
 
   </div>
-  <script type="module">
-    import {
-      applyLogoSource,
-      applyCogSource,
-      applySavedTheme,
-      applySavedNav
-    } from "./assets/theme/theme.js";
-
-    document.addEventListener("DOMContentLoaded", () => {
-      applySavedTheme();
-      applyLogoSource();
-      applyCogSource();
-      applySavedNav();
-    });
-  </script>
 </body>
 </html>

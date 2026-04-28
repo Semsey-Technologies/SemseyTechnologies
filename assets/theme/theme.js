@@ -219,6 +219,12 @@ export function setNavPlacement(mode) {
 
 export function setNavType(type) {
   document.documentElement.dataset.navType = type;
+
+  // Ensure trigger exists if switching to hamburger/orb
+  if (type === "hamburger" || type === "orb") {
+    initNavTrigger();
+  }
+
   if (isSavingEnabled()) {
     localStorage.setItem("semsey-nav-type", type);
   }
@@ -259,9 +265,13 @@ function initNavScrollIndicators() {
    NAV TRIGGER (Hamburger/Orb)
 -------------------------------------------------- */
 
-function initNavTrigger() {
+export function initNavTrigger() {
   // Check if trigger already exists
-  if (document.querySelector(".nav-trigger")) return;
+  if (document.querySelector(".nav-trigger")) {
+     // Re-bind links anyway to ensure they work if sidebar content changed
+     bindSidebarLinks();
+     return;
+  }
 
   const trigger = document.createElement("button");
   trigger.className = "nav-trigger";
@@ -272,13 +282,20 @@ function initNavTrigger() {
     document.documentElement.classList.toggle("nav-open");
   });
 
-  // Close menu when clicking links
+  bindSidebarLinks();
+}
+
+function bindSidebarLinks() {
   const links = document.querySelectorAll(".sidebar a");
   links.forEach(link => {
-    link.addEventListener("click", () => {
-      document.documentElement.classList.remove("nav-open");
-    });
+    // Prevent multiple listeners
+    link.removeEventListener("click", closeMenu);
+    link.addEventListener("click", closeMenu);
   });
+}
+
+function closeMenu() {
+  document.documentElement.classList.remove("nav-open");
 }
 
 /* --------------------------------------------------

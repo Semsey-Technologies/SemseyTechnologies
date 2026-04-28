@@ -12,6 +12,7 @@ import {
   setLogoGlow,
   setLogoPulse,
   setNavPlacement,
+  setNavType,
   applySavedNav,
   setLogoSource,
   setCogSource
@@ -29,6 +30,9 @@ applySavedNav();
 
 // 3. Sync UI controls to current state
 syncSettingsUI();
+
+// 4. Initialize Scroll Observation for sidebar highlighting
+initScrollSpy();
 
 // -----------------------------
 // UI SYNCHRONIZATION
@@ -82,17 +86,17 @@ function syncSettingsUI() {
     document.getElementById("logoPulse").value = saved["--logo-pulse"] || "off";
   }
 
-  // Navigation
-  const savedNav = localStorage.getItem("semsey-nav") || "left";
+  // Navigation - Sync from live Dataset (not just localStorage)
+  const currentNav = document.documentElement.dataset.navPlacement || "left";
   document.querySelectorAll("input[name='navPlace']").forEach(radio => {
-    const isActive = radio.value === savedNav;
+    const isActive = radio.value === currentNav;
     radio.checked = isActive;
     radio.parentElement.classList.toggle("active", isActive);
   });
 
-  const savedType = localStorage.getItem("semsey-nav-type") || "bottom";
+  const currentType = document.documentElement.dataset.navType || "bottom";
   document.querySelectorAll("input[name='navType']").forEach(radio => {
-    const isActive = radio.value === savedType;
+    const isActive = radio.value === currentType;
     radio.checked = isActive;
     radio.parentElement.classList.toggle("active", isActive);
   });
@@ -107,6 +111,33 @@ function syncSettingsUI() {
   document.querySelectorAll("#cogSelector .img-option").forEach(opt => {
     opt.classList.toggle("active", opt.getAttribute("data-path") === cogSrc);
   });
+}
+
+// -----------------------------
+// SCROLL SPY (Sidebar Highlighting)
+// -----------------------------
+function initScrollSpy() {
+  const sections = document.querySelectorAll(".card[id]");
+  const navLinks = document.querySelectorAll(".sidebar a[href^='#']");
+
+  const observerOptions = {
+    root: null,
+    rootMargin: "-20% 0px -70% 0px",
+    threshold: 0
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute("id");
+        navLinks.forEach(link => {
+          link.classList.toggle("active", link.getAttribute("href") === `#${id}`);
+        });
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach(section => observer.observe(section));
 }
 
 // -----------------------------
@@ -131,6 +162,7 @@ document.getElementById("clearSettings").addEventListener("click", () => {
   localStorage.removeItem("semsey-theme");
   localStorage.removeItem("semsey-save-enabled");
   localStorage.removeItem("semsey-nav");
+  localStorage.removeItem("semsey-nav-type");
   location.reload();
 });
 
@@ -140,7 +172,7 @@ document.getElementById("clearSettings").addEventListener("click", () => {
 document.querySelectorAll(".preset").forEach(btn => {
   btn.addEventListener("click", () => {
     applyPreset(btn.dataset.preset);
-    syncSettingsUI(); // Refresh UI after preset
+    syncSettingsUI();
   });
 });
 
@@ -191,19 +223,15 @@ document.getElementById("fontStyle").addEventListener("change", e => {
 // -----------------------------
 document.querySelectorAll("input[name='navPlace']").forEach(radio => {
   radio.addEventListener("change", e => {
-    import("./theme.js").then(m => {
-      m.setNavPlacement(e.target.value);
-      syncSettingsUI();
-    });
+    setNavPlacement(e.target.value);
+    syncSettingsUI();
   });
 });
 
 document.querySelectorAll("input[name='navType']").forEach(radio => {
   radio.addEventListener("change", e => {
-    import("./theme.js").then(m => {
-      m.setNavType(e.target.value);
-      syncSettingsUI();
-    });
+    setNavType(e.target.value);
+    syncSettingsUI();
   });
 });
 

@@ -142,6 +142,12 @@ h2 {
   box-shadow: 0 0 12px var(--accent);
 }
 
+.preset:active {
+  transform: scale(0.95);
+  background: var(--accent);
+  color: var(--bg1);
+}
+
 /* --------------------------------------------------
    INPUTS (Cyber Minimal)
 -------------------------------------------------- */
@@ -284,6 +290,12 @@ html[data-nav-placement="top"] .back-btn {
   box-shadow: 0 0 12px var(--accent);
 }
 
+.back-btn:active {
+  transform: scale(0.95);
+  background: var(--accent);
+  color: var(--bg1);
+}
+
 /* --------------------------------------------------
    SIDEBAR (Cyber Navigation)
 -------------------------------------------------- */
@@ -402,10 +414,47 @@ html[data-glass="off"] .sidebar.bottom {
   box-shadow: 0 0 12px var(--accent);
 }
 
+.sidebar a:active {
+  background: var(--accent);
+  color: var(--bg1);
+  transform: scale(0.98);
+}
+
 .sidebar a.active {
   background: var(--accent);
   color: var(--bg1);
   border-color: var(--accent);
+}
+
+.sidebar-divider {
+  background: color-mix(in srgb, var(--fg), transparent 85%);
+  margin: 8px 0;
+  flex-shrink: 0;
+}
+
+/* Vertical Divider (Default) */
+.sidebar:not(.top):not(.bottom) .sidebar-divider {
+  height: 1px;
+  width: 100%;
+}
+
+/* Horizontal Divider (Top/Bottom/Mobile) */
+.sidebar.top .sidebar-divider,
+.sidebar.bottom .sidebar-divider {
+  height: 24px;
+  width: 1px;
+  margin: 0 12px;
+  align-self: center;
+}
+
+@media (max-width: 768px) {
+  html[data-nav-type="bottom"] .sidebar .sidebar-divider,
+  html:not([data-nav-type]) .sidebar .sidebar-divider {
+    height: 24px;
+    width: 1px;
+    margin: 0 12px;
+    align-self: center;
+  }
 }
 
 /* --------------------------------------------------
@@ -528,6 +577,12 @@ html[data-glass="off"] .sidebar.bottom {
   border-color: var(--accent);
 }
 
+.nav-option:active {
+  transform: scale(0.97);
+  background: var(--accent);
+  color: var(--bg1);
+}
+
 .nav-option.active {
   background: var(--accent);
   color: var(--bg1);
@@ -550,10 +605,12 @@ html[data-nav-type="hamburger"] .sidebar {
   transform: translateX(-100%);
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-top: 100px;
   align-items: center;
   z-index: 1200;
   background: color-mix(in srgb, var(--bg2), black 20%);
+  overflow-y: auto;
 }
 
 html[data-nav-type="hamburger"].nav-open .sidebar {
