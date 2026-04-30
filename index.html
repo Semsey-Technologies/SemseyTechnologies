@@ -13,6 +13,28 @@
   <link rel="stylesheet" href="assets/theme/theme.css">
   <link rel="stylesheet" href="assets/theme/hero.css">
   <link rel="stylesheet" href="assets/theme/animations.css">
+  <style>
+    /* Allow links inside footer to be interactive even when footer is non-interactive */
+    footer a { pointer-events: auto; color: inherit; text-decoration: underline; }
+
+    /* Floating, subtle donate/support button */
+    .donate-button {
+      position: fixed;
+      right: 20px;
+      bottom: 84px; /* above footer */
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(47,139,255,0.12);
+      color: var(--fg);
+      border: 1px solid rgba(47,139,255,0.25);
+      text-decoration: none;
+      font-weight: 600;
+      backdrop-filter: blur(6px);
+      z-index: 998;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .donate-button:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(47,139,255,0.12); }
+  </style>
 
   <!-- THEME ENGINE -->
   <script type="module">
@@ -71,6 +93,14 @@
     </div>
   </main>
 
+  <!-- True footer -->
+  <footer>
+    © 2026 Semsey Technologies — <a href="donate.html">Support</a>
+  </footer>
+
+  <!-- Floating donate button -->
+  <a href="donate.html" class="donate-button" target="_blank" rel="noopener" aria-label="Support Semsey Technologies">💖 Support</a>
+
   <script>
     let deferredPrompt;
     const installBtn = document.getElementById('installBtn');
@@ -107,9 +137,6 @@
     });
   </script>
 
-  <footer>
-    © 2026 Semsey Technologies
-  </footer>
 
   <!-- Logo + Cog Loader removed (moved to head) -->
 </body>

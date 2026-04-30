@@ -3,6 +3,9 @@
   "WorkspaceRootPath": "\\\\192.168.1.70\\e\\claudia\\data\\users\\don\\Dev\\website\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|\\\\192.168.1.70\\e\\claudia\\data\\users\\don\\Dev\\website\\assets\\theme\\animations.css||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|\\\\192.168.1.70\\e\\claudia\\data\\users\\don\\Dev\\website\\settings.html||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
@@ -28,11 +31,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
+              "Title": "animations.css",
+              "DocumentMoniker": "\\\\192.168.1.70\\e\\claudia\\data\\users\\don\\Dev\\website\\assets\\theme\\animations.css",
+              "RelativeDocumentMoniker": "assets\\theme\\animations.css",
+              "ToolTip": "\\\\192.168.1.70\\e\\claudia\\data\\users\\don\\Dev\\website\\assets\\theme\\animations.css",
+              "RelativeToolTip": "assets\\theme\\animations.css",
+              "ViewState": "AgIAABAAAAAAAAAAAAAIwC4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-04-26T21:49:22.611Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "logoSettings.js",
               "DocumentMoniker": "\\\\192.168.1.70\\e\\claudia\\data\\users\\don\\Dev\\website\\assets\\js\\settings\\logoSettings.js",
               "RelativeDocumentMoniker": "assets\\js\\settings\\logoSettings.js",
@@ -40,12 +56,11 @@
               "RelativeToolTip": "assets\\js\\settings\\logoSettings.js",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2026-04-26T13:40:55.646Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-26T13:40:55.646Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "logoEngine.js",
               "DocumentMoniker": "\\\\192.168.1.70\\e\\claudia\\data\\users\\don\\Dev\\website\\assets\\theme\\logoEngine.js",
               "RelativeDocumentMoniker": "assets\\theme\\logoEngine.js",
@@ -53,12 +68,11 @@
               "RelativeToolTip": "assets\\theme\\logoEngine.js",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2026-04-26T13:39:36.917Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-26T13:39:36.917Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "cogEngine.js",
               "DocumentMoniker": "\\\\192.168.1.70\\e\\claudia\\data\\users\\don\\Dev\\website\\assets\\theme\\cogEngine.js",
               "RelativeDocumentMoniker": "assets\\theme\\cogEngine.js",
@@ -66,12 +80,11 @@
               "RelativeToolTip": "assets\\theme\\cogEngine.js",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2026-04-26T03:25:51.95Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-26T03:25:51.95Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "index.html",
               "DocumentMoniker": "\\\\192.168.1.70\\e\\claudia\\data\\users\\don\\Dev\\website\\index.html",
               "RelativeDocumentMoniker": "index.html",
@@ -79,12 +92,11 @@
               "RelativeToolTip": "index.html",
               "ViewState": "AgIAAKcAAAAAAAAAAAAAALwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2026-04-26T01:04:31.496Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-26T01:04:31.496Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "theme.js",
               "DocumentMoniker": "\\\\192.168.1.70\\e\\claudia\\data\\users\\don\\Dev\\website\\assets\\theme\\theme.js",
               "RelativeDocumentMoniker": "assets\\theme\\theme.js",
@@ -96,7 +108,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "settings.html",
               "DocumentMoniker": "\\\\192.168.1.70\\e\\claudia\\data\\users\\don\\Dev\\website\\settings.html",
               "RelativeDocumentMoniker": "settings.html",

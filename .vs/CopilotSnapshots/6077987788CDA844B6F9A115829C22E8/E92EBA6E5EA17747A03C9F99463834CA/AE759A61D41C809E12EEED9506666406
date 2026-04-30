@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Support — Semsey Technologies</title>
+  <link rel="stylesheet" href="assets/theme/theme.css">
+  <style>
+    :root { --font-main: system-ui, -apple-system, "Segoe UI", sans-serif; --fg: #e9f1ff; --accent: #2f8bff; }
+    body { background: linear-gradient(180deg,#071226,#02111f); color: var(--fg); font-family: var(--font-main); margin: 0; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px; }
+    .card { max-width:640px; width:100%; background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.04); padding:28px; border-radius:12px; text-align:center; }
+    h1 { margin:0 0 8px 0; font-size:1.4rem; }
+    p { color:#cbd5f5; margin:8px 0 18px 0; }
+    .cashtag { display:inline-block; padding:12px 18px; border-radius:999px; background:rgba(47,139,255,0.12); color:var(--fg); font-weight:700; border:1px solid rgba(47,139,255,0.18); text-decoration:none; }
+    .qr { margin-top:18px; max-width:240px; width:100%; height:auto; border-radius:8px; }
+    .back { display:inline-block; margin-top:18px; color:var(--accent); text-decoration:underline; }
+    footer { margin-top:20px; font-size:0.85rem; color:#9fb4ff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Support Semsey Technologies</h1>
+    <p>If you'd like to support my work, you can send via Cash App. Every contribution helps.</p>
+
+    <a class="cashtag" href="https://cash.app/$DonSemsey" target="_blank" rel="noopener">$DonSemsey</a>
+
+    <div>
+      <!-- Use local QR PNG to ensure it displays offline/unblocked -->
+      <img class="qr" src="assets/images/qr/cashapp-DonSemsey.png" alt="Cash App QR for $DonSemsey" />
+    </div>
+
+    <a class="back" href="index.html">← Back to home</a>
+
+    <footer>Thank you for your support. No pressure — every bit helps.</footer>
+  </div>
+</body>
+</html>

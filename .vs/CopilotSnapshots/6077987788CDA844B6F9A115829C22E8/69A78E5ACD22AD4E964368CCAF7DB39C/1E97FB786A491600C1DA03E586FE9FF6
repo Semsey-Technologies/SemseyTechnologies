@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Semsey Technologies</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0a0a0c" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" href="images/logo/logo.png" />
+  <link rel="apple-touch-icon" href="images/logo/logo.png" />
+
+  <!-- Modular CSS -->
+  <link rel="stylesheet" href="assets/theme/theme.css">
+  <link rel="stylesheet" href="assets/theme/hero.css">
+  <link rel="stylesheet" href="assets/theme/animations.css">
+
+  <!-- THEME ENGINE -->
+  <script type="module">
+    import {
+      applyLogoSource,
+      applyCogSource,
+      applySavedTheme,
+      applySavedNav
+    } from "./assets/theme/theme.js";
+
+    // Immediate application to prevent flash of unstyled content
+    applySavedTheme();
+
+    document.addEventListener("DOMContentLoaded", () => {
+      applyLogoSource();
+      applyCogSource();
+      applySavedNav();
+    });
+  </script>
+</head>
+
+<body class="hero-body">
+
+  <!-- Background Motion Layer -->
+  <div id="bgLayer"></div>
+
+  <!-- Settings Cog (variable-driven image, continuous spin) -->
+  <a href="settings.html" class="settings-cog"></a>
+
+  <div class="sidebar">
+    <a href="index.html" class="active">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+    <a href="settings.html">Settings</a>
+  </div>
+
+  <main class="hero">
+    <div class="logo">
+      <!-- Logo source is set by theme.js using --logo-src -->
+      <img id="siteLogo" src="" alt="Semsey Technologies Logo">
+    </div>
+
+    <div class="tagline">
+      I build systems, theories, and tools — and I release them freely.
+    </div>
+
+    <div class="subtagline">
+      Open‑source · Non‑restrictive · Pay‑what‑you‑want
+    </div>
+
+    <div class="buttons">
+      <a href="about.html" class="btn">About</a>
+      <a href="projects.html" class="btn">Projects</a>
+      <button id="installBtn" class="btn" style="display: none;">Add to Device</button>
+    </div>
+  </main>
+
+  <script>
+    let deferredPrompt;
+    const installBtn = document.getElementById('installBtn');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      // Prevent the mini-infobar from appearing on mobile
+      e.preventDefault();
+      // Stash the event so it can be triggered later.
+      deferredPrompt = e;
+      // Update UI notify the user they can install the PWA
+      installBtn.style.display = 'block';
+    });
+
+    installBtn.addEventListener('click', async () => {
+      if (deferredPrompt) {
+        // Show the install prompt
+        deferredPrompt.prompt();
+        // Wait for the user to respond to the prompt
+        const { outcome } = await deferredPrompt.userChoice;
+        console.log(`User response to the install prompt: ${outcome}`);
+        // We've used the prompt, and can't use it again, throw it away
+        deferredPrompt = null;
+        // Hide the button
+        installBtn.style.display = 'none';
+      }
+    });
+
+    window.addEventListener('appinstalled', (event) => {
+      console.log('👍', 'appinstalled', event);
+      // Clear the deferredPrompt so it can be garbage collected
+      deferredPrompt = null;
+      // Hide the install button
+      installBtn.style.display = 'none';
+    });
+  </script>
+
+  <footer>
+    © 2026 Semsey Technologies
+  </footer>
+
+  <!-- Logo + Cog Loader removed (moved to head) -->
+</body>
+</html>

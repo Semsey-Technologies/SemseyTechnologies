@@ -9,7 +9,27 @@
   <link rel="stylesheet" href="assets/theme/theme.css" />
   <link rel="stylesheet" href="assets/theme/animations.css" />
 
-  <script type="module" src="assets/theme/theme.js"></script>
+  <link rel="stylesheet" href="assets/theme/projects.css" />
+  <link rel="stylesheet" href="assets/theme/media.css" />
+
+  <!-- THEME ENGINE -->
+  <script type="module">
+    import {
+      applyLogoSource,
+      applyCogSource,
+      applySavedTheme,
+      applySavedNav
+    } from "./assets/theme/theme.js";
+
+    // Immediate application to prevent flash of unthemed content
+    applySavedTheme();
+
+    document.addEventListener("DOMContentLoaded", () => {
+      applyLogoSource();
+      applyCogSource();
+      applySavedNav();
+    });
+  </script>
 
   <style>
     .document-content h1 { text-align: left; margin-bottom: 10px; }
@@ -62,12 +82,61 @@
   </div>
 
   <div class="container" style="margin-top: 80px;">
-    <a href="conceptual.html" style="text-decoration: none; color: var(--accent); font-weight: 600;">← Back to Conceptual</a>
+    <a href="conceptual.html" class="back-btn">← Back to Conceptual</a>
+
+    <div class="theoretical-header">
+       <span style="text-transform: uppercase; font-weight: bold; letter-spacing: 0.1em; font-size: 0.9rem; color: var(--accent);">Policy Proposals</span>
+    </div>
+
+    <h1 style="text-align: center; margin-bottom: 10px; font-size: 2.2rem;">Island Rehabilitation & Prison Reform</h1>
+    <h2 style="text-align: center; opacity: 0.85; margin-bottom: 30px;">A pragmatic, humane pilot program proposal</h2>
 
     <div class="card document-content" style="margin-top: 20px;">
       <div class="status-banner">Legislative Draft</div>
       <h1>The Island Rehabilitation & Prison Reform Act of 2026</h1>
       <p class="lead">A pragmatic, humane pilot to reduce recidivism, lower taxpayer costs, and improve public safety through self-sustaining rehabilitation communities.</p>
+
+      <!-- Media grid: Video + Podcast (dissertation-style layout) -->
+      <div class="media-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <!-- Video Card -->
+        <div class="media-card" style="border-radius: 12px; overflow: hidden;">
+            <div class="label">Explainer Video</div>
+            <iframe
+              style="aspect-ratio: 16/9; height: auto;"
+              src="https://www.youtube.com/embed/mO7MUqzSDCI"
+              title="Island Rehabilitation Proposal - Video"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+            </iframe>
+            <div class="media-info">
+              <h4>Island Rehabilitation Proposal — Video Overview</h4>
+              <p>Short explainer video outlining the key ideas and implementation roadmap for the proposal.</p>
+            </div>
+        </div>
+
+        <!-- Audio Card (Podcast) -->
+        <div class="media-card audio-card" style="margin-top: 20px;">
+          <div class="label">Podcast Episode</div>
+          <div class="audio-info">
+            <div class="audio-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+            </div>
+            <div class="audio-details">
+              <h4>The Island Rehabilitation Proposal</h4>
+              <p>Podcast discussion of the proposal and its policy implications.</p>
+            </div>
+          </div>
+          <audio controls class="audio-player" preload="none" aria-label="Play narration of the prison reform proposal">
+            <source src="https://laijbgyovzmsrenmuugl.supabase.co/storage/v1/object/public/SemseyTechnologiesAudioFiles/Self_sustaining_island_cities_for_prison_reform.m4a" type="audio/mp4">
+            Your browser does not support the audio element. You can <a href="https://laijbgyovzmsrenmuugl.supabase.co/storage/v1/object/public/SemseyTechnologiesAudioFiles/Self_sustaining_island_cities_for_prison_reform.m4a" target="_blank" rel="noopener">download the audio</a> instead.
+          </audio>
+          <div style="margin-top:12px;">
+            <a class="preset" href="https://laijbgyovzmsrenmuugl.supabase.co/storage/v1/object/public/SemseyTechnologiesAudioFiles/Self_sustaining_island_cities_for_prison_reform.m4a" target="_blank" rel="noopener">Download audio</a>
+          </div>
+        </div>
+      </div>
 
       <div class="highlight-box">
         "Not soft on crime, but smart on public safety."

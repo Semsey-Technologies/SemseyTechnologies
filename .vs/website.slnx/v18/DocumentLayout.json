@@ -22,6 +22,24 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|\\\\192.168.1.70\\e\\claudia\\data\\users\\don\\Dev\\website\\assets\\theme\\theme.js||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|\\\\192.168.1.70\\e\\claudia\\data\\users\\don\\Dev\\website\\donate.html||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|\\\\192.168.1.70\\e\\claudia\\data\\users\\don\\Dev\\website\\.github\\copilot-instructions.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|\\\\192.168.1.70\\e\\claudia\\data\\users\\don\\Dev\\website\\assets\\theme\\hero.css||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|\\\\192.168.1.70\\e\\claudia\\data\\users\\don\\Dev\\website\\assets\\theme\\theme.css||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|\\\\192.168.1.70\\e\\claudia\\data\\users\\don\\Dev\\website\\prison-reform-proposal.html||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|\\\\192.168.1.70\\e\\claudia\\data\\users\\don\\Dev\\website\\assets\\theme\\media.css||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,8 +49,86 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 6,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "media.css",
+              "DocumentMoniker": "\\\\192.168.1.70\\e\\claudia\\data\\users\\don\\Dev\\website\\assets\\theme\\media.css",
+              "RelativeDocumentMoniker": "assets\\theme\\media.css",
+              "ToolTip": "\\\\192.168.1.70\\e\\claudia\\data\\users\\don\\Dev\\website\\assets\\theme\\media.css",
+              "RelativeToolTip": "assets\\theme\\media.css",
+              "ViewState": "AgIAAF4AAAAAAAAAAABBwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-04-29T18:40:40.6Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "prison-reform-proposal.html",
+              "DocumentMoniker": "\\\\192.168.1.70\\e\\claudia\\data\\users\\don\\Dev\\website\\prison-reform-proposal.html",
+              "RelativeDocumentMoniker": "prison-reform-proposal.html",
+              "ToolTip": "\\\\192.168.1.70\\e\\claudia\\data\\users\\don\\Dev\\website\\prison-reform-proposal.html",
+              "RelativeToolTip": "prison-reform-proposal.html",
+              "ViewState": "AgIAAIoAAAAAAAAAAABBwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-04-29T18:32:09.052Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "theme.css",
+              "DocumentMoniker": "\\\\192.168.1.70\\e\\claudia\\data\\users\\don\\Dev\\website\\assets\\theme\\theme.css",
+              "RelativeDocumentMoniker": "assets\\theme\\theme.css",
+              "ToolTip": "\\\\192.168.1.70\\e\\claudia\\data\\users\\don\\Dev\\website\\assets\\theme\\theme.css",
+              "RelativeToolTip": "assets\\theme\\theme.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-04-29T16:19:40.028Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "hero.css",
+              "DocumentMoniker": "\\\\192.168.1.70\\e\\claudia\\data\\users\\don\\Dev\\website\\assets\\theme\\hero.css",
+              "RelativeDocumentMoniker": "assets\\theme\\hero.css",
+              "ToolTip": "\\\\192.168.1.70\\e\\claudia\\data\\users\\don\\Dev\\website\\assets\\theme\\hero.css",
+              "RelativeToolTip": "assets\\theme\\hero.css",
+              "ViewState": "AgIAAG0AAAAAAAAAAABBwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-04-29T16:13:21.775Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "copilot-instructions.md",
+              "DocumentMoniker": "\\\\192.168.1.70\\e\\claudia\\data\\users\\don\\Dev\\website\\.github\\copilot-instructions.md",
+              "RelativeDocumentMoniker": ".github\\copilot-instructions.md",
+              "ToolTip": "\\\\192.168.1.70\\e\\claudia\\data\\users\\don\\Dev\\website\\.github\\copilot-instructions.md",
+              "RelativeToolTip": ".github\\copilot-instructions.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAACaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-04-29T16:09:39.955Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "donate.html",
+              "DocumentMoniker": "\\\\192.168.1.70\\e\\claudia\\data\\users\\don\\Dev\\website\\donate.html",
+              "RelativeDocumentMoniker": "donate.html",
+              "ToolTip": "\\\\192.168.1.70\\e\\claudia\\data\\users\\don\\Dev\\website\\donate.html",
+              "RelativeToolTip": "donate.html",
+              "ViewState": "AgIAAB8AAAAAAAAAAABBwEcAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-04-29T16:09:05.74Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -90,9 +186,10 @@
               "RelativeDocumentMoniker": "index.html",
               "ToolTip": "\\\\192.168.1.70\\e\\claudia\\data\\users\\don\\Dev\\website\\index.html",
               "RelativeToolTip": "index.html",
-              "ViewState": "AgIAAKcAAAAAAAAAAAAAALwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAGYAAAAAAAAAAABBwI8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2026-04-26T01:04:31.496Z"
+              "WhenOpened": "2026-04-26T01:04:31.496Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -116,8 +213,11 @@
               "RelativeToolTip": "settings.html",
               "ViewState": "AgIAAKQBAAAAAAAAAAAAwMIBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2026-04-26T00:50:13.098Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-26T00:50:13.098Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             }
           ]
         }

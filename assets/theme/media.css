@@ -45,6 +45,16 @@
   border: 1px solid var(--accent);
 }
 
+/* For audio cards, render the label inline (not overlay) so it doesn't cover controls */
+.audio-card .label {
+  position: static;
+  align-self: flex-end;
+  margin: 0 0 8px 0;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 4px 10px;
+  font-size: 0.75rem;
+}
+
 /* Image Handling */
 .media-card img {
   width: 100%;
@@ -70,7 +80,12 @@
 
 /* Audio Specific Player */
 .audio-card {
-  padding: 20px;
+  /* Ensure the audio card creates a stacking context so we can layer
+     controls above any decorative labels if needed. Also keep a bit
+     of extra top padding to prevent label overlap on small heights. */
+  position: relative;
+  z-index: 1;
+  padding: 24px 20px 20px 20px;
   background: linear-gradient(145deg, var(--card-bg), rgba(var(--accent-rgb), 0.05));
   display: flex;
   flex-direction: column;

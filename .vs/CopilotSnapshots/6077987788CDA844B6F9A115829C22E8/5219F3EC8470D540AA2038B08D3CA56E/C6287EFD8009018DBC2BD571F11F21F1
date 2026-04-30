@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Support — Semsey Technologies</title>
+  <link rel="stylesheet" href="assets/theme/theme.css">
+  <link rel="stylesheet" href="assets/theme/hero.css">
+  <style>
+    :root { --font-main: system-ui, -apple-system, "Segoe UI", sans-serif; }
+    body { background: linear-gradient(180deg,#071226,#02111f); color: var(--fg); font-family: var(--font-main); margin: 0; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px; }
+    .card { max-width:640px; width:100%; background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.04); padding:28px; border-radius:12px; text-align:center; }
+    h1 { margin:0 0 8px 0; font-size:1.4rem; }
+    p { color:#cbd5f5; margin:8px 0 18px 0; }
+    /* Use site .btn styles from hero.css for visual consistency; scoped to this card */
+    .card .btn { display:inline-block; padding:14px 32px; border-radius:999px; border:1px solid var(--accent); background:rgba(var(--glass-color),0.1); color:var(--fg); text-decoration:none; text-transform:uppercase; letter-spacing:0.05em; font-size:1rem; transition:0.2s ease; }
+    .card .btn:hover { background:rgba(var(--glass-color),0.2); border-color:var(--accent); box-shadow:0 0 24px var(--accent); transform:translateY(-2px); }
+    .card .btn:active { transform:translateY(0); }
+    /* Preserve cashtag and back label casing and slightly adjust padding */
+    .card .btn.cashtag, .card .btn.back { text-transform:none; font-weight:700; padding:12px 20px; }
+    .qr { margin-top:0; max-width:240px; width:100%; height:auto; border-radius:8px; }
+
+    /* Layout: ensure equal spacing between cashtag, QR and back button */
+    .card .content { display:flex; flex-direction:column; align-items:center; gap:24px; justify-content:center; }
+    /* Make the buttons a consistent width for balance */
+    .card .btn.cashtag, .card .btn.back { min-width:220px; max-width:320px; width:60%; }
+    @media (max-width:480px) { .card .btn.cashtag, .card .btn.back { width:100%; min-width: auto; } }
+
+    /* Footer: center and increase prominence */
+    .card footer { text-align:center; font-size:1.05rem; font-weight:600; color: var(--fg); margin-top:18px; }
+    footer { margin-top:20px; font-size:0.85rem; color:#9fb4ff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Support Semsey Technologies</h1>
+    <p>If you'd like to support my work, you can send via Cash App. Every contribution helps.</p>
+
+    <a class="btn cashtag" href="https://cash.app/$DonSemsey" target="_blank" rel="noopener">$DonSemsey</a>
+
+    <div>
+      <!-- Use local QR PNG to ensure it displays offline/unblocked -->
+      <img class="qr" src="assets/images/qr/cashapp-DonSemsey.png" alt="Cash App QR for $DonSemsey" />
+    </div>
+
+    <a class="btn back" href="index.html">← Back to home</a>
+
+    <footer>Thank you for your support. No pressure — every bit helps.</footer>
+  </div>
+</body>
+</html>
