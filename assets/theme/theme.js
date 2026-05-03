@@ -64,7 +64,14 @@ export function applySavedTheme() {
   // 5. Update sources
   applyLogoSource();
   applyCogSource();
-  initReadingLevel();
+
+  // Apply reading level class to html so it works before body exists
+  const isSimple = localStorage.getItem("semsey-simple-mode") === "true";
+  if (isSimple) {
+    document.documentElement.classList.add("simple-mode");
+  } else {
+    document.documentElement.classList.remove("simple-mode");
+  }
 }
 
 /* --------------------------------------------------
@@ -73,17 +80,23 @@ export function applySavedTheme() {
 
 export function initReadingLevel() {
   const isSimple = localStorage.getItem("semsey-simple-mode") === "true";
-  if (isSimple) {
-    document.body.classList.add("simple-mode");
-  }
-
   const toggleBtn = document.getElementById("readingLevelToggle");
-  if (toggleBtn) {
+
+  if (toggleBtn && !toggleBtn.dataset.initialized) {
+    toggleBtn.dataset.initialized = "true";
     updateToggleText(toggleBtn, isSimple);
-    toggleBtn.addEventListener("click", () => {
-      const active = document.body.classList.toggle("simple-mode");
-      localStorage.setItem("semsey-simple-mode", active);
-      updateToggleText(toggleBtn, active);
+
+    toggleBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const isNowSimple = document.documentElement.classList.toggle("simple-mode");
+
+      // Sync with body if it exists
+      if (document.body) {
+        document.body.classList.toggle("simple-mode", isNowSimple);
+      }
+
+      localStorage.setItem("semsey-simple-mode", isNowSimple);
+      updateToggleText(toggleBtn, isNowSimple);
     });
   }
 }
@@ -329,6 +342,7 @@ export function applySavedNav() {
   setNavType(savedType);
   initNavScrollIndicators();
   initNavTrigger();
+  initReadingLevel();
 }
 
 /* --------------------------------------------------

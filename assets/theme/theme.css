@@ -772,15 +772,18 @@ html.nav-open .nav-trigger {
   animation: fadeIn 0.4s ease forwards;
 }
 
-body.simple-mode .academic-content {
+body.simple-mode .academic-content,
+html.simple-mode .academic-content {
   display: none;
 }
 
-body.simple-mode .simple-content {
+body.simple-mode .simple-content,
+html.simple-mode .simple-content {
   display: block;
 }
 
 .reading-level-toggle {
+  all: unset;
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -788,24 +791,29 @@ body.simple-mode .simple-content {
   background: color-mix(in srgb, var(--bg3), transparent 40%);
   border: 1px solid color-mix(in srgb, var(--accent), transparent 70%);
   border-radius: 8px;
+  color: var(--fg);
   cursor: pointer;
-  transition: all 0.3s ease;
+  font-family: var(--font-main, system-ui);
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
-  color: var(--fg);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+  user-select: none;
+  position: relative;
+  z-index: 10;
 }
 
 .reading-level-toggle:hover {
   background: color-mix(in srgb, var(--accent), transparent 80%);
   border-color: var(--accent);
-  box-shadow: 0 0 12px var(--accent);
+  box-shadow: 0 0 15px var(--accent);
   transform: translateY(-1px);
 }
 
 .reading-level-toggle:active {
-  transform: scale(0.97);
+  transform: scale(0.96);
 }
 
 /* Header Layout for Toggle */
