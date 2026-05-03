@@ -55,6 +55,65 @@
       transform: translateY(-2px);
       box-shadow: 0 5px 15px color-mix(in srgb, var(--accent), transparent 50%);
     }
+
+    /* Modal Styles */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 20px;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-card {
+      background: color-mix(in srgb, var(--bg2), black 20%);
+      border: 1px solid var(--accent);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 30px;
+      position: relative;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.5), 0 0 15px var(--accent);
+    }
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      color: var(--accent);
+      font-size: 1.5rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .modal-card h2 { margin-top: 0; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; }
+    .modal-card h3 { color: var(--accent); margin-top: 25px; }
+    .modal-card ol { padding-left: 20px; }
+    .modal-card li { margin-bottom: 12px; line-height: 1.6; }
+    .help-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .help-btn:hover {
+      background: var(--accent);
+      color: var(--bg1);
+      box-shadow: 0 0 15px var(--accent);
+    }
   </style>
 </head>
 
@@ -88,35 +147,82 @@
       <p>RTS Device Suite Pro serves as a comprehensive "all-in-one" toolkit for Android users. It is designed to manage complex storage environments, perform deep data recovery, automate backups, and optimize overall system performance through a centralized, high-tech interface.</p>
 
       <h2>Core Modules & Development Status</h2>
+      <p style="font-size: 0.9rem; opacity: 0.7; font-style: italic; margin-bottom: 20px;">Note: As this is an active project, modules marked as "Functional" are currently in a high-fidelity beta state and undergo continuous refinement.</p>
 
-      <h3>System Architecture <span class="feature-tag tag-active">Functional</span></h3>
+      <h3>Dashboard & System Monitoring <span class="feature-tag tag-active">Functional</span></h3>
       <ul>
-        <li><strong>High-Tech Dashboard:</strong> Centralized interface providing real-time system status and quick access to all utilities.</li>
-        <li><strong>Theme Engine:</strong> Robust customization system allowing for global UI scaling and dynamic color adjustments (Accent, Start/End colors).</li>
-        <li><strong>Permissions & Navigation:</strong> Centralized architecture handling complex Android permissions (SMS, Contacts, All Files Access) and navigation graphs.</li>
+        <li><strong>Health Score & Status:</strong> Dynamic calculation based on storage, battery, temperature, and maintenance tasks.</li>
+        <li><strong>Real-time Metrics:</strong> Real-time tracking of CPU Temperature, Battery Level, RAM Usage, and Uptime.</li>
+        <li><strong>Model Intelligence:</strong> Identifies device-specific quirks and provides tailored maintenance advice.</li>
+        <li><strong>Active Alerts:</strong> Instant notifications for critical storage, low battery, or high thermal levels.</li>
       </ul>
 
-      <h3>File & Storage Management <span class="feature-tag tag-active">Functional</span></h3>
+      <h3>Backup & Restore Module <span class="feature-tag tag-progress">Refining</span></h3>
       <ul>
-        <li><strong>Storage Analyzer:</strong> Categorizes device files (Images, Videos, Documents) with visual usage breakdowns.</li>
-        <li><strong>Smart File Organizer:</strong> Backend infrastructure supporting local organization and NAS/SMB synchronization.</li>
-        <li><strong>Cleaner & Maintenance:</strong> Dedicated utility for identifying and removing system "junk" or unnecessary files.</li>
-        <li><strong>Archive Engine:</strong> Managed archive system with built-in NAS/SMB sync capabilities.</li>
+        <li><strong>Data Scanning:</strong> Comprehensive scanning for SMS/MMS, Call Logs, Contacts, APKs, and User Files.</li>
+        <li><strong>WorkManager Execution:</strong> Background processing with persistent progress notifications for long-running tasks.</li>
+        <li><strong>Restore Module:</strong> Supports archive selection, granular item recovery, and SMS default app switching.</li>
+        <li><strong>Cloud Connector:</strong> <span class="feature-tag tag-progress">Partial</span> Placeholder UI for Google Drive/OneDrive sync (Backend in development).</li>
       </ul>
 
-      <h3>Backup & Data Recovery <span class="feature-tag tag-progress">In Progress / Debugging</span></h3>
+      <h3>Cleaner & Maintenance <span class="feature-tag tag-active">Functional</span></h3>
       <ul>
-        <li><strong>Universal Backup Viewer:</strong> A local "mini-site" (HTML/JS) designed to browse SMS, Contacts, and Media backups directly within the app.</li>
-        <li><strong>Data Recovery Logic:</strong> Deep-scanning algorithms currently being refined for increased reliability.</li>
-        <li><strong>Network Sync:</strong> Expanding NAS/SMB support for multi-point backup redundancy.</li>
+        <li><strong>Junk Scan:</strong> Automated identification of temporary files, logs, and empty folders.</li>
+        <li><strong>Guided App Cache:</strong> Step-by-step assistance for clearing app-specific cache on non-root devices.</li>
+        <li><strong>Safety Guidance:</strong> Educational overlays explaining the impact of clearing different data categories.</li>
+        <li><strong>Auto Clean:</strong> Scheduled maintenance triggers integrated with the Automation Engine.</li>
       </ul>
 
-      <h3>Planned Optimization <span class="feature-tag tag-progress">Conceptual</span></h3>
+      <h3>Network Health & Optimization <span class="feature-tag tag-active">Functional</span></h3>
       <ul>
-        <li><strong>Network Optimizer:</strong> Advanced diagnostics for mobile and Wi-Fi performance.</li>
-        <li><strong>Pre-Reset Guide:</strong> Comprehensive checklist and automation to ensure data safety before device factory resets.</li>
-        <li><strong>Automation Engine:</strong> Scriptable triggers for maintenance tasks and backup schedules.</li>
+        <li><strong>DNS Benchmark:</strong> Performance testing against Cloudflare, Google, Quad9, and OpenDNS.</li>
+        <li><strong>Latency & Jitter:</strong> Real-time diagnostic testing for connection stability and packet loss.</li>
+        <li><strong>Optimization:</strong> Socket flushing and interface rebinding for enhanced stability.</li>
+        <li><strong>Local Network Scan:</strong> Discovery and monitoring of all devices on the active Wi-Fi network.</li>
       </ul>
+
+      <h3>Recovery Module <span class="feature-tag tag-active">Functional</span></h3>
+      <ul>
+        <li><strong>Deep Scan:</strong> Advanced storage analysis to locate and identify recoverable media and documents.</li>
+        <li><strong>Secure Delete:</strong> Permanent, irreversible file wiping for maximum privacy and data security.</li>
+        <li><strong>Preview System:</strong> Built-in viewer for images, audio, and video to verify items before recovery.</li>
+        <li><strong>Recoverability Score:</strong> Estimates the probability of successful restoration for each identified file.</li>
+      </ul>
+
+      <h3>Advanced Tools <span class="feature-tag tag-active">Functional</span></h3>
+      <ul>
+        <li><strong>Command Terminal:</strong> Direct shell access within the app for advanced users.</li>
+        <li><strong>Local ADB Client:</strong> Integrated setup and console for wireless debugging (requires manual configuration).</li>
+        <li><strong>Resource Monitor:</strong> High-fidelity graphs tracking CPU and Memory usage over time.</li>
+        <li><strong>File Explorer:</strong> Modular file management with category-specific views and quick actions.</li>
+      </ul>
+
+      <h3>Help & Transparency <span class="feature-tag tag-active">Functional</span></h3>
+      <ul>
+        <li><strong>Searchable Help:</strong> Comprehensive search for child-friendly explanations and feature walkthroughs.</li>
+        <li><strong>Permission Registry:</strong> Transparent registry explaining the necessity and impact of every requested permission.</li>
+        <li><strong>Developer Mode Guide:</strong> Integrated step-by-step instructions for external system configurations.</li>
+      </ul>
+
+      <!-- Experimental Download Section -->
+      <div style="margin: 40px 0; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 40px; text-align: center;">
+        <h2 style="text-align: center; border: none;">Get the Experimental APK</h2>
+        <p style="margin-bottom: 25px;">Interested in testing the "Complete Android Lifecycle Engine"? Download the current experimental build below.</p>
+
+        <a href="assets/apks/RTS_Device_Suite_Pro_Apk/RTS_V01.apk" target="_blank" style="display: inline-block; text-decoration: none; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+          <img src="assets/images/RTS_Device_Suite_Pro/Neon Dark Cyber.png"
+               alt="Download RTS Device Suite Pro Experimental APK"
+               style="width: 100%; max-width: 800px; border-radius: 12px; border: 1px solid var(--accent); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+          <p style="margin-top: 15px; font-size: 0.85rem; color: var(--accent); font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">
+            Click to Download Experimental Build
+          </p>
+        </a>
+
+        <div style="margin-top: 10px;">
+          <button id="openHelp" class="help-btn">Need help installing?</button>
+        </div>
+      </div>
+      </div>
 
       <h2>Media Showcase</h2>
       <div class="media-grid">
@@ -174,7 +280,7 @@
       </div>
 
       <h2>Current Focus</h2>
-      <p>The project is currently in active development. Primary focus is on the **Backup Viewer Site**, which is undergoing UI refinements (Top Navigation for Text/Contacts/Media) and troubleshooting for consistent rendering across different devices.</p>
+      <p>The project is currently in active development. While many core modules are functional, primary focus is now on transitioning the **Cloud Connector** from a placeholder UI to a robust production engine for Google Drive and OneDrive sync. Additionally, I am refining the **Backup Viewer Site** and improving the reliability of the **Deep Scan** recovery algorithms across varied device hardware.</p>
 
       <h2>The Backup Viewer Philosophy</h2>
       <p>While RTS Device Suite Pro aims to restore most files to their original system locations, SMS and MMS messages present a unique technical challenge. To ensure 100% data safety and universal compatibility, I have chosen a <strong>"Viewer-First"</strong> approach for messaging history.</p>
@@ -218,6 +324,42 @@
     </div>
   </div>
 
+  <!-- Installation Help Modal -->
+  <div id="helpModal" class="modal-overlay">
+    <div class="modal-card">
+      <button id="closeHelp" class="modal-close">&times;</button>
+      <h2>Installation Guide</h2>
+      <p>Follow these steps to get RTS Device Suite Pro running on your Android device. This process is called "sideloading."</p>
+
+      <h3>Step 1: Get the APK onto your Phone</h3>
+      <ul>
+        <li><strong>Option A (Direct):</strong> If you are browsing this site on your phone, simply tap the download banner above. The file will save to your <strong>Downloads</strong> folder.</li>
+        <li><strong>Option B (PC/Mac):</strong> Download the file to your computer. Connect your phone via USB cable and select "File Transfer" mode on the phone. Copy the <code>.apk</code> file into any folder on your phone (e.g., Downloads).</li>
+      </ul>
+
+      <h3>Step 2: Enable "Unknown Sources"</h3>
+      <p>By default, Android blocks apps not from the Play Store for safety. Since this is an experimental build, you need to grant permission manually:</p>
+      <ol>
+        <li>Open your phone's <strong>Settings</strong>.</li>
+        <li>Go to <strong>Apps</strong> (or <em>Security & Privacy</em>).</li>
+        <li>Look for <strong>Special App Access</strong> &gt; <strong>Install unknown apps</strong>.</li>
+        <li>Select the app you'll use to open the file (usually <strong>Chrome</strong> or <strong>Files/My Files</strong>) and toggle on <strong>"Allow from this source"</strong>.</li>
+      </ol>
+
+      <h3>Step 3: Run the Installer</h3>
+      <ol>
+        <li>Open your phone's File Manager app (often named <strong>Files</strong>, <strong>My Files</strong>, or <strong>Downloads</strong>).</li>
+        <li>Locate the <code>RTS_Device_Suite_Pro.apk</code> file and tap it.</li>
+        <li>A prompt will ask "Do you want to install this application?" Tap <strong>Install</strong>.</li>
+        <li>If Google Play Protect warns you, tap <strong>"Install Anyway"</strong> (this appears because the app is self-signed for development).</li>
+      </ol>
+
+      <div class="highlight-box" style="margin-top: 30px; font-size: 0.9rem;">
+        <strong>Privacy Note:</strong> RTS Device Suite Pro is privacy-first. We ask for "Unknown Sources" because the app is distributed directly to you, bypassing the Play Store's closed ecosystem.
+      </div>
+    </div>
+  </div>
+
   <!-- Theme Loader -->
   <script type="module">
     import {
@@ -232,6 +374,19 @@
       applyLogoSource();
       applyCogSource();
       applySavedNav();
+
+      // Modal Logic
+      const modal = document.getElementById('helpModal');
+      const openBtn = document.getElementById('openHelp');
+      const closeBtn = document.getElementById('closeHelp');
+
+      if (openBtn && modal && closeBtn) {
+        openBtn.onclick = () => modal.classList.add('active');
+        closeBtn.onclick = () => modal.classList.remove('active');
+        window.onclick = (event) => {
+          if (event.target === modal) modal.classList.remove('active');
+        };
+      }
     });
   </script>
 </body>
