@@ -134,74 +134,288 @@
   <div class="container" style="margin-top: 80px;">
     <a href="inprogress.html" style="text-decoration: none; color: var(--accent); font-weight: 600;">← Back to In Progress</a>
 
-    <div class="card document-content" style="margin-top: 20px;">
-      <div class="status-banner">Active Development</div>
-      <h1>RTS Device Suite Pro</h1>
-      <p class="lead">A modular, privacy-first toolkit for advanced Android device management and data recovery.</p>
+    <div class="article-header" style="margin-top: 20px;">
+      <div class="status-banner" style="margin-bottom: 0;">Active Development</div>
+      <button id="readingLevelToggle" class="reading-level-toggle">
+        <span class="icon">💡</span> View Simple Version
+      </button>
+    </div>
 
-      <div class="highlight-box">
-        "An all-in-one utility designed for deep storage analysis, automated backups, and system optimization."
+    <div class="card document-content">
+      <div class="academic-content">
+        <h1>RTS Device Suite Pro</h1>
+        <p class="lead">A modular, privacy-first toolkit for advanced Android device management and data recovery.</p>
+      </div>
+      <div class="simple-content">
+        <h1>RTS Device Suite Pro</h1>
+        <p class="lead">A powerful, easy-to-use tool to help you take control of your Android phone and save your files.</p>
       </div>
 
-      <h2>App Purpose</h2>
-      <p>RTS Device Suite Pro serves as a comprehensive "all-in-one" toolkit for Android users. It is designed to manage complex storage environments, perform deep data recovery, automate backups, and optimize overall system performance through a centralized, high-tech interface.</p>
+      <div class="highlight-box">
+        <div class="academic-content">
+          "An all-in-one utility designed for deep storage analysis, automated backups, and system optimization."
+        </div>
+        <div class="simple-content">
+          "A complete toolkit to clean your phone, back up your stuff, and make everything run faster."
+        </div>
+      </div>
+
+      <div class="academic-content">
+        <h2>App Purpose</h2>
+        <p>RTS Device Suite Pro serves as a comprehensive "all-in-one" toolkit for Android users. It is designed to manage complex storage environments, perform deep data recovery, automate backups, and optimize overall system performance through a centralized, high-tech interface.</p>
+      </div>
+      <div class="simple-content">
+        <h2>What it's for</h2>
+        <p>RTS Device Suite Pro is like a Swiss Army knife for your phone. It helps you manage your files, find lost photos, keep your data safe with backups, and make your phone feel like new again with simple optimization tools.</p>
+      </div>
 
       <h2>Core Modules & Development Status</h2>
       <p style="font-size: 0.9rem; opacity: 0.7; font-style: italic; margin-bottom: 20px;">Note: As this is an active project, modules marked as "Functional" are currently in a high-fidelity beta state and undergo continuous refinement.</p>
 
-      <h3>Dashboard & System Monitoring <span class="feature-tag tag-active">Functional</span></h3>
+      <h3>
+        <span class="academic-content">Dashboard & System Monitoring</span>
+        <span class="simple-content">Home Screen & Health Check</span>
+        <span class="feature-tag tag-active">Functional</span>
+      </h3>
       <ul>
-        <li><strong>Health Score & Status:</strong> Dynamic calculation based on storage, battery, temperature, and maintenance tasks.</li>
-        <li><strong>Real-time Metrics:</strong> Real-time tracking of CPU Temperature, Battery Level, RAM Usage, and Uptime.</li>
-        <li><strong>Model Intelligence:</strong> Identifies device-specific quirks and provides tailored maintenance advice.</li>
-        <li><strong>Active Alerts:</strong> Instant notifications for critical storage, low battery, or high thermal levels.</li>
+        <li><strong>
+          <span class="academic-content">Health Score & Status:</span>
+          <span class="simple-content">Health Score:</span>
+        </strong>
+          <span class="academic-content">Dynamic calculation based on storage, battery, temperature, and maintenance tasks.</span>
+          <span class="simple-content">A single number that tells you how well your phone is doing.</span>
+        </li>
+        <li><strong>
+          <span class="academic-content">Real-time Metrics:</span>
+          <span class="simple-content">Live Stats:</span>
+        </strong>
+          <span class="academic-content">Real-time tracking of CPU Temperature, Battery Level, RAM Usage, and Uptime.</span>
+          <span class="simple-content">See how hot your phone is, how much battery is left, and how fast it's running.</span>
+        </li>
+        <li><strong>
+          <span class="academic-content">Model Intelligence:</span>
+          <span class="simple-content">Smart Advice:</span>
+        </strong>
+          <span class="academic-content">Identifies device-specific quirks and provides tailored maintenance advice.</span>
+          <span class="simple-content">Gives you tips specifically for your model of phone.</span>
+        </li>
+        <li><strong>
+          <span class="academic-content">Active Alerts:</span>
+          <span class="simple-content">Warnings:</span>
+        </strong>
+          <span class="academic-content">Instant notifications for critical storage, low battery, or high thermal levels.</span>
+          <span class="simple-content">Tells you instantly if your phone is getting too hot or running out of space.</span>
+        </li>
       </ul>
 
-      <h3>Backup & Restore Module <span class="feature-tag tag-progress">Refining</span></h3>
+      <h3>
+        <span class="academic-content">Backup & Restore Module</span>
+        <span class="simple-content">Safety & Backup</span>
+        <span class="feature-tag tag-progress">Refining</span>
+      </h3>
       <ul>
-        <li><strong>Data Scanning:</strong> Comprehensive scanning for SMS/MMS, Call Logs, Contacts, APKs, and User Files.</li>
-        <li><strong>WorkManager Execution:</strong> Background processing with persistent progress notifications for long-running tasks.</li>
-        <li><strong>Restore Module:</strong> Supports archive selection, granular item recovery, and SMS default app switching.</li>
-        <li><strong>Cloud Connector:</strong> <span class="feature-tag tag-progress">Partial</span> Placeholder UI for Google Drive/OneDrive sync (Backend in development).</li>
+        <li><strong>
+          <span class="academic-content">Data Scanning:</span>
+          <span class="simple-content">Deep Scan:</span>
+        </strong>
+          <span class="academic-content">Comprehensive scanning for SMS/MMS, Call Logs, Contacts, APKs, and User Files.</span>
+          <span class="simple-content">Finds all your messages, contacts, apps, and photos so you can save them.</span>
+        </li>
+        <li><strong>
+          <span class="academic-content">WorkManager Execution:</span>
+          <span class="simple-content">Background Saving:</span>
+        </strong>
+          <span class="academic-content">Background processing with persistent progress notifications for long-running tasks.</span>
+          <span class="simple-content">Backups keep running even if you close the app, showing you progress in your notifications.</span>
+        </li>
+        <li><strong>
+          <span class="academic-content">Restore Module:</span>
+          <span class="simple-content">Bring Back Files:</span>
+        </strong>
+          <span class="academic-content">Supports archive selection, granular item recovery, and SMS default app switching.</span>
+          <span class="simple-content">Lets you pick exactly which files or messages you want to put back on your phone.</span>
+        </li>
+        <li><strong>
+          <span class="academic-content">Cloud Connector:</span>
+          <span class="simple-content">Online Sync:</span>
+        </strong>
+          <span class="feature-tag tag-progress">Partial</span>
+          <span class="academic-content">Placeholder UI for Google Drive/OneDrive sync (Backend in development).</span>
+          <span class="simple-content">Upcoming feature to save your backups to Google Drive or OneDrive.</span>
+        </li>
       </ul>
 
-      <h3>Cleaner & Maintenance <span class="feature-tag tag-active">Functional</span></h3>
+      <h3>
+        <span class="academic-content">Cleaner & Maintenance</span>
+        <span class="simple-content">Cleaning & Speed</span>
+        <span class="feature-tag tag-active">Functional</span>
+      </h3>
       <ul>
-        <li><strong>Junk Scan:</strong> Automated identification of temporary files, logs, and empty folders.</li>
-        <li><strong>Guided App Cache:</strong> Step-by-step assistance for clearing app-specific cache on non-root devices.</li>
-        <li><strong>Safety Guidance:</strong> Educational overlays explaining the impact of clearing different data categories.</li>
-        <li><strong>Auto Clean:</strong> Scheduled maintenance triggers integrated with the Automation Engine.</li>
+        <li><strong>
+          <span class="academic-content">Junk Scan:</span>
+          <span class="simple-content">Junk Finder:</span>
+        </strong>
+          <span class="academic-content">Automated identification of temporary files, logs, and empty folders.</span>
+          <span class="simple-content">Finds hidden files and "trash" taking up space on your phone.</span>
+        </li>
+        <li><strong>
+          <span class="academic-content">Guided App Cache:</span>
+          <span class="simple-content">Easy Cache Clean:</span>
+        </strong>
+          <span class="academic-content">Step-by-step assistance for clearing app-specific cache on non-root devices.</span>
+          <span class="simple-content">Walks you through cleaning app data to free up space and fix slow apps.</span>
+        </li>
+        <li><strong>
+          <span class="academic-content">Safety Guidance:</span>
+          <span class="simple-content">Safe Help:</span>
+        </strong>
+          <span class="academic-content">Educational overlays explaining the impact of clearing different data categories.</span>
+          <span class="simple-content">Explains exactly what will happen before you delete anything, so you stay safe.</span>
+        </li>
+        <li><strong>
+          <span class="academic-content">Auto Clean:</span>
+          <span class="simple-content">Automatic Cleaning:</span>
+        </strong>
+          <span class="academic-content">Scheduled maintenance triggers integrated with the Automation Engine.</span>
+          <span class="simple-content">Set it and forget it—the app cleans up your phone on a schedule.</span>
+        </li>
       </ul>
 
-      <h3>Network Health & Optimization <span class="feature-tag tag-active">Functional</span></h3>
+      <h3>
+        <span class="academic-content">Network Health & Optimization</span>
+        <span class="simple-content">Internet & Wi-Fi</span>
+        <span class="feature-tag tag-active">Functional</span>
+      </h3>
       <ul>
-        <li><strong>DNS Benchmark:</strong> Performance testing against Cloudflare, Google, Quad9, and OpenDNS.</li>
-        <li><strong>Latency & Jitter:</strong> Real-time diagnostic testing for connection stability and packet loss.</li>
-        <li><strong>Optimization:</strong> Socket flushing and interface rebinding for enhanced stability.</li>
-        <li><strong>Local Network Scan:</strong> Discovery and monitoring of all devices on the active Wi-Fi network.</li>
+        <li><strong>
+          <span class="academic-content">DNS Benchmark:</span>
+          <span class="simple-content">Speed Test:</span>
+        </strong>
+          <span class="academic-content">Performance testing against Cloudflare, Google, Quad9, and OpenDNS.</span>
+          <span class="simple-content">Finds the fastest internet connection for your phone.</span>
+        </li>
+        <li><strong>
+          <span class="academic-content">Latency & Jitter:</span>
+          <span class="simple-content">Connection Check:</span>
+        </strong>
+          <span class="academic-content">Real-time diagnostic testing for connection stability and packet loss.</span>
+          <span class="simple-content">Shows you if your Wi-Fi is acting up or dropping out.</span>
+        </li>
+        <li><strong>
+          <span class="academic-content">Optimization:</span>
+          <span class="simple-content">Auto-Fix:</span>
+        </strong>
+          <span class="academic-content">Socket flushing and interface rebinding for enhanced stability.</span>
+          <span class="simple-content">Fixes common internet glitches with one click.</span>
+        </li>
+        <li><strong>
+          <span class="academic-content">Local Network Scan:</span>
+          <span class="simple-content">Who's on my Wi-Fi?</span>
+        </strong>
+          <span class="academic-content">Discovery and monitoring of all devices on the active Wi-Fi network.</span>
+          <span class="simple-content">Shows you every phone, computer, and smart device connected to your Wi-Fi.</span>
+        </li>
       </ul>
 
-      <h3>Recovery Module <span class="feature-tag tag-active">Functional</span></h3>
+      <h3>
+        <span class="academic-content">Recovery Module</span>
+        <span class="simple-content">Photo & File Recovery</span>
+        <span class="feature-tag tag-active">Functional</span>
+      </h3>
       <ul>
-        <li><strong>Deep Scan:</strong> Advanced storage analysis to locate and identify recoverable media and documents.</li>
-        <li><strong>Secure Delete:</strong> Permanent, irreversible file wiping for maximum privacy and data security.</li>
-        <li><strong>Preview System:</strong> Built-in viewer for images, audio, and video to verify items before recovery.</li>
-        <li><strong>Recoverability Score:</strong> Estimates the probability of successful restoration for each identified file.</li>
+        <li><strong>
+          <span class="academic-content">Deep Scan:</span>
+          <span class="simple-content">Super Search:</span>
+        </strong>
+          <span class="academic-content">Advanced storage analysis to locate and identify recoverable media and documents.</span>
+          <span class="simple-content">Digs deep into your phone to find deleted photos, videos, and files.</span>
+        </li>
+        <li><strong>
+          <span class="academic-content">Secure Delete:</span>
+          <span class="simple-content">Permanent Erase:</span>
+        </strong>
+          <span class="academic-content">Permanent, irreversible file wiping for maximum privacy and data security.</span>
+          <span class="simple-content">Deletes files so they can never, ever be recovered by anyone.</span>
+        </li>
+        <li><strong>
+          <span class="academic-content">Preview System:</span>
+          <span class="simple-content">Photo Preview:</span>
+        </strong>
+          <span class="academic-content">Built-in viewer for images, audio, and video to verify items before recovery.</span>
+          <span class="simple-content">See your deleted photos before you choose to bring them back.</span>
+        </li>
+        <li><strong>
+          <span class="academic-content">Recoverability Score:</span>
+          <span class="simple-content">Chance of Success:</span>
+        </strong>
+          <span class="academic-content">Estimates the probability of successful restoration for each identified file.</span>
+          <span class="simple-content">Tells you how likely it is that a file can be fully saved.</span>
+        </li>
       </ul>
 
-      <h3>Advanced Tools <span class="feature-tag tag-active">Functional</span></h3>
+      <h3>
+        <span class="academic-content">Advanced Tools</span>
+        <span class="simple-content">Expert Utilities</span>
+        <span class="feature-tag tag-active">Functional</span>
+      </h3>
       <ul>
-        <li><strong>Command Terminal:</strong> Direct shell access within the app for advanced users.</li>
-        <li><strong>Local ADB Client:</strong> Integrated setup and console for wireless debugging (requires manual configuration).</li>
-        <li><strong>Resource Monitor:</strong> High-fidelity graphs tracking CPU and Memory usage over time.</li>
-        <li><strong>File Explorer:</strong> Modular file management with category-specific views and quick actions.</li>
+        <li><strong>
+          <span class="academic-content">Command Terminal:</span>
+          <span class="simple-content">Pro Terminal:</span>
+        </strong>
+          <span class="academic-content">Direct shell access within the app for advanced users.</span>
+          <span class="simple-content">Lets expert users run advanced commands directly on their phone.</span>
+        </li>
+        <li><strong>
+          <span class="academic-content">Local ADB Client:</span>
+          <span class="simple-content">Computer Link:</span>
+        </strong>
+          <span class="academic-content">Integrated setup and console for wireless debugging (requires manual configuration).</span>
+          <span class="simple-content">Lets you talk to your phone wirelessly from a computer for pro settings.</span>
+        </li>
+        <li><strong>
+          <span class="academic-content">Resource Monitor:</span>
+          <span class="simple-content">Usage Graphs:</span>
+        </strong>
+          <span class="academic-content">High-fidelity graphs tracking CPU and Memory usage over time.</span>
+          <span class="simple-content">See beautiful charts of how hard your phone is working.</span>
+        </li>
+        <li><strong>
+          <span class="academic-content">File Explorer:</span>
+          <span class="simple-content">Pro File Manager:</span>
+        </strong>
+          <span class="academic-content">Modular file management with category-specific views and quick actions.</span>
+          <span class="simple-content">A powerful way to browse every file on your device.</span>
+        </li>
       </ul>
 
-      <h3>Help & Transparency <span class="feature-tag tag-active">Functional</span></h3>
+      <h3>
+        <span class="academic-content">Help & Transparency</span>
+        <span class="simple-content">Help & How-To</span>
+        <span class="feature-tag tag-active">Functional</span>
+      </h3>
       <ul>
-        <li><strong>Searchable Help:</strong> Comprehensive search for child-friendly explanations and feature walkthroughs.</li>
-        <li><strong>Permission Registry:</strong> Transparent registry explaining the necessity and impact of every requested permission.</li>
-        <li><strong>Developer Mode Guide:</strong> Integrated step-by-step instructions for external system configurations.</li>
+        <li><strong>
+          <span class="academic-content">Searchable Help:</span>
+          <span class="simple-content">Quick Search:</span>
+        </strong>
+          <span class="academic-content">Comprehensive search for child-friendly explanations and feature walkthroughs.</span>
+          <span class="simple-content">Search for easy instructions on how to use any part of the app.</span>
+        </li>
+        <li><strong>
+          <span class="academic-content">Permission Registry:</span>
+          <span class="simple-content">Privacy Check:</span>
+        </strong>
+          <span class="academic-content">Transparent registry explaining the necessity and impact of every requested permission.</span>
+          <span class="simple-content">Explains exactly why the app needs certain permissions and how it keeps you safe.</span>
+        </li>
+        <li><strong>
+          <span class="academic-content">Developer Mode Guide:</span>
+          <span class="simple-content">Pro Setup Guide:</span>
+        </strong>
+          <span class="academic-content">Integrated step-by-step instructions for external system configurations.</span>
+          <span class="simple-content">Easy instructions for turning on advanced "Developer Settings" on your phone.</span>
+        </li>
       </ul>
 
       <!-- Experimental Download Section -->
@@ -297,9 +511,9 @@
       <p>For example, <strong>SMS Backup & Restore by SyncTech Pty Ltd</strong> (available on the Google Play Store) is a fantastic utility that I have personally used with success. I am not affiliated with them in any way; I simply believe in recommending the best tool for the job. RTS is here to provide the options others don't—not to claim it's the only tool you'll ever need.</p>
 
       <h2>Open Source & Transparency</h2>
-      <p>In alignment with my philosophy of open-source and non-restrictive development, the complete source code for RTS Device Suite Pro is available for review, contribution, and audit on GitHub.</p>
+      <p>In alignment with my philosophy of open-source and non-restrictive development, the complete source code for RTS Device Suite Pro is available for review, contribution, and audit on GitHub. Additionally, the source code for this website is also public.</p>
 
-      <div style="margin-top: 20px;">
+      <div style="margin-top: 20px; display: flex; gap: 15px; flex-wrap: wrap;">
         <a href="https://github.com/Semsey-Technologies/RTS_Device_Suite_Pro" target="_blank" class="github-link" style="
           display: inline-flex;
           align-items: center;
@@ -313,7 +527,22 @@
           transition: all 0.3s ease;
         ">
           <svg style="width: 20px; height: 20px; margin-right: 12px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-          Explore Source on GitHub
+          App Source Code
+        </a>
+        <a href="https://github.com/Semsey-Technologies/SemseyTechnologies/tree/main" target="_blank" class="github-link" style="
+          display: inline-flex;
+          align-items: center;
+          padding: 12px 24px;
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid var(--accent);
+          color: var(--accent);
+          text-decoration: none;
+          border-radius: 8px;
+          font-weight: 600;
+          transition: all 0.3s ease;
+        ">
+          <svg style="width: 20px; height: 20px; margin-right: 12px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          Website Source Code
         </a>
       </div>
 
@@ -333,29 +562,31 @@
 
       <h3>Step 1: Get the APK onto your Phone</h3>
       <ul>
-        <li><strong>Option A (Direct):</strong> If you are browsing this site on your phone, simply tap the download banner above. The file will save to your <strong>Downloads</strong> folder.</li>
-        <li><strong>Option B (PC/Mac):</strong> Download the file to your computer. Connect your phone via USB cable and select "File Transfer" mode on the phone. Copy the <code>.apk</code> file into any folder on your phone (e.g., Downloads).</li>
+        <li><strong>Option A (Direct):</strong> If you are browsing this site on your phone, tap the download banner.
+          <br><em>Note: You may see a Google Drive warning stating "Google Drive can't scan this file for viruses." This is normal for APK files. Click <strong>Download Anyway</strong>.</em>
+        </li>
+        <li><strong>Option B (PC/Mac):</strong> Download the file to your computer. Connect your phone via USB cable and select "File Transfer" mode. Copy the <code>.apk</code> file into your phone's <strong>Downloads</strong> folder.</li>
       </ul>
 
       <h3>Step 2: Enable "Unknown Sources"</h3>
-      <p>By default, Android blocks apps not from the Play Store for safety. Since this is an experimental build, you need to grant permission manually:</p>
+      <p>By default, Android blocks apps not from the Play Store. Since this is an experimental build, you need to grant permission manually:</p>
       <ol>
         <li>Open your phone's <strong>Settings</strong>.</li>
         <li>Go to <strong>Apps</strong> (or <em>Security & Privacy</em>).</li>
         <li>Look for <strong>Special App Access</strong> &gt; <strong>Install unknown apps</strong>.</li>
-        <li>Select the app you'll use to open the file (usually <strong>Chrome</strong> or <strong>Files/My Files</strong>) and toggle on <strong>"Allow from this source"</strong>.</li>
+        <li>Select the app you'll use to open the file (usually <strong>Chrome</strong> or your <strong>File Manager</strong>) and toggle on <strong>"Allow from this source"</strong>.</li>
       </ol>
 
       <h3>Step 3: Run the Installer</h3>
       <ol>
-        <li>Open your phone's File Manager app (often named <strong>Files</strong>, <strong>My Files</strong>, or <strong>Downloads</strong>).</li>
-        <li>Locate the <code>RTS_Device_Suite_Pro.apk</code> file and tap it.</li>
+        <li>Open your phone's File Manager app (often named <strong>Files</strong> or <strong>Downloads</strong>).</li>
+        <li>Locate the <code>RTS_V01.apk</code> file and tap it.</li>
         <li>A prompt will ask "Do you want to install this application?" Tap <strong>Install</strong>.</li>
         <li>If Google Play Protect warns you, tap <strong>"Install Anyway"</strong> (this appears because the app is self-signed for development).</li>
       </ol>
 
       <div class="highlight-box" style="margin-top: 30px; font-size: 0.9rem;">
-        <strong>Privacy Note:</strong> RTS Device Suite Pro is privacy-first. We ask for "Unknown Sources" because the app is distributed directly to you, bypassing the Play Store's closed ecosystem.
+        <strong>Transparency Note:</strong> To keep this project free and open, I utilize decentralized hosting (GitHub for code, Supabase for audio, and Google Drive for large binaries). RTS Device Suite Pro is privacy-first and open-source.
       </div>
     </div>
   </div>

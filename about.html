@@ -14,6 +14,62 @@
   <link rel="stylesheet" href="assets/theme/animations.css" />
 
   <script type="module" src="assets/theme/theme.js"></script>
+
+  <style>
+    /* Tooltip Container */
+    .tooltip {
+      position: relative;
+      display: inline-block;
+      border-bottom: 1px dotted var(--accent);
+      cursor: help;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    /* Tooltip Text */
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 220px;
+      background-color: var(--bg2);
+      color: var(--fg);
+      text-align: center;
+      border-radius: 8px;
+      padding: 12px;
+      position: absolute;
+      z-index: 3000;
+      bottom: 125%;
+      left: 50%;
+      margin-left: -110px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      border: 1px solid var(--accent);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5), 0 0 5px var(--accent);
+      font-size: 0.85rem;
+      line-height: 1.4;
+      pointer-events: none;
+    }
+
+    /* Tooltip Arrow */
+    .tooltip .tooltiptext::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: var(--accent) transparent transparent transparent;
+    }
+
+    /* Show Tooltip on Hover or Tap (Mobile) */
+    .tooltip:hover .tooltiptext,
+    .tooltip.active .tooltiptext {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .about-section h2 { margin-top: 0; }
+  </style>
 </head>
 
 <body>
@@ -32,76 +88,188 @@
 
   <h1>About Semsey Technologies</h1>
 
-  <div class="container">
-    <div class="card">
-      <h2>Who I Am</h2>
-      <p class="lead">
-        I’m Don — a solo developer, researcher, and systems thinker. I build tools, models, and experiments that help people understand and shape the systems around them. I don’t come from a traditional engineering background; everything I know comes from curiosity, iteration, and refusing to accept “that’s just how it works” as an answer.
-      </p>
-      <p>
-        My work spans software, theory, and practical problem‑solving. If something can be made clearer, faster, or more humane, I try to build it.
-      </p>
+  <div class="container about-section">
+    <div class="article-header">
+       <span class="category">About</span>
+       <button id="readingLevelToggle" class="reading-level-toggle">
+         <span class="icon">💡</span> View Simple Version
+       </button>
     </div>
 
     <div class="card">
-      <h2>What I Build</h2>
-      <p>Semsey Technologies is my umbrella for everything I create:</p>
-      <ul style="line-height: 1.6; margin-top: 10px;">
-        <li><strong>RTS Device Suite Pro</strong> — a modular, privacy‑first toolkit for real‑world systems.</li>
-        <li><strong>Open models and frameworks</strong> — theories and structures for understanding behavior, incentives, and decision‑making.</li>
-        <li><strong>Experiments</strong> — prototypes, simulations, and tools that test ideas in the real world.</li>
-        <li><strong>Documentation and writing</strong> — clear explanations, transparent reasoning, and practical guidance.</li>
-      </ul>
-      <p class="lead" style="margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
-        Everything I build follows the same principles: <strong>modular, predictable, privacy‑respecting, and empowering for the user.</strong>
-      </p>
+      <div class="academic-content">
+        <h2>Who I Am</h2>
+        <p class="lead">
+          I’m Don — a solo developer, theorist, futurist, and occasional mad scientist in the best possible way. I build tools, models, and experiments that help people understand and shape the systems around them. I don’t come from a traditional engineering or academic background; everything I know comes from curiosity, iteration, and refusing to accept “that’s just how it works.”
+        </p>
+        <p>
+          I don’t claim to be a researcher. I explore ideas, test them, break them, rebuild them, and see what survives. My work spans software, theory, and practical problem‑solving. If something can be made clearer, faster, or more humane, I try to build it.
+        </p>
+      </div>
+      <div class="simple-content">
+        <h2>Who I Am</h2>
+        <p class="lead">
+          I’m Don. I love to build things, ask "why?", and solve problems. I'm not a traditional engineer or professor—I'm self-taught and driven by curiosity. I like to take apart complicated ideas and put them back together in a way that makes more sense.
+        </p>
+        <p>
+          I basically spend my time building tools and coming up with new ideas to see if they actually work in the real world.
+        </p>
+      </div>
     </div>
 
     <div class="card">
-      <h2>Why I Build It</h2>
-      <p>
-        Most systems — technical or human — are harder to understand than they need to be. They hide their logic, bury their settings, and assume the user should adapt to the system instead of the other way around.
-      </p>
-      <p class="lead">I build the opposite.</p>
-      <p>My goal is to create tools and models that:</p>
-      <ul style="line-height: 1.6; margin-top: 10px;">
-        <li>make complexity understandable</li>
-        <li>give people control over their own systems</li>
-        <li>remove friction instead of adding it</li>
-        <li>stay transparent, honest, and non‑restrictive</li>
-      </ul>
-      <p style="margin-top: 20px;">If something I build helps someone think more clearly or work more effectively, then it’s doing its job.</p>
+      <div class="academic-content">
+        <h2>How I Build</h2>
+        <p class="lead">
+          The ideas on this site are mine — but the process behind them is collaborative. I work with AI tools constantly, not as a replacement for thinking, but as a way to iterate faster, test assumptions, refine concepts, and debug the parts I can’t code myself. I can read code well enough to reason about it, but I don’t write it from scratch.
+        </p>
+        <p>
+          My workflow is a mix of deep‑dive clarity and rapid prototyping. When something grabs my attention, I can map it out with obsessive detail. Other times, I move fast, build the thing, and clean it up later. It’s not linear. It’s not always pretty. But it moves the work forward.
+        </p>
+      </div>
+      <div class="simple-content">
+        <h2>How I Build</h2>
+        <p class="lead">
+          All the ideas here are mine, but I use AI to help me build them faster. I'm good at the logic and the "big picture," and I use AI as a high-speed assistant to handle the coding and technical details.
+        </p>
+        <p>
+          I work in two modes: sometimes I dive deep into every tiny detail, and other times I move as fast as I can just to see if a prototype works. It's a bit messy, but it gets the job done!
+        </p>
+      </div>
     </div>
 
     <div class="card">
-      <h2>How I Work</h2>
-      <p>
-        I work in focused bursts. When something grabs my attention, I can break it apart, map it out, and document every corner of it with obsessive clarity. Other times, I move fast, build the thing, and come back to clean it up later. My process isn’t linear — it’s iterative, adaptive, and driven by whatever problem needs solving right now.
-      </p>
-      <p>
-        I don’t pretend to be perfectly organized. I’m not. But I am consistent about one thing: <strong>I always push the work forward.</strong>
-      </p>
-      <p class="muted">
-        Whether that means deep‑dive documentation or rapid prototyping depends on the day, the problem, and the hyperfocus of the moment.
-      </p>
+      <div class="academic-content">
+        <h2>What I Build</h2>
+        <p>Semsey Technologies is the umbrella for everything I create:</p>
+        <ul style="line-height: 1.6; margin-top: 10px;">
+          <li><strong>RTS Device Suite Pro</strong> — a modular, privacy‑first toolkit for real‑world systems.</li>
+          <li><strong>Open models and frameworks</strong> — theories and structures for understanding behavior, incentives, and decision‑making.</li>
+          <li><strong>Experiments</strong> — prototypes, simulations, and tools that test ideas in the real world.</li>
+          <li><strong>Documentation and writing</strong> — clear explanations, transparent reasoning, and practical guidance.</li>
+        </ul>
+        <p class="lead" style="margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
+          Everything I build follows the same principles: <strong>modular, predictable, privacy‑respecting, and empowering for the user.</strong>
+        </p>
+      </div>
+      <div class="simple-content">
+        <h2>What I Build</h2>
+        <p>I make a lot of different things, but they all fit into these categories:</p>
+        <ul style="line-height: 1.6; margin-top: 10px;">
+          <li><strong>Apps:</strong> Like my phone management toolkit (RTS Pro).</li>
+          <li><strong>Big Ideas:</strong> New ways to understand how people think and act.</li>
+          <li><strong>Tests:</strong> Practical experiments to see if my ideas actually work.</li>
+          <li><strong>Guides:</strong> Simple explanations of how systems work.</li>
+        </ul>
+        <p class="lead" style="margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
+          My goal is always to give <strong>you</strong> more control and keep your private stuff private.
+        </p>
+      </div>
     </div>
 
     <div class="card">
-      <h2>Use What Works for You</h2>
-      <p class="lead">
-        Everything here is designed to be used freely. Take what helps you, ignore what doesn’t, and adapt anything to your own needs. My work is meant to be a resource, not a gate.
-      </p>
+      <div class="academic-content">
+        <h2>Why I Build It</h2>
+        <p>
+          Most systems — technical or human — are harder to understand than they need to be. They hide their logic, bury their settings, and assume the user should adapt to the system instead of the other way around.
+        </p>
+        <p class="lead">I build the opposite.</p>
+        <p>My goal is to create tools and models that:</p>
+        <ul style="line-height: 1.6; margin-top: 10px;">
+          <li>make complexity understandable</li>
+          <li>give people control over their own systems</li>
+          <li>remove friction instead of adding it</li>
+          <li>stay transparent, honest, and non‑restrictive</li>
+        </ul>
+      </div>
+      <div class="simple-content">
+        <h2>Why I Build It</h2>
+        <p>
+          Most things in life (like apps or government rules) are way more confusing than they need to be. It feels like they're designed to keep you in the dark.
+        </p>
+        <p class="lead">I want to fix that.</p>
+        <p>I build things that:</p>
+        <ul style="line-height: 1.6; margin-top: 10px;">
+          <li>make hard things easy to understand</li>
+          <li>put you in the driver's seat</li>
+          <li>get rid of annoying steps and friction</li>
+          <li>are honest and open about how they work</li>
+        </ul>
+      </div>
     </div>
 
     <div class="card">
-      <h2>Transparency & Expectations</h2>
-      <p>
-        I’m one person. I move fast, I break things occasionally, and I fix them just as quickly. I don’t pretend to have all the answers — but I do share everything I learn along the way.
-      </p>
-      <p>
-        If you want to collaborate, ask questions, or explore an idea, I’m always open to conversations that lead somewhere interesting.
-      </p>
+      <div class="academic-content">
+        <h2>Objectivity, Bias & Expectations</h2>
+        <p>
+          Nothing on this site is presented as gospel. These are theories, ideas, and frameworks — starting points, not final answers. Some of them I fully believe in. Some of them I’m still unsure about. Some of them I may not even agree with later.
+        </p>
+        <p class="lead">
+          I try to stay objective, but like everyone else, I have blind spots and biases I can’t completely escape. That’s part of the process.
+        </p>
+        <p>
+          My goal isn’t to convince anyone that I’m the smartest person in the room or that I have every skill known to man. My goal is simple: <strong>if something here adds value to your thinking or your work, then it’s worth sharing.</strong>
+        </p>
+        <p style="margin-top: 20px;">Take what’s useful. Ignore what isn’t. Remix anything you want.</p>
+      </div>
+      <div class="simple-content">
+        <h2>Just My Best Guess</h2>
+        <p>
+          I don't have all the answers. The things on this site are ideas I'm exploring—not "facts" that can't be questioned. I might even change my mind about some of this later!
+        </p>
+        <p class="lead">
+          I try to be fair, but I'm human and I have my own way of looking at things.
+        </p>
+        <p>
+          I'm not trying to show off. I just want to share what I've learned in case it helps you too. <strong>If an idea here helps you, awesome. If not, don't worry about it.</strong>
+        </p>
+      </div>
     </div>
+
+    <div class="card">
+      <h2>Decentralized & Open</h2>
+      <div class="academic-content">
+        <p>
+          To keep this project sustainable and free, I use a decentralized infrastructure. Instead of expensive hosting, I rely on a mix of services:
+        </p>
+        <ul style="line-height: 1.6;">
+          <li><strong>GitHub</strong> for code and images</li>
+          <li><strong>YouTube</strong> for video</li>
+          <li><strong>Supabase</strong> for audio</li>
+          <li><strong>Google Drive</strong> for large binary files</li>
+        </ul>
+        <p>
+          The source code for this entire website and my primary projects is public. Anyone can audit it, learn from it, or build on it.
+        </p>
+      </div>
+      <div class="simple-content">
+        <p>
+          I use free services like <strong>GitHub, YouTube, Supabase, and Google Drive</strong> to keep this site running without needing a big budget. This lets me keep everything free for you to use.
+        </p>
+        <p>
+          Everything I've built is open. You can look at the "blueprints" (the source code) anytime you want to see how it works.
+        </p>
+      </div>
+      <div style="margin-top: 20px;">
+        <a href="https://github.com/Semsey-Technologies/SemseyTechnologies/tree/main" target="_blank" class="preset" style="display: inline-block; text-decoration: none; padding: 10px 20px;">View Website Source</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>If You Want to Collaborate</h2>
+      <div class="academic-content">
+        <p class="lead">
+          If you want to explore an idea, ask a question, or build something together, I’m always open to conversations that lead somewhere interesting.
+        </p>
+      </div>
+      <div class="simple-content">
+        <p class="lead">
+          If you want to talk about an idea or build something with me, I'd love to hear from you. Let's make something cool!
+        </p>
+      </div>
+    </div>
+
+    <div style="height: 60px;"></div>
   </div>
 
   <!-- Theme Loader -->
@@ -118,6 +286,20 @@
       applyLogoSource();
       applyCogSource();
       applySavedNav();
+
+      // Tooltip Toggle for Mobile
+      const tooltips = document.querySelectorAll('.tooltip');
+      tooltips.forEach(t => {
+        t.addEventListener('click', (e) => {
+          e.stopPropagation();
+          t.classList.toggle('active');
+        });
+      });
+
+      // Close tooltip when clicking elsewhere
+      document.addEventListener('click', () => {
+        tooltips.forEach(t => t.classList.remove('active'));
+      });
     });
   </script>
 </body>

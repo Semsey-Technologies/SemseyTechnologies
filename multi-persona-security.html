@@ -134,12 +134,21 @@
   <div class="container" style="margin-top: 80px;">
     <a href="operational.html" class="back-btn">← Back to Protocols</a>
 
-    <div class="operational-header">
-       <span style="text-transform: uppercase; font-weight: bold; letter-spacing: 0.1em; font-size: 0.9rem; color: #3399ff;">Operational Protocol</span>
+    <div class="article-header">
+       <span class="category" style="color: #3399ff;">Operational Protocol</span>
+       <button id="readingLevelToggle" class="reading-level-toggle">
+         <span class="icon">💡</span> View Simple Version
+       </button>
     </div>
 
-    <h1 style="text-align: left; margin-bottom: 10px; font-size: 2.5rem;">Multi-Persona Security Protocol</h1>
-    <p class="lead" style="margin-bottom: 40px; opacity: 0.8;">Practical rules to create and operate multiple online personas safely with minimal cross-contamination.</p>
+    <div class="academic-content">
+      <h1 style="text-align: left; margin-bottom: 10px; font-size: 2.5rem;">Multi-Persona Security Protocol</h1>
+      <p class="lead" style="margin-bottom: 40px; opacity: 0.8;">Practical rules to create and operate multiple online personas safely with minimal cross-contamination.</p>
+    </div>
+    <div class="simple-content">
+      <h1 style="text-align: left; margin-bottom: 10px; font-size: 2.5rem;">Managing Multiple Identities</h1>
+      <p class="lead" style="margin-bottom: 40px; opacity: 0.8;">A simple guide on how to keep your online lives separate and safe so no one can link them together.</p>
+    </div>
 
     <div class="protocol-grid">
 
@@ -147,71 +156,126 @@
       <div class="protocol-content">
 
         <div class="card section-card">
-          <h2>1. Purpose & Threat Model</h2>
-          <p>This protocol helps you run isolated personas to reduce the risk of identity linking, data leaks, and targeted profiling. Identify the <strong>threat model</strong> (who might try to link personas and why) before creation.</p>
+          <div class="academic-content">
+            <h2>1. Purpose & Threat Model</h2>
+            <p>This protocol helps you run isolated personas to reduce the risk of identity linking, data leaks, and targeted profiling. Identify the <strong>threat model</strong> (who might try to link personas and why) before creation.</p>
+          </div>
+          <div class="simple-content">
+            <h2>1. Why do this?</h2>
+            <p>This guide helps you keep different online "you's" from getting mixed up. This is useful if you want to keep your work life, hobby life, and private life completely separate so that if one account is hacked or leaked, your others stay safe.</p>
+          </div>
 
-          <h3>Threat Model Checklist</h3>
+          <h3>
+            <span class="academic-content">Threat Model Checklist</span>
+            <span class="simple-content">Who are you hiding from?</span>
+          </h3>
           <ul>
-            <li>Adversary type: Web scrapers, targeted individuals, legal investigators, or employers.</li>
-            <li>Data sources: Social media, email headers, public records, payment records.</li>
-            <li>High-value identifiers: Phone number, personal email, IP addresses, biometric media.</li>
+            <li>
+              <span class="academic-content">Adversary type: Web scrapers, targeted individuals, legal investigators, or employers.</span>
+              <span class="simple-content">Employers, nosey people, or data-tracking companies.</span>
+            </li>
+            <li>
+              <span class="academic-content">Data sources: Social media, email headers, public records, payment records.</span>
+              <span class="simple-content">Public records, old emails, or social media posts.</span>
+            </li>
           </ul>
         </div>
 
         <div class="card section-card">
-          <h2>2. Persona Creation Template</h2>
-          <p>Store these templates in an encrypted password manager. Fill one for every unique identity.</p>
+          <div class="academic-content">
+            <h2>2. Persona Creation Template</h2>
+            <p>Store these templates in an encrypted password manager. Fill one for every unique identity.</p>
+          </div>
+          <div class="simple-content">
+            <h2>2. Making a New Identity</h2>
+            <p>Use this simple form to keep track of each different account you make. Keep this info in a safe place like a password manager.</p>
+          </div>
 
           <div class="template-box">
             <strong>Name/Handle:</strong> [e.g., Alex Rivers]<br>
             <strong>Purpose:</strong> [e.g., Tech hobbyist, X Forum]<br>
             <strong>Backstory:</strong> [Age range, non-identifying city]<br>
             <strong>Primary Contact:</strong> [Burner email or alias]<br>
-            <strong>Payment/Recovery:</strong> [Prepaid card / Crypto / None]<br>
-            <strong>Environment:</strong> [Profile B in Browser X on VM Y]<br>
             <strong>Network:</strong> [VPN / Tor / Bouncer]
           </div>
         </div>
 
         <div class="card section-card">
-          <h2>3. Operational Golden Rules</h2>
-          <ul>
-            <li><strong>Compartmentalize:</strong> Separate email, phone, and browser profiles for each persona.</li>
-            <li><strong>Unique Credentials:</strong> Never reuse passwords. Generate long, random strings via manager.</li>
-            <li><strong>Strip Metadata:</strong> Remove EXIF from images before uploading (or screenshot the original).</li>
-            <li><strong>Network Isolation:</strong> Use separate browser containers plus a VPN. For high separation, use VMs.</li>
-            <li><strong>No Cross-Posting:</strong> Never post the same phrase or personal anecdote across different personas.</li>
-          </ul>
-
-          <h3>Account Creation Checklist</h3>
-          <div class="check-list">
-            <ol>
-              <li>Create burner email or alias.</li>
-              <li>Generate unique password in manager (e.g., "Persona-AlexRivers").</li>
-              <li>Set up app-based TOTP (avoid SMS).</li>
-              <li>Clear cookies before first use in a dedicated profile.</li>
-              <li>Sign up from the correct network context (VPN/Tor).</li>
-            </ol>
+          <div class="academic-content">
+            <h2>3. Operational Golden Rules</h2>
           </div>
-        </div>
-
-        <div class="card section-card">
-          <h2>4. Communications & Style</h2>
-          <p>Write style determines your digital fingerprint. Decide a consistent tone for each persona (casual, formal, technical) and stick to it to avoid stylistic linking.</p>
+          <div class="simple-content">
+            <h2>3. The Golden Rules</h2>
+          </div>
           <ul>
-            <li>Use approximate dates (e.g., "late 2010s") instead of exact timelines.</li>
-            <li>Never post raw photos of yourself or current locations.</li>
-            <li>If a face is required, use AI-generated avatars that do not resemble you.</li>
+            <li><strong>
+              <span class="academic-content">Compartmentalize:</span>
+              <span class="simple-content">Keep them apart:</span>
+            </strong>
+              <span class="academic-content">Separate email, phone, and browser profiles for each persona.</span>
+              <span class="simple-content">Use a different email address and a separate web browser for each account.</span>
+            </li>
+            <li><strong>
+              <span class="academic-content">Unique Credentials:</span>
+              <span class="simple-content">Never reuse passwords:</span>
+            </strong>
+              <span class="academic-content">Never reuse passwords. Generate long, random strings via manager.</span>
+              <span class="simple-content">Use a different, long password for every single site.</span>
+            </li>
+            <li><strong>
+              <span class="academic-content">Strip Metadata:</span>
+              <span class="simple-content">Clean your photos:</span>
+            </strong>
+              <span class="academic-content">Remove EXIF from images before uploading (or screenshot the original).</span>
+              <span class="simple-content">Remove the hidden "GPS info" from photos before posting them online.</span>
+            </li>
+            <li><strong>
+              <span class="academic-content">No Cross-Posting:</span>
+              <span class="simple-content">Don't repeat yourself:</span>
+            </strong>
+              <span class="academic-content">Never post the same phrase or personal anecdote across different personas.</span>
+              <span class="simple-content">Don't tell the same story or use the same unique catchphrases on different accounts.</span>
+            </li>
           </ul>
         </div>
 
         <div class="card section-card">
-          <h2>5. Incident Response</h2>
+          <div class="academic-content">
+            <h2>4. Communications & Style</h2>
+            <p>Write style determines your digital fingerprint. Decide a consistent tone for each persona and stick to it.</p>
+          </div>
+          <div class="simple-content">
+            <h2>4. How you talk</h2>
+            <p>The way you write can give you away. Try to use a different "voice" for each account—maybe be more formal on one and more casual on another.</p>
+          </div>
+          <ul>
+            <li>
+              <span class="academic-content">Use approximate dates (e.g., "late 2010s") instead of exact timelines.</span>
+              <span class="simple-content">Don't give exact dates or locations. Say "a few years ago" instead of "June 2021."</span>
+            </li>
+            <li>
+              <span class="academic-content">If a face is required, use AI-generated avatars that do not resemble you.</span>
+              <span class="simple-content">Use a fake AI profile picture instead of a real photo of your face.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card section-card">
+          <div class="academic-content">
+            <h2>5. Incident Response</h2>
+          </div>
+          <div class="simple-content">
+            <h2>5. What if I'm caught?</h2>
+          </div>
           <ol>
-            <li>Immediately revoke sessions and change passwords.</li>
-            <li>Revoke OAuth/connected apps on the compromised account.</li>
-            <li>Review public posts for sensitive info — redact if possible.</li>
-            <li>Retire any linked personas if a cross-contamination occurs.</li>
+            <li>
+              <span class="academic-content">Immediately revoke sessions and change passwords.</span>
+              <span class="simple-content">Log out of everything and change your passwords immediately.</span>
+            </li>
+            <li>
+              <span class="academic-content">Retire any linked personas if a cross-contamination occurs.</span>
+              <span class="simple-content">If someone links two of your accounts together, stop using both and start fresh.</span>
+            </li>
           </ol>
         </div>
 
@@ -220,7 +284,10 @@
       <!-- SIDEBAR -->
       <div class="protocol-sidebar">
         <div class="sidebar-card">
-          <h2 style="font-size: 1.2rem; color: #3399ff;">Quick Reference</h2>
+          <h2 style="font-size: 1.2rem; color: #3399ff;">
+            <span class="academic-content">Quick Reference</span>
+            <span class="simple-content">Do these first</span>
+          </h2>
           <ul style="font-size: 0.9rem; list-style: none; padding: 0;">
             <li style="margin-bottom: 10px;">✔ Unique Email</li>
             <li style="margin-bottom: 10px;">✔ Password Manager</li>

@@ -64,6 +64,35 @@ export function applySavedTheme() {
   // 5. Update sources
   applyLogoSource();
   applyCogSource();
+  initReadingLevel();
+}
+
+/* --------------------------------------------------
+   READING LEVEL (Academic vs Simple)
+-------------------------------------------------- */
+
+export function initReadingLevel() {
+  const isSimple = localStorage.getItem("semsey-simple-mode") === "true";
+  if (isSimple) {
+    document.body.classList.add("simple-mode");
+  }
+
+  const toggleBtn = document.getElementById("readingLevelToggle");
+  if (toggleBtn) {
+    updateToggleText(toggleBtn, isSimple);
+    toggleBtn.addEventListener("click", () => {
+      const active = document.body.classList.toggle("simple-mode");
+      localStorage.setItem("semsey-simple-mode", active);
+      updateToggleText(toggleBtn, active);
+    });
+  }
+}
+
+function updateToggleText(btn, isSimple) {
+  if (!btn) return;
+  btn.innerHTML = isSimple
+    ? '<span class="icon">🧬</span> View Academic Version'
+    : '<span class="icon">💡</span> View Simple Version';
 }
 
 /* --------------------------------------------------

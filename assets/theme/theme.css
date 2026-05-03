@@ -764,8 +764,77 @@ html.nav-open .nav-trigger {
 }
 
 /* --------------------------------------------------
-   BACK TO TOP BUTTON
+   READING LEVEL TOGGLE
 -------------------------------------------------- */
+
+.simple-content {
+  display: none;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+body.simple-mode .academic-content {
+  display: none;
+}
+
+body.simple-mode .simple-content {
+  display: block;
+}
+
+.reading-level-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  background: color-mix(in srgb, var(--bg3), transparent 40%);
+  border: 1px solid color-mix(in srgb, var(--accent), transparent 70%);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--fg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.reading-level-toggle:hover {
+  background: color-mix(in srgb, var(--accent), transparent 80%);
+  border-color: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+  transform: translateY(-1px);
+}
+
+.reading-level-toggle:active {
+  transform: scale(0.97);
+}
+
+/* Header Layout for Toggle */
+.article-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+  gap: 20px;
+}
+
+.article-header .category {
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  font-size: 0.9rem;
+  color: var(--accent);
+}
+
+.reading-level-toggle .icon {
+  font-size: 1rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
 .back-to-top {
   position: fixed;
