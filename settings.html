@@ -23,16 +23,11 @@
 
   <a href="index.html" class="back-btn">← Back</a>
 
-  <div class="sidebar">
-    <!-- Global Navigation -->
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="projects.html">Projects</a>
-    <a href="contact.html">Contact</a>
-    <a href="settings.html" class="active">Settings</a>
+  <!-- Universal Navigation Container -->
+  <div id="nav-container"></div>
 
-    <div class="sidebar-divider"></div>
-
+  <div class="sidebar right secondary-nav">
+    <div class="sidebar-label">Jump to Section</div>
     <!-- Section Anchors -->
     <a href="#presets">Presets</a>
     <a href="#identity">Identity</a>
@@ -41,6 +36,7 @@
     <a href="#typography">Typography</a>
     <a href="#nav-placement">Navigation Placement</a>
     <a href="#saving">Saving</a>
+    <a href="#retro">Retro Mode</a>
   </div>
 
   <h1>Site Settings</h1>
@@ -228,6 +224,20 @@
         <label class="nav-option">
           <input type="radio" name="navType" value="orb"> Floating Orb
         </label>
+      </div>
+    </div>
+
+    <!-- Retro Mode -->
+    <div class="card" id="retro">
+      <h2>Retro 90s Mode</h2>
+      <p class="lead">
+        Activate a complete secondary theme engine inspired by the early web.
+        Turning this on will replace the current UI with skeuomorphic buttons, tiled backgrounds, and a classic Java‑applet‑style menu.
+      </p>
+
+      <div class="color-row" style="margin-top: 40px;">
+        <label>Enable Retro90sMode</label>
+        <div class="toggle" id="retroToggle"></div>
       </div>
     </div>
 

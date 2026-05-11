@@ -1,0 +1,310 @@
+/* --------------------------------------------------
+   RETRO 90S ENGINE - CORE STYLES
+-------------------------------------------------- */
+
+html[data-theme-engine="retro90s"] body {
+  background: var(--r90-bg) !important;
+  font-family: var(--r90-font-main) !important;
+  color: var(--r90-text) !important;
+  transition: none !important; /* Authentic sudden UI snaps */
+  overflow-x: hidden;
+}
+
+/* Hide Modern Overlays */
+html[data-theme-engine="retro90s"] .sidebar,
+html[data-theme-engine="retro90s"] .back-btn,
+html[data-theme-engine="retro90s"] .settings-cog,
+html[data-theme-engine="retro90s"] #bgLayer,
+html[data-theme-engine="retro90s"] .back-to-top {
+  display: none !important;
+}
+
+/* 90s Typography */
+html[data-theme-engine="retro90s"] h1,
+html[data-theme-engine="retro90s"] h2,
+html[data-theme-engine="retro90s"] h3 {
+  font-family: var(--r90-font-header) !important;
+  text-shadow: 1px 1px 0px rgba(0,0,0,0.5);
+}
+
+/* 90s Card UI */
+html[data-theme-engine="retro90s"] .card {
+  background: var(--r90-panel) !important;
+  border: 2px outset var(--r90-border-light) !important;
+  box-shadow: 2px 2px 0px #000 !important;
+  border-radius: 0 !important;
+  color: var(--r90-text) !important;
+}
+
+/* --------------------------------------------------
+   MENU STYLE: GEOCITIES (beveled-sidebar)
+-------------------------------------------------- */
+.retro-menu-beveled-sidebar {
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  width: 220px;
+  background: #c0c0c0;
+  border-right: 3px outset #fff;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  z-index: 9999;
+}
+
+.retro-menu-beveled-sidebar .bev-btn {
+  display: block;
+  background: #c0c0c0;
+  border: 2px outset #fff;
+  padding: 8px;
+  margin-bottom: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.retro-menu-beveled-sidebar .bev-btn:active {
+  border-style: inset;
+}
+
+/* Adjust container for sidebar */
+html[data-retro-preset="geocities"] .container {
+  margin-left: 260px !important;
+  max-width: calc(100% - 300px);
+}
+
+/* --------------------------------------------------
+   MENU STYLE: ARCADE (bouncing-game)
+-------------------------------------------------- */
+.retro-menu-bouncing-game {
+  position: fixed;
+  top: 0; left: 0; width: 100%;
+  height: 80px;
+  background: #000;
+  border-bottom: 4px solid var(--r90-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  z-index: 9999;
+}
+
+.arcade-hud {
+  color: var(--r90-accent);
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.arcade-links a {
+  color: var(--r90-text);
+  text-decoration: none;
+  font-size: 1.2rem;
+  padding: 5px 15px;
+}
+
+.arcade-links a:hover {
+  background: var(--r90-accent);
+  color: #000;
+  box-shadow: 0 0 10px var(--r90-accent);
+}
+
+/* CRT Scanline Overlay */
+html[data-retro-preset="arcade"] body::after {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 10000;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------
+   MENU STYLE: SHAPESHIFTER (morphing-shapes)
+-------------------------------------------------- */
+.retro-menu-morphing-shapes {
+  position: fixed;
+  bottom: 20px; left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+  z-index: 9999;
+}
+
+.shape-link {
+  width: 70px; height: 70px;
+  background: var(--r90-accent);
+  color: #fff;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: bold;
+  animation: blobMorph 4s infinite alternate;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+@keyframes blobMorph {
+  0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+  100% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
+}
+
+/* --------------------------------------------------
+   MENU STYLE: RADIAL (rotary-dial)
+-------------------------------------------------- */
+.retro-menu-rotary-dial {
+  position: fixed;
+  bottom: -100px; right: -100px;
+  width: 300px; height: 300px;
+  background: var(--r90-panel);
+  border: 10px double var(--r90-accent);
+  border-radius: 50%;
+  z-index: 9999;
+  transition: bottom 0.5s ease;
+}
+
+.retro-menu-rotary-dial:hover {
+  bottom: -50px; right: -50px;
+}
+
+.dial-center {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: var(--r90-accent);
+  border: none;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* --------------------------------------------------
+   MENU STYLE: CONTROL PANEL (control-board)
+-------------------------------------------------- */
+.retro-menu-control-board {
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  width: 200px;
+  background: #333;
+  border-right: 5px solid #111;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 9999;
+}
+
+.control-unit {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.control-unit label {
+  font-size: 10px;
+  color: var(--r90-accent);
+}
+
+.toggle-switch {
+  width: 40px; height: 20px;
+  background: #000;
+  border: 2px solid #555;
+  position: relative;
+}
+
+.toggle-switch::after {
+  content: "";
+  position: absolute;
+  top: 2px; left: 2px;
+  width: 16px; height: 12px;
+  background: #777;
+}
+
+.kill-switch {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: #900;
+  border: 3px solid #600;
+  cursor: pointer;
+}
+
+/* --------------------------------------------------
+   RESPONSIVE / MOBILE CONVERSION
+-------------------------------------------------- */
+@media (max-width: 768px) {
+  /* Force all 90s menus to top vertical bars */
+  #nav-container nav[class*="retro-menu-"] {
+    position: fixed !important;
+    top: 0 !important; left: 0 !important; right: 0 !important;
+    bottom: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: 250px;
+    overflow-y: auto;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    padding: 10px !important;
+    gap: 8px !important;
+    border: 3px outset #fff !important;
+    background: #c0c0c0 !important;
+    z-index: 10001 !important;
+    transform: none !important;
+  }
+
+  /* Reset Geocities Sidebar */
+  html[data-retro-preset="geocities"] .container {
+    margin-left: 0 !important;
+    max-width: 100% !important;
+    padding-top: 180px !important;
+  }
+
+  /* Reset Arcade HUD */
+  .arcade-hud { display: none; }
+  .arcade-links {
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+  }
+
+  /* Reset Morphing Shapes */
+  .blob-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .shape-link {
+    width: 50px; height: 50px;
+    font-size: 8px;
+  }
+
+  /* Reset Rotary Dial */
+  .retro-menu-rotary-dial {
+    bottom: 0 !important; right: 0 !important;
+    width: 100% !important; height: auto !important;
+    border-radius: 0 !important;
+    padding: 15px !important;
+    position: relative !important;
+  }
+  .dial-wheel { display: flex; justify-content: space-around; }
+  .dial-center { position: static; transform: none; margin: 10px auto; display: block; }
+
+  /* Reset Control Board */
+  .retro-menu-control-board {
+    height: auto !important;
+    border-right: none !important;
+    border-bottom: 5px solid #111 !important;
+  }
+  .rack-mount {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+}

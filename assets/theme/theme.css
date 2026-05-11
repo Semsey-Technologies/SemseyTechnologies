@@ -387,6 +387,10 @@ html[data-glass="off"] .sidebar {
 
 .sidebar.right { left: auto; right: 20px; }
 
+@media (max-width: 768px) {
+  .secondary-nav { display: none !important; }
+}
+
 .sidebar.top {
   top: 0;
   left: 0;
@@ -462,6 +466,16 @@ html[data-glass="off"] .sidebar.bottom {
   background: color-mix(in srgb, var(--fg), transparent 85%);
   margin: 8px 0;
   flex-shrink: 0;
+}
+
+.sidebar-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+  opacity: 0.6;
+  margin-bottom: 8px;
+  padding: 0 12px;
 }
 
 /* Vertical Divider (Default) */
