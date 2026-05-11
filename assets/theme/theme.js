@@ -67,6 +67,11 @@ export function applySavedTheme() {
   // 6. Universal Menu Initialization
   loadUniversalMenu();
 
+  // Listen for menu load to re-apply placement
+  document.addEventListener('menuLoaded', () => {
+    applySavedNav();
+  });
+
   // 7. Initialize Reading Level State
   const isSimple = localStorage.getItem("semsey-simple-mode") === "true";
   if (isSimple) {

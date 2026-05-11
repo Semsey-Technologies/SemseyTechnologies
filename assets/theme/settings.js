@@ -191,7 +191,8 @@ function initListeners() {
   // Retro 90s Mode Toggle
   const retroToggle = document.getElementById("retroToggle");
   if (retroToggle) {
-    retroToggle.onclick = () => {
+    retroToggle.onclick = (e) => {
+      e.stopPropagation();
       const active = retroToggle.classList.toggle("active");
       localStorage.setItem("semsey-retro-mode", active);
       setTimeout(() => location.reload(), 150);

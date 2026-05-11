@@ -39,8 +39,8 @@ export async function loadUniversalMenu() {
             highlightActiveLink(container);
 
             // Re-apply navigation placement now that .sidebar exists
-            const { applySavedNav } = await import('./theme.js');
-            applySavedNav();
+            // We use a custom event to avoid circular dependencies with theme.js
+            document.dispatchEvent(new CustomEvent('menuLoaded', { detail: { container } }));
         } else {
             init90sMenuBehaviors(container);
         }
