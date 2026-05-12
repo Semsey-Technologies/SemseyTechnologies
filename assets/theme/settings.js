@@ -193,9 +193,28 @@ function initListeners() {
   if (retroToggle) {
     retroToggle.onclick = (e) => {
       e.stopPropagation();
-      const active = retroToggle.classList.toggle("active");
-      localStorage.setItem("semsey-retro-mode", active);
-      setTimeout(() => location.reload(), 150);
+      const isCurrentlyActive = retroToggle.classList.contains("active");
+      const nextState = !isCurrentlyActive;
+
+      // Update UI immediately for feedback
+      retroToggle.classList.toggle("active", nextState);
+
+      // Save state
+      localStorage.setItem("semsey-retro-mode", nextState ? "true" : "false");
+
+      // Apply theme immediately without waiting for reload
+      applySavedTheme();
+
+      // Sync the rest of the UI (like preset list)
+      syncSettingsUI();
+
+      // Force a reload after a short delay to ensure clean state and menu swap
+      // Use location.href and a cache-buster to help bypass aggressive caches
+      setTimeout(() => {
+        const url = new URL(window.location.href);
+        url.searchParams.set('t', Date.now());
+        window.location.href = url.toString();
+      }, 500);
     };
   }
 

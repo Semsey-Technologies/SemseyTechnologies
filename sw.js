@@ -1,4 +1,4 @@
-const CACHE_NAME = 'semsey-tech-v2';
+const CACHE_NAME = 'semsey-tech-v3';
 const ASSETS = [
   '/',
   '/index.html',
@@ -12,6 +12,10 @@ const ASSETS = [
   '/assets/theme/presets.js',
   '/assets/theme/settings.js',
   '/assets/theme/settings.css',
+  '/assets/theme/retro90s.js',
+  '/assets/theme/retro90s.css',
+  '/assets/theme/menu-loader.js',
+  '/assets/theme/retro-presets.js',
   '/images/logo/logo.png'
 ];
 
