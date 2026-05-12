@@ -28,7 +28,13 @@ class Retro90sThemeEngine {
 
     // Determine initial preset
     const savedPreset = localStorage.getItem("semsey-retro-preset") || "GeoCities Deluxe";
-    this.applyPreset(savedPreset);
+
+    // If body isn't ready, wait for it before applying the preset fully
+    if (!document.body) {
+      document.addEventListener("DOMContentLoaded", () => this.applyPreset(savedPreset));
+    } else {
+      this.applyPreset(savedPreset);
+    }
 
     this.isInitialized = true;
   }
@@ -39,7 +45,10 @@ class Retro90sThemeEngine {
   shutdown() {
     document.documentElement.dataset.themeEngine = "default";
     document.documentElement.removeAttribute("data-retro-preset");
-    document.body.removeAttribute("data-layout");
+
+    if (document.body) {
+      document.body.removeAttribute("data-layout");
+    }
 
     const styles = document.getElementById("retroStyles");
     if (styles) styles.remove();
@@ -67,7 +76,13 @@ class Retro90sThemeEngine {
     localStorage.setItem("semsey-retro-preset", name);
 
     // 1. Update Layout structure
-    document.body.dataset.layout = config.layout;
+    if (document.body) {
+      document.body.dataset.layout = config.layout;
+    } else {
+      document.addEventListener("DOMContentLoaded", () => {
+        if (document.body) document.body.dataset.layout = config.layout;
+      });
+    }
 
     // 2. Apply CSS Tokens (Colors, Fonts, etc)
     for (const [key, val] of Object.entries(config.vars)) {
@@ -112,6 +127,12 @@ class Retro90sThemeEngine {
 
 // Global instance
 export const retroEngine = new Retro90sThemeEngine();
+
+// Ensure a global exit function exists for HTML onclick attributes
+window.exit90s = () => {
+  localStorage.setItem("semsey-retro-mode", "false");
+  location.reload();
+};
 
 /**
  * Entry points for site-wide use

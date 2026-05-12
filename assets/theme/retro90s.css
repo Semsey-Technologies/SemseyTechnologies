@@ -245,7 +245,7 @@ html[data-retro-preset="arcade"] body::after {
     bottom: auto !important;
     width: 100% !important;
     height: auto !important;
-    max-height: 250px;
+    max-height: 300px;
     overflow-y: auto;
     display: flex !important;
     flex-direction: column !important;
@@ -257,6 +257,11 @@ html[data-retro-preset="arcade"] body::after {
     background: #c0c0c0 !important;
     z-index: 10001 !important;
     transform: none !important;
+  }
+
+  /* Ensure content doesn't hide under the fixed 90s menu */
+  html[data-theme-engine="retro90s"] .container {
+    padding-top: 180px !important;
   }
 
   /* Reset Geocities Sidebar */

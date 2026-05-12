@@ -3,9 +3,16 @@
  * Guaranteed to attach a menu to the DOM in any mode/preset.
  */
 export async function loadUniversalMenu() {
+    // If DOM isn't ready, wait for it
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", () => loadUniversalMenu());
+        return;
+    }
+
     const container = document.getElementById("nav-container");
     if (!container) {
-        console.error("CRITICAL: #nav-container not found on this page. Menu cannot attach.");
+        console.warn("MenuLoader: #nav-container not found. Retrying in 100ms...");
+        setTimeout(loadUniversalMenu, 100);
         return;
     }
 
@@ -92,12 +99,12 @@ function highlightActiveLink(container) {
  */
 function init90sMenuBehaviors(container) {
     // Ensure 90s exit button works immediately without global scripts
-    const exitBtn = container.querySelector(".exit-btn, .quit, .exit");
-    if (exitBtn) {
-        exitBtn.onclick = (e) => {
-            if (exitBtn.tagName === 'A') e.preventDefault();
+    const exitButtons = container.querySelectorAll(".exit-btn, .quit, .exit, .kill-switch, .dial-center");
+    exitButtons.forEach(btn => {
+        btn.onclick = (e) => {
+            if (btn.tagName === 'A') e.preventDefault();
             localStorage.setItem("semsey-retro-mode", "false");
             location.reload();
         };
-    }
+    });
 }
