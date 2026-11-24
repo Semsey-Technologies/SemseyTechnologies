@@ -1,0 +1,22 @@
+/* ==========================================================================
+   SemseyTechnologies - Navigation Clearance Fix (Complete Replacement)
+   Prevents fixed side navigation panels from overlapping main content on wide
+   viewports while preserving top/bottom/right/hamburger/orb layouts.
+   ========================================================================== */
+
+@media (min-width: 1180px) {
+  html:not([data-nav-placement="top"]):not([data-nav-placement="bottom"]):not([data-nav-type="hamburger"]):not([data-nav-type="orb"])
+    body:not([data-nav-placement="top"]):not([data-nav-placement="bottom"]):not([data-nav-type="hamburger"]):not([data-nav-type="orb"])
+    .container {
+    margin-left: 260px !important;
+    margin-right: 20px !important;
+    max-width: calc(100% - 280px) !important;
+  }
+
+  /* If sidebar is docked on the right (.sidebar.right), clear the right side instead */
+  html:has(.sidebar.right) .container {
+    margin-left: auto !important;
+    margin-right: 260px !important;
+    max-width: calc(100% - 280px) !important;
+  }
+}
