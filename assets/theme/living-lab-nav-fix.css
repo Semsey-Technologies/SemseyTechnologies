@@ -1,22 +1,29 @@
 /* ==========================================================================
-   SemseyTechnologies - Sidebar / Content Overlap Fix (Complete Replacement)
-   Keeps main content clear of fixed left sidebars on desktop viewports.
+   SemseyTechnologies - Universal Sidebar Clearance Fix
+   Applies desktop left-sidebar clearance across pages loaded through theme.css
+   without overriding hero layouts, top/bottom navs, hamburger, or orb modes.
    ========================================================================== */
 
 @media (min-width: 1024px) {
   html:not([data-nav-placement="top"]):not([data-nav-placement="bottom"]):not([data-nav-type="hamburger"]):not([data-nav-type="orb"])
-    .container {
+    body:not(.hero-body) .container,
+  html:not([data-nav-placement="top"]):not([data-nav-placement="bottom"]):not([data-nav-type="hamburger"]):not([data-nav-type="orb"])
+    body:not(.hero-body) > main {
     margin-left: 260px !important;
     margin-right: 24px !important;
     max-width: calc(100% - 300px) !important;
     width: auto !important;
   }
 
-  /* If top or bottom nav is active, keep container centered */
-  html[data-nav-placement="top"] .container,
-  html[data-nav-placement="bottom"] .container,
-  html[data-nav-type="hamburger"] .container,
-  html[data-nav-type="orb"] .container {
+  /* Keep centered/default container sizing when top/bottom nav or drawer mode is active */
+  html[data-nav-placement="top"] body:not(.hero-body) .container,
+  html[data-nav-placement="bottom"] body:not(.hero-body) .container,
+  html[data-nav-type="hamburger"] body:not(.hero-body) .container,
+  html[data-nav-type="orb"] body:not(.hero-body) .container,
+  html[data-nav-placement="top"] body:not(.hero-body) > main,
+  html[data-nav-placement="bottom"] body:not(.hero-body) > main,
+  html[data-nav-type="hamburger"] body:not(.hero-body) > main,
+  html[data-nav-type="orb"] body:not(.hero-body) > main {
     margin-left: auto !important;
     margin-right: auto !important;
     max-width: 900px !important;

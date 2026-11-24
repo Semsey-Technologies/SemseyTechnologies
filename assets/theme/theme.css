@@ -927,3 +927,15 @@ html[data-nav-placement="bottom"] .settings-cog {
     0 0 24px var(--accent);
   transform: scale(1.05);
 }
+
+/* === LIVING LAB SIDEBAR CLEARANCE === */
+/* On screens wide enough for the fixed 220px left sidebar, keep .container clear
+   unless nav is top/bottom, right-docked, hamburger, or orb. */
+@media (min-width: 1180px) {
+  html:not([data-nav-placement="top"]):not([data-nav-placement="bottom"]):not([data-nav-type="hamburger"]):not([data-nav-type="orb"]) .container {
+    margin-left: 260px;
+    max-width: calc(100% - 290px);
+  }
+}
+
+@import "living-lab-nav-fix.css";
