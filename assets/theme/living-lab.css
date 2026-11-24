@@ -1,0 +1,45 @@
+/* Living Lab Banner - Matches Semsey Technologies dark theme & reading toggle */
+.living-lab-banner {
+  margin: 0 0 1.75rem 0;
+  padding: 1.25rem 1.4rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(8px);
+}
+
+.living-lab-kicker {
+  display: inline-block;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  opacity: 0.8;
+  margin-bottom: 0.45rem;
+}
+
+.living-lab-title {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+  line-height: 1.35;
+}
+
+.living-lab-copy {
+  margin: 0 0 0.85rem 0;
+  line-height: 1.6;
+  opacity: 0.92;
+}
+
+.living-lab-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.living-lab-pill {
+  font-size: 0.78rem;
+  padding: 0.28rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.06);
+}

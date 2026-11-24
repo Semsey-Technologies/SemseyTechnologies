@@ -1,4 +1,4 @@
-const CACHE_NAME = 'semsey-tech-v3';
+const CACHE_NAME = 'semsey-tech-v4';
 const ASSETS = [
   '/',
   '/index.html',
@@ -9,6 +9,8 @@ const ASSETS = [
   '/assets/theme/theme.css',
   '/assets/theme/theme.js',
   '/assets/theme/animations.css',
+  '/assets/theme/projects.css',
+  '/assets/theme/living-lab.css',
   '/assets/theme/presets.js',
   '/assets/theme/settings.js',
   '/assets/theme/settings.css',
@@ -49,12 +51,11 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(
       fetch(event.request)
         .then(response => {
-          // Optional: Update the cache with the fresh version
           const copy = response.clone();
           caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
           return response;
         })
-        .catch(() => caches.match(event.request)) // Fallback to cache if offline
+        .catch(() => caches.match(event.request))
     );
     return;
   }
