@@ -1,22 +1,24 @@
 /* ==========================================================================
-   SemseyTechnologies - Navigation Clearance Fix (Complete Replacement)
-   Prevents fixed side navigation panels from overlapping main content on wide
-   viewports while preserving top/bottom/right/hamburger/orb layouts.
+   SemseyTechnologies - Sidebar / Content Overlap Fix (Complete Replacement)
+   Keeps main content clear of fixed left sidebars on desktop viewports.
    ========================================================================== */
 
-@media (min-width: 1180px) {
+@media (min-width: 1024px) {
   html:not([data-nav-placement="top"]):not([data-nav-placement="bottom"]):not([data-nav-type="hamburger"]):not([data-nav-type="orb"])
-    body:not([data-nav-placement="top"]):not([data-nav-placement="bottom"]):not([data-nav-type="hamburger"]):not([data-nav-type="orb"])
     .container {
     margin-left: 260px !important;
-    margin-right: 20px !important;
-    max-width: calc(100% - 280px) !important;
+    margin-right: 24px !important;
+    max-width: calc(100% - 300px) !important;
+    width: auto !important;
   }
 
-  /* If sidebar is docked on the right (.sidebar.right), clear the right side instead */
-  html:has(.sidebar.right) .container {
+  /* If top or bottom nav is active, keep container centered */
+  html[data-nav-placement="top"] .container,
+  html[data-nav-placement="bottom"] .container,
+  html[data-nav-type="hamburger"] .container,
+  html[data-nav-type="orb"] .container {
     margin-left: auto !important;
-    margin-right: 260px !important;
-    max-width: calc(100% - 280px) !important;
+    margin-right: auto !important;
+    max-width: 900px !important;
   }
 }
