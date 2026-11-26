@@ -1,70 +1,396 @@
-/* assets/theme/projects.css - Project Category Styling */
+/* Semsey Technologies — Projects & Research catalogue */
 
-.project-grid {
+.projects-page {
+  padding-bottom: 60px;
+}
+
+.projects-page > h1 {
+  text-align: center;
+  margin: 34px 16px 24px;
+}
+
+.projects-page .container {
+  max-width: 1240px;
+}
+
+.portfolio-intro {
+  margin: 28px 0 18px;
+  line-height: 1.65;
+  opacity: 0.9;
+}
+
+.portfolio-count {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 6px 12px;
+  border: 1px solid color-mix(in srgb, var(--accent), transparent 55%);
+  border-radius: 999px;
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.portfolio-catalogue {
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+  margin-top: 24px;
+}
+
+.portfolio-group {
+  min-width: 0;
+}
+
+.portfolio-group-title {
+  margin: 0 0 16px;
+  padding: 0 0 10px;
+  color: var(--accent);
+  border-bottom: 1px solid color-mix(in srgb, var(--accent), transparent 65%);
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+}
+
+.portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 310px), 1fr));
+  gap: 18px;
+}
+
+.portfolio-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  padding: 22px;
+  border: 1px solid var(--border, rgba(255,255,255,0.12));
+  border-left: 3px solid var(--accent);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--bg2), var(--accent) 4%);
+  transition: transform 180ms ease, border-color 180ms ease,
+              background 180ms ease, box-shadow 180ms ease;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--accent), transparent 35%);
+  background: color-mix(in srgb, var(--bg2), var(--accent) 8%);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.16);
+}
+
+.portfolio-card-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.portfolio-type,
+.portfolio-status {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  max-width: 100%;
+  padding: 5px 9px;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+.portfolio-type {
+  color: var(--text, inherit);
+  background: color-mix(in srgb, var(--text, white), transparent 90%);
+}
+
+.portfolio-status {
+  color: var(--accent);
+  border: 1px solid color-mix(in srgb, var(--accent), transparent 55%);
+  background: color-mix(in srgb, var(--accent), transparent 92%);
+}
+
+.portfolio-card h3 {
+  margin: 0 0 10px;
+  color: var(--text, inherit);
+  font-size: 1.18rem;
+  line-height: 1.35;
+}
+
+.portfolio-card p {
+  margin: 0 0 16px;
+  font-size: 0.93rem;
+  line-height: 1.65;
+  opacity: 0.86;
+}
+
+.portfolio-card .simple-content {
+  display: none;
+}
+
+html.simple-mode .portfolio-card .academic-content {
+  display: none;
+}
+
+html.simple-mode .portfolio-card .simple-content {
+  display: block;
+}
+
+.project-action {
+  display: inline-block;
+  margin-top: auto;
+  padding-top: 8px;
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+a.project-action:hover {
+  text-decoration: underline;
+}
+
+.project-pending {
+  color: var(--text, inherit);
+  opacity: 0.55;
+  font-weight: 500;
+}
+
+.portfolio-note {
+  margin-top: 38px;
+  padding: 18px 20px;
+  border: 1px solid color-mix(in srgb, var(--accent), transparent 65%);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--bg2), var(--accent) 3%);
+  line-height: 1.6;
+}
+
+.portfolio-note strong {
+  color: var(--accent);
+}
+
+.portfolio-note p {
+  margin: 8px 0 0;
+  font-size: 0.9rem;
+  opacity: 0.82;
+}
+
+@media (max-width: 600px) {
+  .projects-page > h1 {
+    margin-top: 24px;
+    font-size: 1.8rem;
+  }
+
+  .portfolio-card {
+    padding: 18px;
+  }
+
+  .portfolio-card-top {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+
+/* COMPACT LIVING LAB TOPIC CARDS */
+
+/* Keep the Living Lab introduction prominent; compact the catalogue below it. */
+.portfolio-catalogue {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 16px;
   margin-top: 20px;
 }
 
-.project-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  text-decoration: none;
-  color: inherit;
-  border-left: 4px solid var(--status-color, var(--accent));
-  background: color-mix(in srgb, var(--bg2), var(--status-color, var(--accent)) 5%);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+/* Each subject area becomes a compact topic card. */
+.portfolio-group {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid var(--border, rgba(255,255,255,0.12));
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--bg2), transparent 8%);
 }
 
-.project-card:hover {
-  transform: translateY(-5px);
-  background: color-mix(in srgb, var(--bg2), var(--status-color, var(--accent)) 12%);
-  box-shadow: 0 10px 30px -10px color-mix(in srgb, var(--status-color, var(--accent)), transparent 50%);
-  border-left-width: 8px;
+/* Smaller topic headings. */
+.portfolio-group-title {
+  margin: 0 0 12px;
+  padding: 0 0 8px;
+  font-size: 1.05rem;
+  line-height: 1.35;
 }
 
-.status-badge {
-  display: inline-block;
-  padding: 4px 12px;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  background: color-mix(in srgb, var(--status-color, var(--accent)), transparent 80%);
-  color: var(--status-color, var(--accent));
-  border: 1px solid color-mix(in srgb, var(--status-color, var(--accent)), transparent 50%);
-  margin-bottom: 12px;
-  width: fit-content;
+/* Project entries remain visible, but use less space. */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 10px;
 }
 
-/* Category Color Variables */
-.experimental { --status-color: #ff4444; }
-.theoretical  { --status-color: #bb66ff; }
-.conceptual   { --status-color: #00cccc; }
-.alpha        { --status-color: #ffaa00; }
-.beta         { --status-color: #88ff00; }
-.inprogress   { --status-color: #00ff88; }
-.operational  { --status-color: #3399ff; }
+.portfolio-card {
+  padding: 14px;
+  border-radius: 9px;
+  border-left-width: 2px;
+}
 
-.project-card h2 {
-  color: var(--status-color, var(--accent));
+.portfolio-card-top {
+  gap: 6px;
   margin-bottom: 8px;
 }
 
-.project-card .desc {
-  font-size: 0.95rem;
-  opacity: 0.8;
+.portfolio-type,
+.portfolio-status {
+  padding: 4px 7px;
+  font-size: 0.66rem;
+}
+
+.portfolio-card h3 {
+  margin-bottom: 7px;
+  font-size: 1.04rem;
+}
+
+.portfolio-card p {
+  margin-bottom: 10px;
+  font-size: 0.87rem;
   line-height: 1.5;
 }
 
-.project-card .footer {
-  margin-top: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-transform: uppercase;
+.project-action {
+  padding-top: 5px;
+  font-size: 0.78rem;
+}
+
+/* Single-column layout on tablets and phones. */
+@media (max-width: 800px) {
+  .portfolio-catalogue {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Keep the topic cards especially compact on phones. */
+@media (max-width: 600px) {
+  .portfolio-group {
+    padding: 13px;
+  }
+
+  .portfolio-group-title {
+    font-size: 1rem;
+  }
+
+  .portfolio-card {
+    padding: 13px;
+  }
+}
+
+
+/* TOPIC DIRECTORY — MAIN PROJECTS PAGE */
+.topic-directory {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 22px 0 34px;
+}
+
+.topic-directory-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 175px;
+  padding: 20px;
+  color: var(--text, inherit);
+  text-decoration: none;
+  border: 1px solid var(--border, rgba(255,255,255,0.12));
+  border-left: 3px solid var(--accent);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--bg2), var(--accent) 3%);
+  transition: transform 180ms ease, border-color 180ms ease,
+              background 180ms ease, box-shadow 180ms ease;
+}
+
+.topic-directory-card:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--accent), transparent 30%);
+  background: color-mix(in srgb, var(--bg2), var(--accent) 8%);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.15);
+}
+
+.topic-directory-number {
+  color: var(--accent);
+  font-size: 0.68rem;
+  font-weight: 800;
   letter-spacing: 0.1em;
-  opacity: 0.6;
+}
+
+.topic-directory-card h2 {
+  margin: 10px 0 8px;
+  font-size: 1.12rem;
+  line-height: 1.35;
+}
+
+.topic-directory-card p {
+  margin: 0 0 16px;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  opacity: 0.82;
+}
+
+.topic-directory-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--border, rgba(255,255,255,0.12));
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+/* INDIVIDUAL TOPIC PAGES */
+.topic-page-intro {
+  margin-bottom: 22px;
+}
+
+.topic-back-link {
+  display: inline-block;
+  margin-top: 8px;
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.topic-back-link:hover {
+  text-decoration: underline;
+}
+
+.topic-projects .portfolio-group {
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.topic-projects .portfolio-group-title {
+  display: none;
+}
+
+.topic-projects .portfolio-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 310px), 1fr));
+  gap: 18px;
+}
+
+@media (max-width: 950px) {
+  .topic-directory {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .topic-directory {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .topic-directory-card {
+    min-height: 0;
+    padding: 17px;
+  }
 }

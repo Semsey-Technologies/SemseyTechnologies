@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Projects & Research - Semsey Technologies</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0a0a0c" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" href="images/logo/logo.png" />
+  <link rel="apple-touch-icon" href="images/logo/logo.png" />
+
+  <link rel="stylesheet" href="assets/theme/theme.css" />
+  <link rel="stylesheet" href="assets/theme/animations.css" />
+  <link rel="stylesheet" href="assets/theme/projects.css" />
+  <link rel="stylesheet" href="assets/theme/living-lab.css" />
+  <link rel="stylesheet" href="assets/theme/living-lab-nav-fix.css" />
+
+  <script type="module" src="assets/theme/theme.js"></script>
+</head>
+<body>
+  <div id="bgLayer"></div>
+  <a href="settings.html" class="settings-cog"></a>
+  <div id="nav-container"></div>
+
+  <main class="projects-page">
+      <h1>Security & Operational Protocols</h1>
+      <div class="container">
+<div class="article-header">
+        <span class="category">Project Portfolio</span>
+        <button id="readingLevelToggle" class="reading-level-toggle">
+          <span class="icon">💡</span> View Simple Version
+        </button>
+      </div>
+
+      <aside class="living-lab-banner" aria-label="Portfolio approach">
+        <span class="living-lab-kicker">Semsey Technologies • Research & Development</span>
+        <h2 class="living-lab-title">
+          <span class="academic-content">A Portfolio of Systems, Prototypes, Research &amp; Proposals</span>
+          <span class="simple-content">Ideas, Plans, and Software in Development</span>
+        </h2>
+        <p class="living-lab-copy">
+          <span class="academic-content">This portfolio includes implemented software, documented engineering work, operational protocols, research, and proposed system architectures. Each entry identifies its documented status. A proposal is not presented as an implemented product, and documented implementation is not represented as independent verification.</span>
+          <span class="simple-content">These projects are at different stages. Some are software projects, some are written plans or security guides, and others are proposed designs. Each one tells you what has actually been documented so far.</span>
+        </p>
+        <div class="living-lab-pills">
+          <span class="living-lab-pill">Evidence-Based Status</span>
+          <span class="living-lab-pill">Research &amp; Iteration</span>
+          <span class="living-lab-pill">Clear Scope &amp; Limitations</span>
+        </div>
+      </aside>
+
+      <div class="portfolio-intro topic-page-intro">
+        <p>Security frameworks, identity separation, and operational protection protocols.</p>
+        <a class="topic-back-link" href="projects.html">← All Projects &amp; Research</a>
+      </div>
+      <div class="topic-projects">
+        <section class="portfolio-group" aria-labelledby="group-27"><h2 class="portfolio-group-title" id="group-27">Security &amp; Operational Protocols</h2><div class="portfolio-grid">
+
+          <article class="portfolio-card" id="multi-persona">
+            <div class="portfolio-card-top">
+              <span class="portfolio-type">Operational Security Protocol</span>
+              <span class="portfolio-status">Documented Protocol</span>
+            </div>
+            <h3>Multi-Persona Security Protocol</h3>
+            <p class="academic-content">A practical protocol for creating and operating separate online personas while reducing identity correlation, information leakage, and cross-contamination. It includes threat-model planning, persona templates, operational rules, communication practices, and incident response guidance.</p>
+            <p class="simple-content">A guide to keeping separate online identities from becoming accidentally connected. It covers planning, account separation, everyday habits, and what to do if something goes wrong.</p>
+            <a class="project-action" href="multi-persona-security.html">View Project Details →</a>
+          </article>
+        
+
+          <article class="portfolio-card" id="claudia-lock">
+            <div class="portfolio-card-top">
+              <span class="portfolio-type">Physical-Digital Security Framework</span>
+              <span class="portfolio-status">Concept Documented · Implementation Not Established</span>
+            </div>
+            <h3>Claudia Lock Protocol (CLP)</h3>
+            <p class="academic-content">A proposed zero-trust physical-digital security framework for controlled and potentially air-gapped environments. The concept explores physical authorization and access-control mechanisms; implementation and security guarantees are not established by the current portfolio material.</p>
+            <p class="simple-content">A security concept exploring how physical controls could help protect sensitive information, including in environments kept separate from the internet. It should not be treated as a proven or finished security product.</p>
+            <span class="project-action project-pending">Detailed project page being prepared</span>
+          </article>
+        
+</div></section>
+      </div>
+    
+<aside class="portfolio-note">
+        <strong>About project status</strong>
+        <p>Statuses describe the evidence and documentation currently presented in this portfolio. They are not independent certifications, security audits, or guarantees of operational readiness. Proposed concepts and internal drafts are identified as such.</p>
+      </aside>
+      </div>
+</main>
+
+  <script type="module">
+    import {
+      applyLogoSource,
+      applyCogSource,
+      applySavedTheme,
+      applySavedNav
+    } from "./assets/theme/theme.js";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      applySavedTheme();
+      applyLogoSource();
+      applyCogSource();
+      applySavedNav();
+    });
+  </script>
+</body>
+</html>
